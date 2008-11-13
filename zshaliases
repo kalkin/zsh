@@ -1,0 +1,65 @@
+# Last edit on 2008-08-26 
+# This file is a part of my zsh configuration. It's sourced from the .zshrc
+# file. It contains my aliases
+
+alias psg='ps ax|grep -v grep|grep -i'
+alias hg='history 1|grep'
+alias zeit="date +\"%H:%M %d.%m.%y\""
+alias today="date +\"%Y%m%d\""
+alias ls='ls -F'
+alias startx='startx; screen -D'
+
+# if we're on a debian/ubuntu system
+if [[ -f /etc/apt/sources.list ]] then
+    alias apt-search='apt-cache search'
+fi
+
+# OpenBSD specific aliases
+if [[ $(uname -s) = 'OpenBSD' ]] then
+    alias netstat -a -f inet
+    alias cvs-update='cvs -q up -rOPENBSD_4_2 -Pd'
+fi
+
+if [[ $(uname -s) = 'Darwin' ]] then
+    alias sudoedit="sudo $EDITOR"
+fi
+
+# Linux specific aliases
+if [[ $(uname -s) = 'Linux' ]] then
+    alias ls='ls -F --color'
+    alias cal='cal -m'
+    alias grep='grep --color'
+fi
+
+alias ll='ls -lh'
+alias la='ls -Alh'
+alias vi='vim -p'
+alias vim='vim -p'
+alias 'cd..'='cd ../'
+alias 'cd...'='cd ../../'
+alias 'cd....'='cd ../../../'
+alias myip='links -dump http://www.myip.ch/ | grep -o "[[:digit:]].*[[:digit:]]"'
+
+# unpacking shortcuts
+alias tarx='tar xfz'
+alias tarj='tar xfj'
+
+# some config shortcuts
+alias confighelp='./configure --help=short'
+alias configmake='./configure && make'
+
+alias urxvt='urxvt -e /usr/bin/uscreen'
+alias urxvtc='urxvtc -e /usr/bin/uscreen'
+
+#alias slrn="LC_ALL=de_DE.iso88591 LANG=de_DE.iso88591 luit slrn --spool"
+
+
+# Suffix aliases
+alias -s tex=vim
+alias -s html=links2
+alias -s php=vim
+alias -s txt=vim
+alias -s java=vim
+alias -s pl=vim
+alias -s py=vim
+

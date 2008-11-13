@@ -1,0 +1,14 @@
+# Last edit on 2008-08-26
+zstyle ':comletion:*' use-cache on 
+zstyle ':comletion:*' cache-path ~/.zsh/cache
+
+# Fuzzy matching of completions for when you mistype them:
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 1 numeric
+
+# Completing process IDs with menu selection:
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*'   force-list always
+
+

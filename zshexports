@@ -1,0 +1,53 @@
+# Last edit on 2008-03-14
+# This file is a part of my zsh configuration. It's sourced from the .zshrc
+# file. It contains the exported shell variables
+
+# (( ${+*} )) = if variable is set don't set it anymore
+(( ${+ORGANIZATION} )) || export ORGANIZATION="cologne.idle"
+
+export PATH="/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/sbin:/usr/games:/usr/sbin:/usr/kde/3.5/bin/:$HOME/bin:/usr/share/php/bin/"
+
+export DISPLAY=:0.0
+export LESSCHARSET=utf-8
+export TERM=rxvt
+export EDITOR=vim
+export VISUAL=vim
+export MAIL=mail@kalkin.de
+export PGPPATH=$HOME/.gnupg
+export SLRNPULL_ROOT=$HOME/Documents/usenet/albasani
+# Nice hack for adapting the vimruntime in dependence of the vim version
+export VIMVERSION=`vim --version|grep "^VIM"|cut -d " " -f5 | sed 's/\.//'`
+export VIMRUNTIME=/usr/local/share/vim/vim$VIMVERSION
+export LC_TIME="de_DE.utf8"
+export LC_ALL=""
+
+if [[ $(uname -m) = 'ppc' ]] then
+    export JAVA_HOME=/usr/lib/j2sdk1.6-ibm/
+fi
+
+# some variables for specific systems
+if [[ $(uname -s) = 'OpenBSD' ]] then
+    export PKG_PATH='ftp://ftp.freenet.de/pub/ftp.openbsd.org/pub/OpenBSD/4.2/packages/i386/'
+    export CVSROOT=anoncvs@openbsd.spline.de:/cvs
+fi
+
+# export for gnupod
+if [[ $(uname -s) = 'Linux' ]] then
+    export IPOD_MOUNTPOINT="/mnt/ipod"
+    export LANG="de_DE.utf8"
+    export LC_MESSAGES="en_US.utf8"
+fi
+
+if [[ $(uname -s) == 'Darwin' ]] then
+	test -r /sw/bin/init.sh && . /sw/bin/init.sh 
+    export LANG="en_US.UTF-8"
+    export LC_MESSAGES="en_US.UTF-8"
+fi
+
+
+export PAGER=most
+export PS1="%U%n@%m:%~%u "
+export NNTPSERVER='snews.albasani.net'
+
+export IPOD_MOUNTPOINT=/mnt/ipod
+
