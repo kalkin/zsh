@@ -1,72 +1,27 @@
 # file template for ~/.zsh/zshprompt
-# copy to home directory and edit by hand, or use function switch_prompt
-# to do this automatically
-
-#  { ======> }  indicates where user might want to edit this file
-
-
-
-
+# This file contains diferent colorshemes for my zshpromp, depended on the
+# machine i'm using
 
 autoload -U colors
 colors
 
-
-
-OLDFPATH=$FPATH
-
-if [[ -d $ZDOT_TEMPLATE/local-functions ]];then
-  FPATH=$ZDOT_TEMPLATE/local-functions:$FPATH
-fi
-
-if [[ -d $ZDOT/local-functions ]];then
-  FPATH=$ZDOT/local-functions:$FPATH
-fi
-
-if [[ -d $ZDOT_USER/my-functions ]];then
-  FPATH=$ZDOT_USER/my-functions:$FPATH
-fi
-
- 
-###################################################################################
-# This gets set automatically using switch_prompt or can be edited manually
-# to correspond to the (middle) name of the desired prompt function in $fpath
-
-#  { ======> }
-
-# PROMPT_CHOICE='kerbaugh'
-  PROMPT_CHOICE='adam2'
-  
+PROMPT_CHOICE='adam2'
   
   
 ###################################################################################
 # Add optional arguments manually to the prompt here:
 
 # default is no arguments (empty array)
-  ARG_ARRAY=()
-#
-#  Example for prompt clint.  Uncomment and change elements of the array as needed.
-#  Possible arguments are described in the prompt functions located in $fpath.
+ARG_ARRAY=()
 
-#  { ======> }
+case `uname -n` in
+    st004) ARG_ARRAY=(blue green yellow);;
+    st007) ARG_ARRAY=(red red green);;
+    *) ARG_ARRAY=(white white white);;
+esac
 
-if [[ $(uname -n) == 'st007' ]] then
-        ARG_ARRAY=(red red green)
-fi
-if [[ $(uname -n) != 'ST004' ]] then
-        ARG_ARRAY=(yellow yellow red)
-fi
 ###################################################################################
 
-# Turn off the previous prompt:
-
-autoload -U prompt_off_setup
- prompt_off_setup
-
-# Now set prompt to the user's choice:
-
- autoload -U prompt_${PROMPT_CHOICE}_setup
- prompt_${PROMPT_CHOICE}_setup $ARG_ARRAY
-
- FPATH=$OLDFPATH
+autoload -U prompt_${PROMPT_CHOICE}_setup
+prompt_${PROMPT_CHOICE}_setup $ARG_ARRAY
 
