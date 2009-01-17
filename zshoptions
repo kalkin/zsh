@@ -4,7 +4,7 @@
 
 HISTFILE=~/.histfile
 HISTSIZE=10000
-SAVEHIST=3000
+SAVEHIST=10000
 
 # Limit this fuckung "zsh: do you wish to see all NNN possibilities (NNN
 # lines)?" downward (default is 100). Only ask before displaying
