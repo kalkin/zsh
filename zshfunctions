@@ -30,14 +30,12 @@ done
 
 
 preexec () {
- print -Pn "\e]0;%n@%m: $1\a"
  print -Pn "\ek$1\e\\"
 
 }
 
 
 myprecmd(){
- print -Pn "\e]0;%n@%m: $1\a"
  print -Pn "\ek$PWD\e\\"
 }
 
