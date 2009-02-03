@@ -17,10 +17,11 @@ export PGPPATH=$HOME/.gnupg
 export SLRNPULL_ROOT=$HOME/Documents/usenet/albasani
 # Nice hack for adapting the vimruntime in dependence of the vim version
 export VIMVERSION=`vim --version|grep "^VIM"|cut -d " " -f5 | sed 's/\.//'`
-if [ -z "/usr/local/share/vim$VIMVERSION"]
+if [[ -z "/usr/local/share/vim$VIMVERSION" ]] then
     export VIMRUNTIME=/usr/local/share/vim/vim$VIMVERSION
 else 
     export VIMRUNTIME=/usr/share/vim/vim$VIMVERSION
+fi
 export LC_TIME="de_DE.utf8"
 export LC_ALL=""
 
