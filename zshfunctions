@@ -23,3 +23,28 @@ for ((b=-1.5; b<=1.5; b+=3.0/lines)) do
     echo
 done
 }
+
+#preexec () {
+#      echo -ne "\ek${1%% *}\e\\"
+#}
+
+
+preexec () {
+ print -Pn "\e]0;%n@%m: $1\a"
+ print -Pn "\ek$1\e\\"
+
+}
+
+
+myprecmd(){
+ print -Pn "\e]0;%n@%m: $1\a"
+ print -Pn "\ek$PWD\e\\"
+}
+
+
+set -A precmd_functions precmd myprecmd
+set -A preexec_functions preexec mypreexec
+
+
+
+
