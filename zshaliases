@@ -59,6 +59,7 @@ if [[ -e /etc/debian_version ]]; then
         alias dpkg='sudo dpkg'
         alias dpkg-reconfigure='sudo dpkg-reconfigure'
         alias debup='aptitude update && aptitude safe-upgrade'
+        alias debup_old='aptitude update && aptitude safe-upgrade'
     else 
         alias debup='sudo -i "aptitude update && aptitude safe-upgrade"'
     fi
