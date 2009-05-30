@@ -7,7 +7,16 @@ bindkey -v
 # History completion on pgup and pgdown
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[4~" end-of-line
+
+case $TERM in
+    screen*)
+        bindkey "^[[1~" beginning-of-line
+        bindkey "^[OF~" end-of-line # [[4~ seems not always to work no idea y
+        ;;
+      rxvt*)
+        bindkey "^[[7~" beginning-of-line
+        bindkey "^[[8~" end-of-line
+        ;;
+esac
 bindkey "^[[5~" history-beginning-search-backward-end
 bindkey "^[[6~" history-beginning-search-forward-end
