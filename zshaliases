@@ -2,47 +2,79 @@
 # This file is a part of my zsh configuration. It's sourced from the .zshrc
 # file. It contains my aliases
 
+# Just for fun :)
+alias top10='print -l ? $$${(o)history%% *} | uniq -c | sort -nr | head -n 10'
+
 alias psg='ps ax|grep -v grep|grep -i'
+alias h='history'
 alias hg='history 1|grep'
 alias zeit="date +\"%H:%M %d.%m.%y\""
 alias today="date +\"%Y%m%d\""
-alias ls='ls -F'
 alias startx='screen -DD; startx;'
 alias fspc='df -h .'
-
-# if we're on a debian/ubuntu system
-if [[ -f /etc/apt/sources.list ]] then
-    alias apt-search='apt-cache search'
-fi
+alias shutdown='sudo shutdown'
 
 # OpenBSD specific aliases
-if [[ $(uname -s) = 'OpenBSD' ]] then
+if [[  $(uname -s)  = 'OpenBSD' ]] then
     alias netstat -a -f inet
     alias cvs-update='cvs -q up -rOPENBSD_4_2 -Pd'
 fi
 
-if [[ $(uname -s) = 'Darwin' ]] then
+if [[  $(uname -s)  = 'Darwin' ]] then
     alias sudoedit="sudo $EDITOR"
 fi
 
 # Linux specific aliases
-if [[ $(uname -s) = 'Linux' ]] then
+if [[  $(uname -s)  = 'Linux' ]] then
     alias ls='ls -F --color'
     alias cal='cal -m'
     alias grep='grep --color'
+else 
+    alias ls='ls -F'
 fi
-
-# Gentoo specific aliases
-if [[ -d /usr/portage ]]; then
-    alias genup="sudo emerge -avuNDt --keep-going world"
-fi
-
 alias ll='ls -lh'
 alias la='ls -Alh'
-alias lsd='ll -d *(/)'
-alias lsf='ll *(^/)'
-alias vi='vim -p'
-alias vim='vim -p'
+alias lad='ls -d -- .*(/)'  # only show dot-direcotories
+alias laf='ls -d -- .*(^/)' # only show dot-files
+alias lsd='ls -d -- *(/)'   # show all directories
+alias lsf='ls -d -- *(^/)'  # only show files
+alias lse='ls -d -- *(/^F)' # only show empty dirs
+
+# Gentoo specific aliases
+if [[ -e /etc/gentoo-release ]]; then
+    # set this aliase only if i'm not root
+    if (( EUID != 0 )); then
+        alias emerge='sudo emerge'
+        alias etc-update='sudo etc-update'
+        alias eix-sync='sudo eix-sync'
+        alias revdep-rebuild='sudo revdep-rebuild'
+    fi
+    alias genup='emerge -avuNDt --keep-going world'
+fi
+
+if [[ -e /etc/debian_version ]]; then
+    if (( EUID != 0 )); then
+        alias aptitude='sudo aptitude'
+        alias apt-get='sudo apt-get'
+        alias dpkg='sudo dpkg'
+        alias dpkg-reconfigure='sudo dpkg-reconfigure'
+        alias debup='aptitude update && aptitude safe-upgrade'
+    else 
+        alias debup='sudo -i "aptitude update && aptitude safe-upgrade"'
+    fi
+    
+    alias apt-search='apt-cache search'
+fi
+
+if [[ -x `where vim` ]]; then
+    alias vi='vim -p'
+    alias vi='vim -p'
+    alias vim='vim -p'
+alias view='vim -R'
+elif [[ -x `where vi` ]]; then
+    alias vim='vi'
+fi
+
 alias 'cd..'='cd ../'
 alias 'cd...'='cd ../../'
 alias 'cd....'='cd ../../../'
@@ -65,17 +97,43 @@ alias tarj='tar xfj'
 alias confighelp='./configure --help=short'
 alias configmake='./configure && make'
 
+# gpg
+alias get.gpgkey='gpg --keyserver pgp.mit.edu --recv-key 0x"$@"'
+alias encrypt.gpg='echo "WARNING: plaintext is not deleted!"; gpg --quiet -ear 0x47E322CE'
+alias sign.gpg='gpg --sign $*'
+
 # Suffix aliases
-alias -s tex=vim
-alias -s txt=vim
+alias -s pdf=evince
+alias -s ps=evince
+alias -s {flac,wav,wmv,mpg,avi,mpeg,ogm,m4v,mp4,mkv,ogg}='mplayer -idx'
+alias -s {jpg,jpeg,xpm,xbm,png,gif}='feh'
+if [[ -x `where vimpager` ]]; then 
+    alias -s txt=vimpager
+else
+    alias -s txt=$PAGER
+fi
 alias -s html=firefox
-alias -s php=vim
-alias -s txt=vim
-alias -s java=vim
-alias -s pl=vim
-alias -s py=vim
+if [[ -x `where vim` || -x `where vi` ]]; then
+    alias -s tex=vim
+    alias -s php=vim
+    alias -s java=vim
+    alias -s pl=vim
+    alias -s py=vim
+fi
 
 
 # Global alias
 alias -g NE='2>|/dev/null'
 alias -g NO='&>|/dev/null'
+
+alias -g PG='|$PAGER'
+
+if [[ -x `where vimpager` ]]; then
+    alias -g VP='|vimpager'
+fi
+
+alias -g ST009='st009.kalkin.de'
+alias -g ST010='st010.kalkin.de'
+alias -g MARY='mary.st009.kalkin.de'
+alias -g BEKY='mary.st009.kalkin.de'
+alias -g BLASE='blase16.is-a-geek.org'
