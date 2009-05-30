@@ -15,11 +15,12 @@ PROMPT_CHOICE='adam2'
 ARG_ARRAY=()
 
 case `uname -n` in
+    fornax) ARG_ARRAY=(green yellow white white);;
     st004) ARG_ARRAY=(blue green yellow);;
     st007) ARG_ARRAY=(red red green);;
+    st009) ARG_ARRAY=(blue yellow yellow);;
     st010) ARG_ARRAY=(green yellow white white);;
     st011) ARG_ARRAY=(yellow yellow white white);;
-    fornax) ARG_ARRAY=(green yellow white white);;
     *) ARG_ARRAY=(white white white);;
 esac
 
