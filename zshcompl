@@ -16,3 +16,21 @@ compctl -k ping telnet ncftp host nslookup irssi rlogin ftp
 # completion for browsers
 compctl -g "*.html *.htm" + -g "*(-/) .*(-/)" + -H 0 '' w3m lynx links links2 elinks firefox
 compctl -g "*.rar *.tar *.bz2 *.gz *.ace *.deb *.izs *.tar *.tbz2 *.zip *.Z *.shar" + -g "*(-/) .*(-/)" + -H 0 '' spex
+
+# highlight matching part of available completions
+zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$PREFIX)(?)*=00=$color[green]=$color[bg-green]" )'
+
+# add colors to completions
+# # general completion
+# #--------------------------------------------------
+zstyle ':completion:*:descriptions' format $$$'%{\e[0;31m%}completing %B%d%b%{\e[0m%}'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*' format $'%{\e[0;31m%}completing %B%d%b%{\e[0m%}'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' verbose yes
+
+zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
+# If there are more than 5 options, allow selecting from a menu with
+# arrows (case insensitive completion!).
+zstyle ':completion:*-case' menu select=5
+

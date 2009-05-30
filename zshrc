@@ -50,13 +50,6 @@
 #
 # }}}
 
-# Load pre functions
-if [ -f ~/.zsh/zshprefunctions ]; then
-    source ~/.zsh/zshprefunctions
-else
-   print "Warning: ~/.zsh/zshprefunctions is unavailable" 
-fi
-
 # Test and than source the options
 if [ -f ~/.zsh/zshoptions ]; then
     source ~/.zsh/zshoptions
@@ -109,3 +102,4 @@ if [ -f ~/.zsh/zshcompl ]; then
 else
    print "Warning: ~/.zsh/zshcompl is unavailable" 
 fi
+
