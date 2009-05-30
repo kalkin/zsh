@@ -1,3 +1,175 @@
+# Create a /overview/ of all available function()'s; the description for
+# each funtion() *must* be the first line above the string `function'!
+# Otherwise it wont work.
+# Display all function()'s with her descriptions
+function funlist()
+{
+  grep -B 1 "^function" $HOME/.zsh/zshfunctions | \
+  grep -v "^\-\-$" | \
+  awk '{ if(/^#/) { gsub(/^#[:space:]*/, ""); ht=$0 }; getline; gsub(/ ?\(\)/, ":"); printf("-> %-20s %s\n", $2, ht); }' | \
+  sort -u -k 3
+}
+# shameless stolen from http://ft.bewatermyfriend.org/comp/data/zsh/zfunct.html
+# MISC: zurl() create small urls via tinyurl.com needs wget, grep and sed. yes, it's a hack ;)
+function zurl() {
+  [[ -z ${1} ]] && print "please give an url to shrink." && return 1
+    local url=${1}
+    local tiny="http://tinyurl.com/create.php?url="
+    # print "${tiny}${url}" ; return
+    wget -O- -o /dev/null "${tiny}${url}"|grep -Eio "copy\('http://tinyurl.com/.*'"|grep -o "http://.*"|sed s/\'//
+}
+
+# A nicer output of cal(1)
+# MISC: Colorize the output of cal(1)
+function hcal() {
+  if [[ ! -f /usr/bin/cal ]] ; then
+    echo "Please install cal before trying to use it!"
+    return
+  fi
+  if [[ "$#" = "0" ]] ; then
+    /usr/bin/cal | egrep -C 40 --color "\<$(date +%e| tr -d ' ')\>"
+  else
+    /usr/bin/cal $@ | egrep -C 40 --color "\<($(date +%B)|$(date +%e | tr -d ' '))\>"
+  fi
+}
+
+# MISC: Display current directory as a 'tree'.
+if [ ! -x $(which tree > /dev/null 2>&1) ]; then
+# MISC: Display current directory as a 'tree'.
+function tree() { 
+    find . | sed -e 's/[^\/]*\//|----/g' -e 's/---- |/ |/g' | $PAGER 
+}
+fi
+
+# DOC: Globbing is simple? Sure .. See zshexpn(1) /Glob Qualifiers for details and come back ;) 
+function jlob()
+{
+echo -e "
+     / directories
+      . plain files
+      @ symbolic links
+      = sockets
+      p named pipes (FIFOs)
+      * executable plain files (0100)
+      % device files (character or block special)
+      %b block special files
+      %c character special files
+      r owner-readable files (0400)
+      w owner-writable files (0200)
+      x owner-executable files (0100)
+      A group-readable files (0040)
+      I group-writable files (0020)
+      E group-executable files (0010)
+      R world-readable files (0004)
+      W world-writable files (0002)
+      X world-executable files (0001)
+      s setuid files (04000)
+      S setgid files (02000)
+      t files with the sticky bit (01000)
+ print *(m-1) # Dateien, die vor bis zu einem Tag modifiziert wurden.
+ print *(a1) # Dateien, auf die vor einem Tag zugegriffen wurde.
+ print *(@) # Nur Links
+ print *(Lk+50) # Dateien die ueber 50 Kilobytes grosz sind
+ print *(Lk-50) # Dateien die kleiner als 50 Kilobytes sind
+ print **/*.c # Alle *.c - Dateien unterhalb von \$PWD
+ print **/*.c~file.c # Alle *.c - Dateien, aber nicht 'file.c'
+ print (foo|bar).* # Alle Dateien mit 'foo' und / oder 'bar' am Anfang
+ print *~*.* # Nur Dateien ohne '.' in Namen
+ chmod 644 *(.^x) # make all non-executable files publically readable
+ print -l *(.c|.h) # Nur Dateien mit dem Suffix '.c' und / oder '.h'
+ print **/*(g:users:) # Alle Dateien/Verzeichnisse der Gruppe >users<
+ echo /proc/*/cwd(:h:t:s/self//) # Analog zu >ps ax | awk '{print $1}'<"
+}
+
+# FUN: Making the right decisions is hard :>
+function helpme()
+{
+  print "Please wait.. i'll think about.."
+  for i in 1 2 3; do echo -ne "."; sleep 0.3; done
+  if [ $RANDOM -gt $RANDOM ]
+  then
+    print "Yes\!"
+  else
+    print "No\!"
+  fi
+}
+
+# MISC lookup en2de or de2en translation on leo
+function dict()
+{
+  [[ -z ${1} ]] && print "please give an word to translate." && return 1
+    local word=${1}
+$LINKS_BROWSER -dump 'http://dict.leo.org/ende?lp=ende&lang=de&searchLoc=0&cmpType=relaxed&sectHdr=on&spellToler=on&pinyin=diacritic&search='${1}'&relink=on'|grep '^[ ]*|' |most
+
+}
+
+if [ ! -x $(which unp) >/dev/null 2>&1 ]; then
+# ARCHIVE: extracts archived files (maybe)
+function spex ()
+{
+        if [[ -f "$1" ]]
+        then
+                case "$1" in
+                        *.tar.bz2) bzip2 -v -d "$1" ;;
+                        *.tar.gz) tar -xvzf "$1" ;;
+                        *.ace) unace e "$1" ;;
+                        *.rar) unrar x "$1" ;;
+                        *.deb) ar -x "$1" ;;
+                        *.bz2) bzip2 -d "$1" ;;
+                        *.lzh) lha x "$1" ;;
+                        *.gz) gunzip -d "$1" ;;
+                        *.tar) tar -xvf "$1" ;;
+                        *.tgz) gunzip -d "$1" ;;
+                        *.tbz2) tar -jxvf "$1" ;;
+                        *.zip) unzip "$1" ;;
+                        *.Z) uncompress "$1" ;;
+                        *.shar) sh "$1" ;;
+                        *) echo "'"$1"' Error. Please go away" ;;
+                esac
+        else
+                echo "'"$1"' is not a valid file"
+        fi
+}
+fi
+
+#FUN: my is bigger than yours :)
+function dick()
+{
+echo `uptime|grep days|sed 's/.*up \([0-9]*\) day.*/\1\/10+/'; cat \
+/proc/cpuinfo|grep '^cpu MHz'|awk '{print $4"/30 +";}';free|grep \
+'^Mem'|awk '{print $3"/1024/3+"}'; df -P -k -x nfs | grep -v \
+1k | awk '{if ($1 ~ "/dev/(scsi|sd)"){ s+= $2} s+= $2;} END \
+{print s/1024/50"/15+70";}'`|sed 's/\,/\./'|bc|sed 's/\(.$\)/.\1cm/'
+}
+
+# MISC: mkdir && cd
+function mcd()
+{
+  test -z "$1" && echo mkcd: no path given && return
+  test -d "$1" && print "mkcd: Directory $1 already exists"
+  mkdir -p -- "$1"
+  cd -- "$1"
+}
+
+# SEARCH: search for various types or README file in dir and display them in $PAGER
+function readme()
+{
+        if [[ -x `where vimpager` ]]; then
+            local VPAGER=vimpager
+        else
+            local VPAGER=$PAGER
+        fi
+        local files
+        files=(./(#i)*(read*me|lue*m(in|)ut)*(ND))
+        if (($#files))
+        then $VPAGER $files
+        else
+                print 'No README files. Please lart \$MAINTAINER!'
+        fi
+}
+
+
+
 TRAPZERR() 
 { 
         if [[ -x `where fortune` ]]; then
