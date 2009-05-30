@@ -11,4 +11,7 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
 
+compctl -k ping telnet ncftp host nslookup irssi rlogin ftp
 
+# completion for browsers
+compctl -g "*.html *.htm" + -g "*(-/) .*(-/)" + -H 0 '' w3m lynx links links2 elinks firefox
