@@ -3,46 +3,24 @@ TRAPZERR()
     fortune -oa bofh-excuses|sed 'n;d'
 }
 
-function most_useless_use_of_zsh {
-integer colours
-if (( $# )); then
-  colours=$1
-else
-  colours=$(echotc Co) || return 1
-fi
-local lines columns colour a b p q i pnew
-((columns=COLUMNS-1, lines=LINES-1, colour=0))
-for ((b=-1.5; b<=1.5; b+=3.0/lines)) do
-    for ((a=-2.0; a<=1; a+=3.0/columns)) do
-      for ((p=0.0, q=0.0, i=0; p*p+q*q < 4 && i < colours*4; i++)) do
-            ((pnew=p*p-q*q+a, q=2*p*q+b, p=pnew))
-        done
-        ((colour=(i/4)%colours))
-        print -nP "%${colour}K %k"
-    done
-    echo
-done
-}
-
 #preexec () {
 #      echo -ne "\ek${1%% *}\e\\"
 #}
 
 
 preexec () {
- print -Pn "\ek$1\e\\"
-
+     print -Pn "\ek$1\e\\"
 }
 
 
-myprecmd(){
- print -Pn "\ek$PWD\e\\"
+precmd(){
+ print -Pn "\ekzsh\e\\"
 }
 
 
-set -A precmd_functions precmd myprecmd
+#set -xA precmd_functions precmd myprecmd
+
 set -A preexec_functions preexec mypreexec
-
 
 
 
