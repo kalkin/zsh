@@ -34,6 +34,8 @@ fi
 
 alias ll='ls -lh'
 alias la='ls -Alh'
+alias lsd='ll -d *(/)'
+alias lsf='ll *(^/)'
 alias vi='vim -p'
 alias vim='vim -p'
 alias 'cd..'='cd ../'
@@ -64,3 +66,7 @@ alias -s java=vim
 alias -s pl=vim
 alias -s py=vim
 
+
+# Global alias
+alias -g NE='2>|/dev/null'
+alias -g NO='&>|/dev/null'
