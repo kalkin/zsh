@@ -5,24 +5,6 @@ TRAPZERR()
         fi
 }
 
-#preexec () {
-#      echo -ne "\ek${1%% *}\e\\"
-#}
-
-
-preexec () {
-     print -Pn "\ek$1\e\\"
-}
-
-
-precmd(){
- print -Pn "\ekzsh\e\\"
-}
-
-
-#set -xA precmd_functions precmd myprecmd
-
-set -A preexec_functions preexec mypreexec
 
 
 
