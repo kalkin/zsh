@@ -8,14 +8,14 @@ bindkey -v
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
-case $TERM in
-    screen*)
+case $HOST in
+    st010*)
         bindkey "^[[1~" beginning-of-line
         bindkey "^[OF~" end-of-line # [[4~ seems not always to work no idea y
         ;;
-      rxvt*)
-        bindkey "^[[7~" beginning-of-line
-        bindkey "^[[8~" end-of-line
+      *)
+        bindkey "^[[1~" beginning-of-line
+        bindkey "^[[4~" end-of-line
         ;;
 esac
 
