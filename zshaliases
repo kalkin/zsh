@@ -8,7 +8,7 @@ alias zeit="date +\"%H:%M %d.%m.%y\""
 alias today="date +\"%Y%m%d\""
 alias ls='ls -F'
 alias startx='screen -DD; startx;'
-alias fspc='df -h * |uniq'
+alias fspc='df -h .'
 
 # if we're on a debian/ubuntu system
 if [[ -f /etc/apt/sources.list ]] then
@@ -32,6 +32,11 @@ if [[ $(uname -s) = 'Linux' ]] then
     alias grep='grep --color'
 fi
 
+# Gentoo specific aliases
+if [[ -d /usr/portage ]]; then
+    alias genup="sudo emerge -avuNDt --keep-going world"
+fi
+
 alias ll='ls -lh'
 alias la='ls -Alh'
 alias lsd='ll -d *(/)'
@@ -41,7 +46,16 @@ alias vim='vim -p'
 alias 'cd..'='cd ../'
 alias 'cd...'='cd ../../'
 alias 'cd....'='cd ../../../'
-alias myip='links -dump http://www.myip.ch/ | grep -o "[[:digit:]].*[[:digit:]]"'
+
+if [[ -x `where links2` ]]; then
+    LINKS_BROWSER="links2"
+elif [[ -x `where links` ]]; then
+    LINKS_BROWSER="links"
+elif [[ -x `where lynx` ]]; then
+    LINKS_BROWSER="lynx"
+fi
+
+alias myip=$LINKS_BROWSER' -dump http://www.myip.ch/ | grep -o "[[:digit:]].*[[:digit:]]"'
 
 # unpacking shortcuts
 alias tarx='tar xfz'
@@ -51,15 +65,10 @@ alias tarj='tar xfj'
 alias confighelp='./configure --help=short'
 alias configmake='./configure && make'
 
-alias urxvt='urxvt -e /usr/bin/uscreen'
-alias urxvtc='urxvtc -e /usr/bin/uscreen'
-
-#alias slrn="LC_ALL=de_DE.iso88591 LANG=de_DE.iso88591 luit slrn --spool"
-
-
 # Suffix aliases
 alias -s tex=vim
-alias -s html=links2
+alias -s txt=vim
+alias -s html=firefox
 alias -s php=vim
 alias -s txt=vim
 alias -s java=vim

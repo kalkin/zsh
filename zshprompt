@@ -19,7 +19,7 @@ case `uname -n` in
     st007) ARG_ARRAY=(red red green);;
     st010) ARG_ARRAY=(green yellow white white);;
     st011) ARG_ARRAY=(yellow yellow white white);;
-#st011) ARG_ARRAY=(blue blue green blue);;
+    fornax) ARG_ARRAY=(green yellow white white);;
     *) ARG_ARRAY=(white white white);;
 esac
 
