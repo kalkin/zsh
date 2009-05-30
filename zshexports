@@ -6,7 +6,7 @@
 (( ${+ORGANIZATION} )) || export ORGANIZATION="cologne.idle"
 (( ${+IRCNAME} ))  || export IRCNAME="Kalkin Sam"
 (( ${+IRCNICK} ))  || export IRCNICK="kalkin-"
-(( $$${+OS} )) || export OS="${OSTYPE%%[0-9.]*}"  
+(( ${+OS} )) || export OS="${OSTYPE%%[0-9.]*}"  
 
 
 PATH="/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/sbin:/usr/sbin"
@@ -51,15 +51,16 @@ export GIT_PAGER=vimpager
 if [[ -x `where vim` ]]; then
     export EDITOR=vim
     export VISUAL=vim
+
+    # Nice hack for adapting the vimruntime in dependence of the vim version
+    export VIMVERSION=`vim --version|grep "^VIM"|cut -d " " -f5 | sed 's/\.//'`
+    if [[ -z "/usr/local/share/vim$VIMVERSION" ]] then
+        export VIMRUNTIME=/usr/local/share/vim/vim$VIMVERSION
+    else 
+        export VIMRUNTIME=/usr/share/vim/vim$VIMVERSION
+    fi
 fi
 
-# Nice hack for adapting the vimruntime in dependence of the vim version
-export VIMVERSION=`vim --version|grep "^VIM"|cut -d " " -f5 | sed 's/\.//'`
-if [[ -z "/usr/local/share/vim$VIMVERSION" ]] then
-    export VIMRUNTIME=/usr/local/share/vim/vim$VIMVERSION
-else 
-    export VIMRUNTIME=/usr/share/vim/vim$VIMVERSION
-fi
 
 export MAIL=mail@kalkin.de
 export PGPPATH=$HOME/.gnupg
@@ -70,6 +71,7 @@ export NNTPSERVER='snews.albasani.net'
 export LANG="de_DE.utf8"
 export LC_TIME="de_DE.utf8"
 export LC_MESSAGES="en_US.utf8"
+export LC_ALL=""
 
 if [[ $(uname -m) = 'ppc' ]] then
     export JAVA_HOME=/usr/lib/j2sdk1.6-ibm/
