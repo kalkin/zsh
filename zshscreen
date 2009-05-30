@@ -1,0 +1,12 @@
+preexec () {
+      print -Pn "\ek$1\e\\"
+}
+
+
+precmd(){
+	 print -Pn "\ekzsh\e\\"
+}
+
+
+
+set -A preexec_functions preexec mypreexec
