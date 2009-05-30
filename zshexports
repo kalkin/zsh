@@ -51,6 +51,8 @@ if [[ -x `where vimpager` ]]; then
     export GIT_PAGER=vimpager
 fi
 
+# I know vi is part of POSIX but some destris i.g Gentoo doesn't have vi in
+# standart destribution
 if [[ -x `where vim` ]]; then
     export EDITOR=vim
     export VISUAL=vim
