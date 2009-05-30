@@ -12,6 +12,7 @@ SAVEHIST=10000
 LISTMAX=0
 
 autoload -U compinit promptinit
+autoload keeper && keeper
 compinit
 promptinit; prompt adam2
 
@@ -21,6 +22,8 @@ autoload -U history-search-end
 
 # BEeeep!
 setopt beep 
+
+setopt no_clobber
 
 # This tries to find wordcode files and automatically re-compile them if
 # at least one of the original files is newer than the wordcode file.
