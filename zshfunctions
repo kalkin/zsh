@@ -1,8 +1,8 @@
 TRAPZERR() 
 { 
-    if [ -x `where fortune` ]; then 
-        fortune -oa bofh-excuses|sed 'n;d'
-    fi
+        if [[ -x `where fortune` ]]; then
+            fortune -oa bofh-excuses|sed 'n;d'
+        fi
 }
 
 #preexec () {

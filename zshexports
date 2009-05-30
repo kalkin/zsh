@@ -22,6 +22,8 @@ fi
 # MORE GAMEZ!1!
 if [[ -d "/usr/games/bin" ]]; then
     PATH=$PATH":/usr/games/bin"
+elif [[ -d "/usr/games" ]]; then
+    PATH=$PATH":/usr/games/"
 fi
 
 # Sometimes needed for pear
@@ -46,7 +48,9 @@ export DISPLAY=:0.0
 export MANWIDH=80
 export LESSCHARSET=utf-8
 export TERM=rxvt
-export GIT_PAGER=vimpager
+if [[ -x `where vimpager` ]]; then
+    export GIT_PAGER=vimpager
+fi
 
 if [[ -x `where vim` ]]; then
     export EDITOR=vim
