@@ -26,6 +26,7 @@ bindkey "\e[3~" delete-char    # "Entf" or "Del"
 bindkey "^[[2;5~" insert-last-word  # STRG+Einfg
 bindkey "^B" backward-word    # One word back
 bindkey "^X" forward-word    # One word forward
+bindkey "^W" backward-delete-word    # "Entf" or "Del"
 bindkey "^P" quote-line      # quote the whole line
 bindkey "^K" run-help #  i. e. "run-help foo" == "man foo"
 bindkey -s "\C-t" "dirs -v\r" 
