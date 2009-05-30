@@ -47,7 +47,6 @@ export PATH
 export DISPLAY=:0.0
 export MANWIDH=80
 export LESSCHARSET=utf-8
-export TERM=rxvt
 if [[ -x `where vimpager` ]]; then
     export GIT_PAGER=vimpager
 fi
