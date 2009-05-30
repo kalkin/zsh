@@ -16,6 +16,7 @@ ARG_ARRAY=()
 
 case `uname -n` in
     fornax) ARG_ARRAY=(green yellow white white);;
+    mary) ARG_ARRAY=(red blue blue);;
     st004) ARG_ARRAY=(blue green yellow);;
     st007) ARG_ARRAY=(red red green);;
     st009) ARG_ARRAY=(blue yellow yellow);;
