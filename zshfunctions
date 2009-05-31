@@ -99,7 +99,7 @@ function dict()
 {
   [[ -z ${1} ]] && print "please give an word to translate." && return 1
     local word=${1}
-$LINKS_BROWSER -dump 'http://dict.leo.org/ende?lp=ende&lang=de&searchLoc=0&cmpType=relaxed&sectHdr=on&spellToler=on&pinyin=diacritic&search='${1}'&relink=on'|grep '^[ ]*|' |most
+$LINKS_BROWSER -dump 'http://dict.leo.org/ende?lp=ende&lang=de&searchLoc=0&cmpType=relaxed&sectHdr=on&spellToler=on&pinyin=diacritic&search='${1}'&relink=on'|grep -o '|.*|' |tail -n +10|most
 
 }
 
