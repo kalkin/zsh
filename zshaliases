@@ -113,7 +113,13 @@ if [[ -x `where vimpager` ]]; then
 else
     alias -s txt=$PAGER
 fi
-alias -s html=firefox
+
+if [[ -x `where firefox` ]]; then
+    alias -s html=firefox
+else 
+    alias -s html=$LINKS_BROWSER
+fi
+
 if [[ -x `where vim` || -x `where vi` ]]; then
     alias -s tex=vim
     alias -s php=vim
