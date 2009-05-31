@@ -224,6 +224,9 @@ setopt correctall
 # stack
 setopt pushdignoredups 
 
+# reverse the numbering of the dir stack
+setopt PUSHD_MINUS
+
 # This option both imports new commands from the history file, and also
 # causes your typed commands to be appended to the history file (the
 # latter is like specifying INC_APPEND_HISTORY).
