@@ -37,3 +37,22 @@ zle -N run-with-sudo
 bindkey '^N' run-with-sudo
 
 bindkey -v  #vi keybindings
+
+
+# press esc-e for editing command line in $EDITOR or $VISUAL
+if  zle -N edit-command-line ; then
+    bindkey '\ee' edit-command-line
+fi
+
+# press "ctrl-e d" to insert the actual date in the form yyyy-mm-dd
+_bkdate() { BUFFER="$BUFFER$(today)"; CURSOR=$#BUFFER; }
+zle -N _bkdate
+bindkey '^Ed' _bkdate
+
+#Shortcut for \kbd{fg<enter>}
+bindkey -s '^z' " &\n"
+
+# CTRL+\ |most
+bindkey -s '^\' "|$PAGER\n"
+
+
