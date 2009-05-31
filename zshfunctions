@@ -103,7 +103,6 @@ $LINKS_BROWSER -dump 'http://dict.leo.org/ende?lp=ende&lang=de&searchLoc=0&cmpTy
 
 }
 
-if [ ! -x $(which unp) >/dev/null 2>&1 ]; then
 # ARCHIVE: extracts archived files (maybe)
 function spex ()
 {
@@ -130,7 +129,6 @@ function spex ()
                 echo "'"$1"' is not a valid file"
         fi
 }
-fi
 
 #FUN: my is bigger than yours :)
 function dick()
