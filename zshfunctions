@@ -176,6 +176,32 @@ function crar()
   echo "Created archive $archive_name"
 }
 
+# HOOK: Runs rehash after each emerge
+if [[ -e /etc/gentoo-release ]] then
+function emerge()
+{
+    if (( EUID != 0 )); then
+        command sudo emerge $@
+    else 
+        command sudo emerge $@
+    fi
+    rehash
+}
+fi
+
+# HOOK: Runs rehash after each aptitude install
+function aptitude()
+{
+    if [[ $1 = install ]]; then
+        if (( EUID != 0 )); then
+            command sudo aptitude $@
+        else 
+            command sudo aptitude $@
+        fi
+        rehash
+   fi
+}
+
 TRAPZERR() 
 { 
         if [[ -x `where fortune` ]]; then

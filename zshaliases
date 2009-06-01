@@ -50,7 +50,6 @@ alias lse='ls -d -- *(/^F)' # only show empty dirs
 if [[ -e /etc/gentoo-release ]]; then
     # set this aliase only if i'm not root
     if (( EUID != 0 )); then
-        alias emerge='sudo emerge'
         alias etc-update='sudo etc-update'
         alias eix-sync='sudo eix-sync'
         alias revdep-rebuild='sudo revdep-rebuild'
@@ -60,7 +59,6 @@ fi
 
 if [[ -e /etc/debian_version ]]; then
     if (( EUID != 0 )); then
-        alias aptitude='sudo aptitude'
         alias apt-get='sudo apt-get'
         alias dpkg='sudo dpkg'
         alias dpkg-reconfigure='sudo dpkg-reconfigure'
