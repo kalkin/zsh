@@ -192,7 +192,7 @@ fi
 # HOOK: Runs rehash after each aptitude install
 function aptitude()
 {
-    if [[ $1 = install ]]; then
+    if [[ $1 = install || $1 = remove || $1 purge ]]; then
         if (( EUID != 0 )); then
             command sudo aptitude $@
         else 
