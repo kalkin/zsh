@@ -12,7 +12,13 @@ alias zeit="date +\"%H:%M %d.%m.%y\""
 alias today="date +\"%Y%m%d\""
 alias startx='screen -DD; startx;'
 alias fspc='df -h .'
-alias shutdown='sudo shutdown'
+
+if (( EUID != 0 )); then
+    alias shutdown='sudo shutdown'
+    if [[ -x `where iwconfig` ]]; then
+        alias iwconfig='sudo iwconfing'
+    fi
+fi
 
 # OpenBSD specific aliases
 if [[  $(uname -s)  = 'OpenBSD' ]] then
