@@ -130,7 +130,7 @@ function spex ()
         fi
 }
 
-#FUN: my is bigger than yours :)
+# FUN: my is bigger than yours :)
 function dick()
 {
 echo `uptime|grep days|sed 's/.*up \([0-9]*\) day.*/\1\/10+/'; cat \
