@@ -92,8 +92,8 @@ else
     print "Warning: ~/.zsh/zshfunctions is unavailable" 
 fi
 
-if [[ -f ~/.zsh/zshscreen && $TERM == screen* ]]; then
-    source ~/.zsh/zshcompl
+if [[ -f ~/.zsh/zshscreen && $TERM = screen ]]; then
+    source ~/.zsh/zshscreen
 fi
 
 # Test and than source the zsh completitionws
