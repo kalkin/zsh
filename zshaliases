@@ -48,7 +48,6 @@ alias lse='ls -d -- *(/^F)' # only show empty dirs
 
 # Gentoo specific aliases
 if [[ -e /etc/gentoo-release ]]; then
-    # set this aliase only if i'm not root
     if (( EUID != 0 )); then
         alias etc-update='sudo etc-update'
         alias eix-sync='sudo eix-sync'
@@ -71,12 +70,12 @@ if [[ -e /etc/debian_version ]]; then
     alias apt-search='apt-cache search'
 fi
 
-if [[ -x `where vim` ]]; then
+if [[ -x `which vim` ]]; then
     alias vi='vim -p'
     alias vi='vim -p'
     alias vim='vim -p'
 alias view='vim -R'
-elif [[ -x `where vi` ]]; then
+elif [[ -x `which vi` ]]; then
     alias vim='vi'
 fi
 

@@ -53,7 +53,7 @@ fi
 
 # I know vi is part of POSIX but some destris i.g Gentoo doesn't have vi in
 # standart destribution
-if [[ -x `where vim` ]]; then
+if [[ -x `which vim` ]]; then
     export EDITOR=vim
     export VISUAL=vim
 
