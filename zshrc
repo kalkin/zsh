@@ -54,35 +54,35 @@
 if [ -f ~/.zsh/zshoptions ]; then
     source ~/.zsh/zshoptions
 else
-   print "Warning: ~/.zsh/zshoptions is unavailable" 
+   print -Pn "Warning: ~/.zsh/zshoptions is unavailable" 
 fi
 
 # Test and than source the exported variables
 if [ -f ~/.zsh/zshexports ]; then
     source ~/.zsh/zshexports
 else
-   print "Warning: ~/.zsh/zshexport is unavailable" 
+   print -Pn "Warning: ~/.zsh/zshexport is unavailable" 
 fi
 
 # Test and than source the aliases
 if [ -f ~/.zsh/zshaliases ]; then
     source ~/.zsh/zshaliases
 else
-    print "Warning: ~/.zsh/zshalias is unavailable" 
+    print -Pn "Warning: ~/.zsh/zshalias is unavailable" 
 fi
 
 # Test and than source the bindings
 if [ -f ~/.zsh/zshbindings ]; then
     source ~/.zsh/zshbindings
 else
-    print "Warning: ~/.zsh/zshbindings is unavailable" 
+    print -Pn "Warning: ~/.zsh/zshbindings is unavailable" 
 fi
 
 # Test and than source the functions
 if [ -f ~/.zsh/zshfunctions ]; then
     source ~/.zsh/zshfunctions
 else
-    print "Warning: ~/.zsh/zshfunctions is unavailable" 
+    print -Pn "Warning: ~/.zsh/zshfunctions is unavailable" 
 fi
 
 if [[ -f ~/.zsh/zshscreen && $TERM = screen ]]; then
@@ -93,14 +93,14 @@ fi
 if [ -f ~/.zsh/zshcompl ]; then
     source ~/.zsh/zshcompl
 else
-   print "Warning: ~/.zsh/zshcompl is unavailable" 
+   print -Pn "Warning: ~/.zsh/zshcompl is unavailable" 
 fi
 
 # Test and than source the prompt
 if [ -f ~/.zsh/zshprompt ]; then
     source ~/.zsh/zshprompt
 else
-    print "Warning: ~/.zsh/zshprompt is unavailable" 
+    print -Pn "Warning: ~/.zsh/zshprompt is unavailable" 
 fi
 
 
