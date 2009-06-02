@@ -152,7 +152,7 @@ function mcd()
 # SEARCH: search for various types or README file in dir and display them in $PAGER
 function readme()
 {
-        if [[ -x `where vimpager` ]]; then
+        if [[ -x `which vimpager` ]]; then
             local VPAGER=vimpager
         else
             local VPAGER=$PAGER
@@ -204,7 +204,7 @@ function aptitude()
 
 TRAPZERR() 
 { 
-        if [[ -x `where fortune` ]]; then
+        if [[ -x `which fortune` ]]; then
             fortune -oa bofh-excuses|sed 'n;d'
         fi
 }
