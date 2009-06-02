@@ -47,7 +47,7 @@ export PATH
 export DISPLAY=:0.0
 export MANWIDH=80
 export LESSCHARSET=utf-8
-if [[ -x `where vimpager` ]]; then
+if [[ -x `which vimpager` ]]; then
     export GIT_PAGER=vimpager
 fi
 
@@ -94,11 +94,11 @@ if [[ $(uname -s) == 'Darwin' ]] then
     export LC_MESSAGES="en_US.UTF-8"
 fi
 
-if [[ -x `where most` ]]; then
+if [[ -x `which most` ]]; then
     export PAGER=most;
-elif [[ -x `where less` ]]; then
+elif [[ -x `which less` ]]; then
     export PAGER=less;
-elif [[ -x `where more` ]]; then
+elif [[ -x `which more` ]]; then
     export PAGER=more;
 fi
 

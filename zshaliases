@@ -15,7 +15,7 @@ alias fspc='df -h .'
 
 if (( EUID != 0 )); then
     alias shutdown='sudo shutdown'
-    if [[ -x `where iwconfig` ]]; then
+    if [[ -x `which iwconfig` ]]; then
         alias iwconfig='sudo iwconfing'
     fi
 fi
@@ -83,11 +83,11 @@ alias 'cd..'='cd ../'
 alias 'cd...'='cd ../../'
 alias 'cd....'='cd ../../../'
 
-if [[ -x `where links2` ]]; then
+if [[ -x `which links2` ]]; then
     LINKS_BROWSER="links2"
-elif [[ -x `where links` ]]; then
+elif [[ -x `which links` ]]; then
     LINKS_BROWSER="links"
-elif [[ -x `where lynx` ]]; then
+elif [[ -x `which lynx` ]]; then
     LINKS_BROWSER="lynx"
 fi
 
@@ -111,19 +111,19 @@ alias -s pdf=evince
 alias -s ps=evince
 alias -s {flac,wav,wmv,mpg,avi,mpeg,ogm,m4v,mp4,mkv,ogg}='mplayer -idx'
 alias -s {jpg,jpeg,xpm,xbm,png,gif}='feh'
-if [[ -x `where vimpager` ]]; then 
+if [[ -x `which vimpager` ]]; then 
     alias -s txt=vimpager
 else
     alias -s txt=$PAGER
 fi
 
-if [[ -x `where firefox` ]]; then
+if [[ -x `which firefox` ]]; then
     alias -s html=firefox
 else 
     alias -s html=$LINKS_BROWSER
 fi
 
-if [[ -x `where vim` || -x `where vi` ]]; then
+if [[ -x `which vim` || -x `which vi` ]]; then
     alias -s tex=vim
     alias -s php=vim
     alias -s java=vim
@@ -138,7 +138,7 @@ alias -g NO='&>|/dev/null'
 
 alias -g PG='|$PAGER'
 
-if [[ -x `where vimpager` ]]; then
+if [[ -x `which vimpager` ]]; then
     alias -g VP='|vimpager'
 fi
 
