@@ -71,13 +71,6 @@ else
     print "Warning: ~/.zsh/zshalias is unavailable" 
 fi
 
-# Test and than source the prompt
-if [ -f ~/.zsh/zshprompt ]; then
-    source ~/.zsh/zshprompt
-else
-    print "Warning: ~/.zsh/zshprompt is unavailable" 
-fi
-
 # Test and than source the bindings
 if [ -f ~/.zsh/zshbindings ]; then
     source ~/.zsh/zshbindings
@@ -102,4 +95,12 @@ if [ -f ~/.zsh/zshcompl ]; then
 else
    print "Warning: ~/.zsh/zshcompl is unavailable" 
 fi
+
+# Test and than source the prompt
+if [ -f ~/.zsh/zshprompt ]; then
+    source ~/.zsh/zshprompt
+else
+    print "Warning: ~/.zsh/zshprompt is unavailable" 
+fi
+
 
