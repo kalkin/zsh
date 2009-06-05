@@ -69,8 +69,11 @@ fi
 
 export MAIL=mail@kalkin.de
 export PGPPATH=$HOME/.gnupg
-export SLRNPULL_ROOT=$HOME/Documents/usenet/albasani
-export NNTPSERVER='snews.albasani.net'
+
+export SLRNPULL_ROOT=$HOME/Documents/usenet/motzarella
+export NNTPSERVER='news.motzarella.org'
+#export SLRNPULL_ROOT=$HOME/Documents/usenet/albasani
+#export NNTPSERVER='snews.albasani.net'
 
 
 export LANG="de_DE.utf8"
