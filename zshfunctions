@@ -192,14 +192,12 @@ fi
 # HOOK: Runs rehash after each aptitude install
 function aptitude()
 {
-    if [ $1 = install || $1 = remove || $1 purge ]; then
-        if (( EUID != 0 )); then
-            command sudo aptitude $@
-        else 
-            command sudo aptitude $@
-        fi
-        rehash
-   fi
+    if (( EUID != 0 )); then
+        command sudo aptitude $@
+    else 
+        command sudo aptitude $@
+    fi
+    rehash
 }
 
 TRAPZERR() 
@@ -209,6 +207,21 @@ TRAPZERR()
         fi
 }
 
+# HOOK: Use Gmane as newsserver
+function slrng()
+{
+ export NNTPSERVER='news.gmane.org'
+ slrn
+}
 
+# HOOK: Use Motzarella as newsserver
+function slrnm()
+{
+ export NNTPSERVER='news.motzarella.org'
+ slrn
+}
+
+
+ 
 
 
