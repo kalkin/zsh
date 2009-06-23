@@ -16,7 +16,7 @@ alias fspc='df -h .'
 if (( EUID != 0 )); then
     alias shutdown='sudo shutdown'
     if [[ -x `which iwconfig` ]]; then
-        alias iwconfig='sudo iwconfing'
+        alias iwconfig='sudo iwcofing'
     fi
 fi
 

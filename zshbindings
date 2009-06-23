@@ -53,6 +53,5 @@ bindkey '^Ed' _bkdate
 bindkey -s '^z' " &\n"
 
 # CTRL+\ |most
-bindkey -s '^\' "|$PAGER\n"
-
+bindkey  -s '^\' "^[[4~ |$PAGER"
 

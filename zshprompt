@@ -6,6 +6,12 @@ autoload -U colors
 colors
 
 PROMPT_CHOICE='adam2'
+
+
+if [ "$PS1" ]; then
+# Diables the bloody CapsLock button
+    xmodmap -e "remove lock = Caps_Lock"
+fi
   
   
 ###################################################################################
