@@ -23,6 +23,7 @@ case `uname -n` in
     st009*) ARG_ARRAY=(blue yellow yellow);;
     st010*) ARG_ARRAY=(green yellow white white);;
     st011*) ARG_ARRAY=(yellow yellow white white);;
+    tracker*) ARG_ARRAY=(blue green yellow);;
     *) ARG_ARRAY=(white white white);;
 esac
 
