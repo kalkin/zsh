@@ -19,6 +19,10 @@ if [[ -d "/usr/kde/3.5/bin/" ]]; then
     PATH=$PATH:/usr/kde/3.5/bin/
 fi
 
+if [[ -d "/opt/bin" ]]; then
+    PATH=$PATH":/opt/bin"
+fi
+
 # MORE GAMEZ!1!
 if [[ -d "/usr/games/bin" ]]; then
     PATH=$PATH":/usr/games/bin"
