@@ -109,7 +109,7 @@ function spex ()
         if [[ -f "$1" ]]
         then
                 case "$1" in
-                        *.tar.bz2) bzip2 -v -d "$1" ;;
+                        *.tar.bz2) tar -xvjf "$1" ;;
                         *.tar.gz) tar -xvzf "$1" ;;
                         *.ace) unace e "$1" ;;
                         *.rar) unrar x "$1" ;;
@@ -123,6 +123,7 @@ function spex ()
                         *.zip) unzip "$1" ;;
                         *.Z) uncompress "$1" ;;
                         *.shar) sh "$1" ;;
+                        *.lzma) lzma -d "$1" ;;
                         *) echo "'"$1"' Error. Please go away" ;;
                 esac
         else
