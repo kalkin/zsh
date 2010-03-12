@@ -8,12 +8,6 @@ colors
 PROMPT_CHOICE='adam2'
 
 
-if [ "$PS1" ]; then
-# Diables the bloody CapsLock button
-    xmodmap -e "remove lock = Caps_Lock"
-fi
-  
-  
 ###################################################################################
 # Add optional arguments manually to the prompt here:
 
@@ -23,8 +17,7 @@ ARG_ARRAY=()
 case `uname -n` in
     fornax) ARG_ARRAY=(green yellow white white);;
     st011*) ARG_ARRAY=(blue green yellow);;
-    st010*) ARG_ARRAY=(green yellow white white);;
-    st011*) ARG_ARRAY=(yellow yellow white white);;
+    kn001) ARG_ARRAY=(red green yellow);;
     *) ARG_ARRAY=(white white white);;
 esac
 
