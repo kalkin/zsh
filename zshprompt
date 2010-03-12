@@ -6,6 +6,12 @@ autoload -U colors
 colors
 
 PROMPT_CHOICE='adam2'
+
+
+if [ "$PS1" ]; then
+# Diables the bloody CapsLock button
+    xmodmap -e "remove lock = Caps_Lock"
+fi
   
   
 ###################################################################################
@@ -16,14 +22,9 @@ ARG_ARRAY=()
 
 case `uname -n` in
     fornax) ARG_ARRAY=(green yellow white white);;
-    mary*) ARG_ARRAY=(red blue blue);;
-    becky*) ARG_ARRAY=(green blue blue);;
     st004*) ARG_ARRAY=(blue green yellow);;
-    st007*) ARG_ARRAY=(red red green);;
-    st009*) ARG_ARRAY=(blue yellow yellow);;
     st010*) ARG_ARRAY=(green yellow white white);;
     st011*) ARG_ARRAY=(yellow yellow white white);;
-    tracker*) ARG_ARRAY=(blue green yellow);;
     *) ARG_ARRAY=(white white white);;
 esac
 

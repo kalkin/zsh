@@ -16,7 +16,7 @@ alias fspc='df -h .'
 if (( EUID != 0 )); then
     alias shutdown='sudo shutdown'
     if [[ -x `which iwconfig` ]]; then
-        alias iwconfig='sudo iwconfing'
+        alias iwconfig='sudo iwcofing'
     fi
 fi
 
@@ -142,8 +142,5 @@ if [[ -x `which vimpager` ]]; then
     alias -g VP='|vimpager'
 fi
 
-alias -g st009='st009.kalkin.de'
 alias -g st010='st010.kalkin.de'
-alias -g mary='mary.st009.kalkin.de'
-alias -g becky='becky.st009.kalkin.de'
 alias -g BLASE='blase16.is-a-geek.org'

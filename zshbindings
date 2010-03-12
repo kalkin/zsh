@@ -30,6 +30,7 @@ bindkey "^W" backward-delete-word    # "Entf" or "Del"
 bindkey "^R" history-incremental-search-backward # Search in my $HISTFILE (STRG+R)
 bindkey "^P" quote-line      # quote the whole line
 bindkey "^K" run-help #  i. e. "run-help foo" == "man foo"
+bindkey "^_" undo # tut nicht
 bindkey -s "\C-t" "dirs -v\r" 
 
 run-with-sudo () { LBUFFER="sudo $LBUFFER" }
@@ -53,6 +54,5 @@ bindkey '^Ed' _bkdate
 bindkey -s '^z' " &\n"
 
 # CTRL+\ |most
-bindkey -s '^\' "|$PAGER\n"
-
+bindkey  -s '^\' "^[[4~ |$PAGER"
 

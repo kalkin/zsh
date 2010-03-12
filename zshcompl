@@ -15,6 +15,7 @@ compctl -k ping telnet ncftp host nslookup irssi rlogin ftp
 
 # completion for browsers
 compctl -g "*.html *.htm" + -g "*(-/) .*(-/)" + -H 0 '' w3m lynx links links2 elinks firefox
+compctl -g "*.scala" + -g "*(-/) .*(-/)" + -H 0 '' scalac
 compctl -g "*.rar *.tar *.bz2 *.gz *.ace *.deb *.izs *.tar *.tbz2 *.zip *.Z *.shar" + -g "*(-/) .*(-/)" + -H 0 '' spex
 
 # highlight matching part of available completions
