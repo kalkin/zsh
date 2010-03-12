@@ -35,14 +35,9 @@ if [[ -d /usr/share/php/bin/ ]]; then
     PATH=$PATH:/usr/share/php/bin/
 fi
 
-# Test if we have Latex
+# Test if we have custom Latex
 if [[ -d /usr/local/texlive/2008/bin/x86_64-linux/ ]]; then
     PATH=$PATH:/usr/local/texlive/2008/bin/x86_64-linux/
-fi
-
-# Only needed for {Free,Open}BSD
-if [ -d "/usr/ports" ]; then
-    export PORTS_DIR="/usr/ports"
 fi
 
 path=($^path(/FN))
@@ -74,32 +69,11 @@ fi
 export MAIL=mail@kalkin.de
 export PGPPATH=$HOME/.gnupg
 
-export SLRNPULL_ROOT=$HOME/Documents/usenet/motzarella
-export NNTPSERVER='news.motzarella.org'
-#export SLRNPULL_ROOT=$HOME/Documents/usenet/albasani
-#export NNTPSERVER='snews.albasani.net'
-
-
 export LANG="de_DE.utf8"
 export LC_TIME="de_DE.utf8"
 export LC_MESSAGES="en_US.utf8"
 export LC_ALL=""
 
-if [[ $(uname -m) = 'ppc' ]] then
-    export JAVA_HOME=/usr/lib/j2sdk1.6-ibm/
-fi
-
-# some variables for specific systems
-if [[ $(uname -s) = 'OpenBSD' ]] then
-    export PKG_PATH='ftp://ftp.freenet.de/pub/ftp.openbsd.org/pub/OpenBSD/4.2/packages/i386/'
-    export CVSROOT=anoncvs@openbsd.spline.de:/cvs
-fi
-
-if [[ $(uname -s) == 'Darwin' ]] then
-	test -r /sw/bin/init.sh && . /sw/bin/init.sh 
-    export LANG="en_US.UTF-8"
-    export LC_MESSAGES="en_US.UTF-8"
-fi
 
 if [[ -x `which most` ]]; then
     export PAGER=most;
