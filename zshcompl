@@ -18,7 +18,7 @@ zstyle ':completion:*:kill:*'   force-list always
 
 compctl -k ping telnet ncftp host nslookup irssi rlogin ftp weechat-curses 
 
-compctl -g '*.(pdf|ps|PDF|PS)' + -g '*(-/)' evience xpdfmp3|MP3|ogg|OGG|temp|TEMP
+compctl -g '*.(pdf|ps|PDF|PS)' + -g '*(-/)' evience xpdf
 compctl -g '*.(jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG|bmp)' + -g '*(-/)' eog feh gimp
 compctl -g "*.html *.htm" + -g "*(-/) .*(-/)" + -H 0 '' w3m lynx links links2 elinks firefox dillo
 compctl -g "*.scala" + -g "*(-/) .*(-/)" + -H 0 '' scalac
