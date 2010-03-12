@@ -1,3 +1,8 @@
+# Last edit on 2010-03-12
+# This file is a part of my zsh configuration. It's sourced from the .zshrc
+# file. It contains some custom (or not) functions
+
+
 # Create a /overview/ of all available function()'s; the description for
 # each funtion() *must* be the first line above the string `function'!
 # Otherwise it wont work.
