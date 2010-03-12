@@ -1,4 +1,9 @@
-# Last edit on 2008-08-26
+# Last edit on 2010-03-12
+
+# Make completion (yeah im getting fucking lazy)
+compile=(install clean remove uninstall deinstall)
+compctl -k compile make
+
 zstyle ':comletion:*' use-cache on 
 zstyle ':comletion:*' cache-path ~/.zsh/cache
 
@@ -11,10 +16,11 @@ zstyle ':completion:*:approximate:*' max-errors 1 numeric
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
 
-compctl -k ping telnet ncftp host nslookup irssi rlogin ftp
+compctl -k ping telnet ncftp host nslookup irssi rlogin ftp weechat-curses 
 
-# completion for browsers
-compctl -g "*.html *.htm" + -g "*(-/) .*(-/)" + -H 0 '' w3m lynx links links2 elinks firefox
+compctl -g '*.(pdf|ps|PDF|PS)' + -g '*(-/)' evience xpdfmp3|MP3|ogg|OGG|temp|TEMP
+compctl -g '*.(jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG|bmp)' + -g '*(-/)' eog feh gimp
+compctl -g "*.html *.htm" + -g "*(-/) .*(-/)" + -H 0 '' w3m lynx links links2 elinks firefox dillo
 compctl -g "*.scala" + -g "*(-/) .*(-/)" + -H 0 '' scalac
 compctl -g "*.rar *.tar *.bz2 *.gz *.ace *.deb *.izs *.tar *.tbz2 *.zip *.Z *.shar" + -g "*(-/) .*(-/)" + -H 0 '' spex
 
