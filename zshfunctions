@@ -167,18 +167,28 @@ function readme()
         fi
 }
 
-# ARCHIVE: Create a tarball from given directory
-function crar()
+# ARCHIVE: Create a tar.gz from given directory
+function ctarz()
 {
   local archive_name
   archive_name="$1.tar.gz"
   archive_name=${archive_name/\//}
   tar cvfz "$archive_name" "$1"
-  echo "Created archive $archive_name"
+  echo "Created archive $archive_name.tar.gz"
 }
 
-# HOOK: Runs rehash after each emerge
+# ARCHIVE: Create a tar.bz2 from given directory
+function ctarj()
+{
+  local archive_name
+  archive_name="$1.tar.bz2"
+  archive_name=${archive_name/\//}
+  tar cvfj "$archive_name" "$1"
+  echo "Created archive $archive_name.tar.bz2"
+}
+
 if [[ -e /etc/gentoo-release ]] then
+# HOOK: Runs rehash after each emerge
 function emerge()
 {
     if (( EUID != 0 )); then
@@ -190,6 +200,7 @@ function emerge()
 }
 fi
 
+if [[ -e /etc/debian_version ]]; then
 # HOOK: Runs rehash after each aptitude install
 function aptitude()
 {
@@ -200,6 +211,7 @@ function aptitude()
     fi
     rehash
 }
+fi
 
 TRAPZERR() 
 { 
@@ -207,22 +219,5 @@ TRAPZERR()
             fortune -oa bofh-excuses|sed 'n;d'
         fi
 }
-
-# HOOK: Use Gmane as newsserver
-function slrng()
-{
- export NNTPSERVER='news.gmane.org'
- slrn
-}
-
-# HOOK: Use Motzarella as newsserver
-function slrnm()
-{
- export NNTPSERVER='news.motzarella.org'
- slrn
-}
-
-
- 
 
 
