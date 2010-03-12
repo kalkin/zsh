@@ -3,14 +3,13 @@
 # file. It contains my aliases
 
 # Just for fun :)
-alias top10='print -l ? $$${(o)history%% *} | uniq -c | sort -nr | head -n 10'
+alias top10='print -l $$${(o)history%% *} | uniq -c | sort -nr | head -n 10'
 
 alias psg='ps ax|grep -v grep|grep -i'
 alias h='history'
 alias hg='history 1|grep'
 alias zeit="date +\"%H:%M %d.%m.%y\""
 alias today="date +\"%Y%m%d\""
-alias startx='screen -DD; startx;'
 alias fspc='df -h .'
 
 if (( EUID != 0 )); then
@@ -18,16 +17,6 @@ if (( EUID != 0 )); then
     if [[ -x `which iwconfig` ]]; then
         alias iwconfig='sudo iwcofing'
     fi
-fi
-
-# OpenBSD specific aliases
-if [[  $(uname -s)  = 'OpenBSD' ]] then
-    alias netstat -a -f inet
-    alias cvs-update='cvs -q up -rOPENBSD_4_2 -Pd'
-fi
-
-if [[  $(uname -s)  = 'Darwin' ]] then
-    alias sudoedit="sudo $EDITOR"
 fi
 
 # Linux specific aliases
@@ -38,6 +27,7 @@ if [[  $(uname -s)  = 'Linux' ]] then
 else 
     alias ls='ls -F'
 fi
+
 alias ll='ls -lh'
 alias la='ls -Alh'
 alias lad='ls -d -- .*(/)'  # only show dot-direcotories
@@ -93,18 +83,9 @@ fi
 
 alias myip=$LINKS_BROWSER' -dump http://www.myip.ch/ | grep -o "[[:digit:]].*[[:digit:]]"'
 
-# unpacking shortcuts
-alias tarx='tar xfz'
-alias tarj='tar xfj'
-
 # some config shortcuts
 alias confighelp='./configure --help=short'
 alias configmake='./configure && make'
-
-# gpg
-alias get.gpgkey='gpg --keyserver pgp.mit.edu --recv-key 0x"$@"'
-alias encrypt.gpg='echo "WARNING: plaintext is not deleted!"; gpg --quiet -ear 0x47E322CE'
-alias sign.gpg='gpg --sign $*'
 
 # Suffix aliases
 alias -s pdf=evince
