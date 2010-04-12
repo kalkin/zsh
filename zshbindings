@@ -2,6 +2,8 @@
 # This file is a part of my zsh configuration. It's sourced from the .zshrc
 # file. It contains my key bindings
 
+bindkey -v  #vi keybindings
+
 # History completion on pgup and pgdown
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
@@ -34,9 +36,6 @@ bindkey -s "\C-t" "dirs -v\r"
 run-with-sudo () { LBUFFER="sudo $LBUFFER" }
 zle -N run-with-sudo
 bindkey '^N' run-with-sudo
-
-bindkey -v  #vi keybindings
-
 
 # press esc-e for editing command line in $EDITOR or $VISUAL
 if  zle -N edit-command-line ; then
