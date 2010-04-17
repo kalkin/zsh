@@ -58,7 +58,7 @@ if [[ -x `which vim` ]]; then
 
     # Nice hack for adapting the vimruntime in dependence of the vim version
     export VIMVERSION=`vim --version|grep "^VIM"|cut -d " " -f5 | sed 's/\.//'`
-    if [[ -z "/usr/local/share/vim$VIMVERSION" ]] then
+    if [[ -d "/usr/local/share/vim/vim$VIMVERSION" ]] then
         export VIMRUNTIME=/usr/local/share/vim/vim$VIMVERSION
     else 
         export VIMRUNTIME=/usr/share/vim/vim$VIMVERSION
