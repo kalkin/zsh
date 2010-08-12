@@ -22,7 +22,6 @@ fi
 # Linux specific aliases
 if [[  $(uname -s)  = 'Linux' ]] then
     alias ls='ls -F --color'
-    alias cal='cal -m'
     alias grep='grep --color'
 else 
     alias ls='ls -F'
@@ -41,6 +40,7 @@ if [[ -e /etc/gentoo-release ]]; then
     if (( EUID != 0 )); then
         alias etc-update='sudo etc-update'
         alias eix-sync='sudo eix-sync'
+        alias cal='cal -m'
         alias revdep-rebuild='sudo revdep-rebuild'
     fi
     alias genup='emerge -avuNDt --keep-going world'
