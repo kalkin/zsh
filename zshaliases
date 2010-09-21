@@ -88,7 +88,7 @@ alias confighelp='./configure --help=short'
 alias configmake='./configure && make'
 
 # Suffix aliases
-alias -s pdf=evince
+alias -s pdf=okular
 alias -s ps=evince
 alias -s {flac,wav,wmv,mpg,avi,mpeg,ogm,m4v,mp4,mkv,ogg}='mplayer -idx'
 alias -s {jpg,jpeg,xpm,xbm,png,gif}='feh'
