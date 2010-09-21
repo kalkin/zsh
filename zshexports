@@ -8,6 +8,8 @@
 (( ${+IRCNICK} ))  || export IRCNICK="kalkin-"
 (( ${+OS} )) || export OS="${OSTYPE%%[0-9.]*}"  
 
+export NNTPSERVER='localhost'
+
 
 PATH="/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/sbin:/usr/sbin"
 
@@ -83,3 +85,6 @@ elif [[ -x `which more` ]]; then
     export PAGER=more;
 fi
 
+if (( $HOST == st010  && $TERM == screen )); then
+    export TERM=screen-256color
+fi
