@@ -215,6 +215,9 @@ function aptitude()
     else 
         if (( EUID != 0 )); then
             command sudo aptitude $@
+        else
+
+            command aptitude $@
         fi
         rehash
     fi
