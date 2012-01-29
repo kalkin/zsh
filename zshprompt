@@ -18,7 +18,9 @@ case `uname -n` in
     fornax) ARG_ARRAY=(green yellow white white);;
     st011*) ARG_ARRAY=(blue green yellow);;
     p*at*) ARG_ARRAY=(red green yellow);;
+    web2.p*a*t.de) ARG_ARRAY=(yellow green green);;
     *) ARG_ARRAY=(white white white);;
+;
 esac
 
 ###################################################################################
