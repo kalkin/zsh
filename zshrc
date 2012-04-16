@@ -100,3 +100,10 @@ else
 fi
 
 
+
+# Test and than source the prompt
+if [ -f ~/.zsh/zshscreen ]; then
+    source ~/.zsh/zshscreen
+else
+    print -Pn "Warning: ~/.zsh/zshscreem is unavailable" 
+fi
