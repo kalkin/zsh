@@ -48,9 +48,6 @@ export PATH
 export DISPLAY=:0.0
 export MANWIDH=80
 export LESSCHARSET=utf-8
-if [[ -x `which vimpager` ]]; then
-    export GIT_PAGER=vimpager
-fi
 
 # I know vi is part of POSIX but some destris i.g Gentoo doesn't have vi in
 # standart destribution
@@ -85,6 +82,7 @@ elif [[ -x `which more` ]]; then
     export PAGER=more;
 fi
 
-if (( $HOST == st010  && $TERM == screen )); then
-    export TERM=screen-256color
+if [[ $HOST == st010  && ($TERM == screen || $TERM == rxvt-unicode-256color) ]]; then
+    export TERM=screen\-256color
 fi
+
