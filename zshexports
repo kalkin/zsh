@@ -82,7 +82,4 @@ elif [[ -x `which more` ]]; then
     export PAGER=more;
 fi
 
-if [[ $HOST == st010  && ($TERM == screen || $TERM == rxvt-unicode-256color) ]]; then
-    export TERM=screen\-256color
-fi
-
+export TERM="screen-256color"

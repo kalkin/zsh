@@ -216,6 +216,9 @@ function aptitude()
     else 
         if (( EUID != 0 )); then
             command sudo aptitude $@
+        else
+
+            command aptitude $@
         fi
         rehash
     fi
@@ -229,4 +232,8 @@ TRAPZERR()
         fi
 }
 
-
+# MISC: Clear all iptable rules
+function iptables-clear()
+{
+    sudo zsh -c "iptables -F; iptables -X; iptables -t nat -F; iptables -t nat -X; iptables -t mangle -F; iptables -t mangle -X; iptables -P INPUT ACCEPT; iptables -P FORWARD ACCEPT; iptables -P OUTPUT ACCEPT "
+}
