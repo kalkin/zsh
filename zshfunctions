@@ -129,6 +129,7 @@ function spex ()
                         *.Z) uncompress "$1" ;;
                         *.shar) sh "$1" ;;
                         *.lzma) lzma -d "$1" ;;
+                        *.xz) 7z x "$1" ;;
                         *) echo "'"$1"' Error. Please go away" ;;
                 esac
         else
