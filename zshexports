@@ -42,6 +42,11 @@ if [[ -d /usr/local/texlive/2008/bin/x86_64-linux/ ]]; then
     PATH=$PATH:/usr/local/texlive/2008/bin/x86_64-linux/
 fi
 
+# Test if we have custom Latex
+if [[ -d /usr/local/bin ]]; then
+    PATH=$PATH:/usr/local/bin
+fi
+
 path=($^path(/FN))
 export PATH
 
