@@ -225,13 +225,6 @@ function aptitude()
 }
 fi
 
-TRAPZERR() 
-{ 
-        if [[ -x `which fortune` ]]; then
-            fortune -oa bofh-excuses|sed 'n;d'
-        fi
-}
-
 # MISC: Clear all iptable rules
 function iptables-clear()
 {
