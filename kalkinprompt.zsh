@@ -6,7 +6,7 @@ prompt_kalkin_setup() {
     prompt_gfx_hyphen="─"
 
     prompt_gfx_tbox="${prompt_gfx_tlc}${prompt_gfx_hyphen}"
-    prompt_gfx_bbox="${prompt_gfx_blc}${prompt_gfx_hyphen} "
+    prompt_gfx_bbox="${prompt_gfx_blc}${prompt_gfx_hyphen}"
 
     prompt_line_1a="${prompt_gfx_tbox}[%F{cyan}%~%f]"
     prompt_line_1b="(%D{%H:%M:%S})"
