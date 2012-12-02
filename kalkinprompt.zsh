@@ -8,7 +8,7 @@ prompt_kalkin_setup() {
     prompt_gfx_tbox="${prompt_gfx_tlc}${prompt_gfx_hyphen}"
     prompt_gfx_bbox="${prompt_gfx_blc}${prompt_gfx_hyphen} "
 
-    prompt_line_1a="${prompt_gfx_tbox}[%~]"
+    prompt_line_1a="${prompt_gfx_tbox}[%F{cyan}%~%f]"
     prompt_line_1b="(%D{%H:%M:%S})"
 
     prompt_prepare_git
@@ -65,9 +65,9 @@ prompt_construct_second_line_left(){
 
     # only show the username if it's not kalkin
     if [[ "$USERNAME" != "kalkin" ]]; then
-        user_machine_context="%n@%m:"
+        user_machine_context="%F{blue}%n%f%F{green}@%f%F{blue}%m%f:"
     else 
-        user_machine_context="%m:"
+        user_machine_context="%F{blue}%m%f:"
     fi
     second_line_left=$prompt_gfx_bbox
     second_line_left+=$user_machine_context
