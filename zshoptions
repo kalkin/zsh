@@ -50,8 +50,8 @@ LISTMAX=0
 autoload -U compinit promptinit
 autoload keeper && keeper
 compinit
-promptinit; prompt adam2
 
+promptinit
 # automatically remove duplicates from these arrays
 typeset -gU path cdpath manpath fpath
 
