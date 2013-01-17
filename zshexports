@@ -87,4 +87,5 @@ elif [[ -x `which more` ]]; then
     export PAGER=more;
 fi
 
+eval `keychain --eval ~/.ssh/id_rsa -q`
 export TERM="screen-256color"
