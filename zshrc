@@ -102,8 +102,8 @@ fi
 
 
 # Test and than source the prompt
-if [ -f ~/.zsh/zshscreen ]; then
-    source ~/.zsh/zshscreen
+if [ -f ~/.zsh/zshhooks ]; then
+    source ~/.zsh/zshhooks
 else
-    print -Pn "Warning: ~/.zsh/zshscreem is unavailable" 
+    print -Pn "Warning: ~/.zsh/zshhooks is unavailable" 
 fi
