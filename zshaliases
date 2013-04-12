@@ -92,11 +92,6 @@ alias -s pdf=okular
 alias -s ps=evince
 alias -s {flac,wav,wmv,mpg,avi,mpeg,ogm,m4v,mp4,mkv,ogg}='mplayer -idx'
 alias -s {jpg,jpeg,xpm,xbm,png,gif}='feh'
-if [[ -x `which vimpager` ]]; then 
-    alias -s txt=vimpager
-else
-    alias -s txt=$PAGER
-fi
 
 if [[ -x `which firefox` ]]; then
     alias -s html=firefox
@@ -118,10 +113,3 @@ alias -g NE='2>|/dev/null'
 alias -g NO='&>|/dev/null'
 
 alias -g PG='|$PAGER'
-
-if [[ -x `which vimpager` ]]; then
-    alias -g VP='|vimpager'
-fi
-
-alias -g st010='st010.kalkin.de'
-alias -g BLASE='blase16.is-a-geek.org'
