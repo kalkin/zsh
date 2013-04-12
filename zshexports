@@ -88,4 +88,3 @@ elif [[ -x `which more` ]]; then
 fi
 
 eval `keychain --eval ~/.ssh/id_rsa -q`
-export TERM="screen-256color"
