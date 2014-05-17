@@ -1,4 +1,4 @@
-# Last edit on 2010-03-12
+# Last edit on 2014-05-16 
 # This file is a part of my zsh configuration. It's sourced from the .zshrc
 # file. It contains my aliases
 
@@ -8,16 +8,8 @@ alias top10='print -l $$${(o)history%% *} | uniq -c | sort -nr | head -n 10'
 alias psg='ps ax|grep -v grep|grep -i'
 alias h='history'
 alias hg='history 1|grep'
-alias zeit="date +\"%H:%M %d.%m.%y\""
-alias today="date +\"%Y%m%d\""
+alias today="date +\"%F\""
 alias fspc='df -h .'
-
-if (( EUID != 0 )); then
-    alias shutdown='sudo shutdown'
-    if [[ -x `which iwconfig` ]]; then
-        alias iwconfig='sudo iwcofing'
-    fi
-fi
 
 # Linux specific aliases
 if [[  $(uname -s)  = 'Linux' ]] then
@@ -60,25 +52,20 @@ if [[ -e /etc/debian_version ]]; then
     alias apt-search='apt-cache search'
 fi
 
-if [[ -x `which vim` ]]; then
-    alias vi='vim -p'
+if (( $+commands[vim] )) ; then
     alias vi='vim -p'
     alias vim='vim -p'
-alias view='vim -R'
-elif [[ -x `which vi` ]]; then
+    alias view='vim -R'
+elif (( $+commands[vi] )) ; then
     alias vim='vi'
 fi
 
-alias 'cd..'='cd ../'
-alias 'cd...'='cd ../../'
-alias 'cd....'='cd ../../../'
-
-if [[ -x `which links2` ]]; then
-    LINKS_BROWSER="links2"
-elif [[ -x `which links` ]]; then
-    LINKS_BROWSER="links"
-elif [[ -x `which lynx` ]]; then
-    LINKS_BROWSER="lynx"
+if (( $+commands[links2] )) ; then
+    export LINKS_BROWSER="links2"
+elif (( $+commands[links] )) ; then
+    export LINKS_BROWSER="links"
+elif (( $+commands[lynx] )) ; then
+    export LINKS_BROWSER="lynx"
 fi
 
 alias myip=$LINKS_BROWSER' -dump http://www.myip.ch/ | grep -o "[[:digit:]].*[[:digit:]]"'
@@ -88,12 +75,12 @@ alias confighelp='./configure --help=short'
 alias configmake='./configure && make'
 
 # Suffix aliases
-alias -s pdf=okular
+alias -s pdf=evince
 alias -s ps=evince
 alias -s {flac,wav,wmv,mpg,avi,mpeg,ogm,m4v,mp4,mkv,ogg}='mplayer -idx'
-alias -s {jpg,jpeg,xpm,xbm,png,gif}='feh'
+alias -s {jpg,jpeg,xpm,xbm,png,gif}='eog'
 
-if [[ -x `which firefox` ]]; then
+if (( $+commands[firefox] )) ; then
     alias -s html=firefox
 else 
     alias -s html=$LINKS_BROWSER
