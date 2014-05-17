@@ -32,7 +32,6 @@ function precmd() {
 }
 
 
-zstyle ':chpwd:profiles:/home/kalkin/paychat2(|/|/*)'   profile rvm
 
 # configuration profile for rvm
 chpwd_profiles () {

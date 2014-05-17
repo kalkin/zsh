@@ -107,3 +107,7 @@ if [ -f ~/.zsh/zshhooks ]; then
 else
     print -Pn "Warning: ~/.zsh/zshhooks is unavailable" 
 fi
+
+if [ -f ~/.zsh/zshlocal ]; then
+    source ~/.zsh/zshlocal
+fi
