@@ -1,15 +1,9 @@
-# Last edit on 2010-03-12
+# Last edit on 2014-05-16
 # This file is a part of my zsh configuration. It's sourced from the .zshrc
 # file. It contains the exported shell variables
 
 # (( ${+*} )) = if variable is set don't set it anymore
-(( ${+ORGANIZATION} )) || export ORGANIZATION="cologne.idle"
-(( ${+IRCNAME} ))  || export IRCNAME="Kalkin Sam"
-(( ${+IRCNICK} ))  || export IRCNICK="kalkin-"
 (( ${+OS} )) || export OS="${OSTYPE%%[0-9.]*}"  
-
-export NNTPSERVER='localhost'
-
 
 PATH="/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/sbin:/usr/sbin"
 
@@ -17,29 +11,8 @@ if [[ -d $HOME/bin ]]; then
     PATH=$PATH:$HOME/bin
 fi
 
-if [[ -d "/usr/kde/3.5/bin/" ]]; then
-    PATH=$PATH:/usr/kde/3.5/bin/
-fi
-
 if [[ -d "/opt/bin" ]]; then
     PATH=$PATH":/opt/bin"
-fi
-
-# MORE GAMEZ!1!
-if [[ -d "/usr/games/bin" ]]; then
-    PATH=$PATH":/usr/games/bin"
-elif [[ -d "/usr/games" ]]; then
-    PATH=$PATH":/usr/games/"
-fi
-
-# Sometimes needed for pear
-if [[ -d /usr/share/php/bin/ ]]; then
-    PATH=$PATH:/usr/share/php/bin/
-fi
-
-# Test if we have custom Latex
-if [[ -d /usr/local/texlive/2008/bin/x86_64-linux/ ]]; then
-    PATH=$PATH:/usr/local/texlive/2008/bin/x86_64-linux/
 fi
 
 # Test if we have custom Latex
@@ -52,7 +25,6 @@ export PATH
 
 export DISPLAY=:0.0
 export MANWIDH=80
-export LESSCHARSET=utf-8
 
 # I know vi is part of POSIX but some destris i.g Gentoo doesn't have vi in
 # standart destribution
@@ -73,18 +45,18 @@ fi
 export MAIL=mail@kalkin.de
 export PGPPATH=$HOME/.gnupg
 
-export LANG="de_DE.utf8"
+export LANG="en_EN.utf8"
 export LC_TIME="de_DE.utf8"
 export LC_MESSAGES="en_US.utf8"
 export LC_ALL=""
 
 
-if [[ -x `which most` ]]; then
+if (( $+commands[most] )) ; then
     export PAGER=most;
-elif [[ -x `which less` ]]; then
+elif (( $+commands[less] )) ; then
     export PAGER=less;
-elif [[ -x `which more` ]]; then
-    export PAGER=more;
 fi
 
-eval `keychain --eval ~/.ssh/id_rsa -q`
+if (( $+commands[keychain] )) ; then
+    eval `keychain --eval ~/.ssh/id_rsa -q`
+fi
