@@ -1,4 +1,4 @@
-# Last edit on 2010-03-12
+# Last edit on 2014-05-16 
 # This file is a part of my zsh configuration. It's sourced from the .zshrc
 # file. It contains some custom (or not) functions
 
@@ -23,28 +23,6 @@ function zurl() {
     # print "${tiny}${url}" ; return
     wget -O- -o /dev/null "${tiny}${url}"|grep -Eio "copy\('http://tinyurl.com/.*'"|grep -o "http://.*"|sed s/\'//
 }
-
-# A nicer output of cal(1)
-# MISC: Colorize the output of cal(1)
-function hcal() {
-  if [[ ! -f /usr/bin/cal ]] ; then
-    echo "Please install cal before trying to use it!"
-    return
-  fi
-  if [[ "$#" = "0" ]] ; then
-    cal | egrep -C 40 --color "\<$(date +%e| tr -d ' ')\>"
-  else
-    cal $@ | egrep -C 40 --color "\<($(date +%B)|$(date +%e | tr -d ' '))\>"
-  fi
-}
-
-# MISC: Display current directory as a 'tree'.
-if [ ! -x $(which tree > /dev/null 2>&1) ]; then
-# MISC: Display current directory as a 'tree'.
-function tree() { 
-    find . | sed -e 's/[^\/]*\//|----/g' -e 's/---- |/ |/g' | $PAGER 
-}
-fi
 
 # DOC: Globbing is simple? Sure .. See zshexpn(1) /Glob Qualifiers for details and come back ;) 
 function jlob()
