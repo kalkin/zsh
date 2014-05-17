@@ -45,7 +45,7 @@ fi
 export MAIL=mail@kalkin.de
 export PGPPATH=$HOME/.gnupg
 
-export LANG="en_EN.utf8"
+export LANG="en_US.utf8"
 export LC_TIME="de_DE.utf8"
 export LC_MESSAGES="en_US.utf8"
 export LC_ALL=""
