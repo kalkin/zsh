@@ -1,5 +1,6 @@
-# Last edit on 2010-11-03 
+# Last edit on 2014-10-26
 
+autoload -U compinit && compinit
 zmodload zsh/complist
 
 
@@ -51,6 +52,7 @@ zstyle -e ':completion:*:approximate:*' max-errors 'reply=( $(( ($#PREFIX + $#SU
 zstyle ':completion:*:descriptions' format "- %d -"
 zstyle ':completion:*:corrections' format "- %d - (errors %e})"
 zstyle ':completion:*:default' list-prompt '%S%M matches%s'
+zstyle ':completion:*' insert-tab false
 
 
 

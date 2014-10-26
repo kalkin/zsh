@@ -47,9 +47,8 @@ DIRSTACKSIZE=50
 # completions if doing so would scroll.
 LISTMAX=0
 
-autoload -U compinit promptinit
+autoload -U  promptinit
 autoload keeper && keeper
-compinit
 
 promptinit
 # automatically remove duplicates from these arrays
