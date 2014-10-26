@@ -17,8 +17,10 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # Completing process IDs with menu selection:
+zstyle ':completion:*processes' command 'ps -au$USER|grep -v 365d' # filter out the qubes sleep hooks
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
+zstyle ':completion:*:kill:*:processes'   list-colors 
 
 compctl -k ping telnet ncftp host nslookup irssi rlogin ftp weechat-curses 
 
