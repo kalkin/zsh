@@ -103,6 +103,8 @@ setopt interactivecomments
 # Try to make the completion list smaller (occupying less lines) by
 # printing the matches in columns with different widths.
 setopt list_packed
+setopt menu_complete
+setopt list_rows_first
 
 # if the braces aren't in either of the above forms, expands single
 # letters and ranges of letters, i. e.:
