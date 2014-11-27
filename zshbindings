@@ -1,4 +1,4 @@
-# Last edit on 2014-05-16 
+# Last edit on 2014-11-27 
 # This file is a part of my zsh configuration. It's sourced from the .zshrc
 # file. It contains my key bindings
 
@@ -8,8 +8,8 @@ bindkey -v  #vi keybindings
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 
-bindkey "^[OH" beginning-of-line
-bindkey "^[OF" end-of-line
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 
 bindkey "^[[5~" history-beginning-search-backward-end
 bindkey "^[[6~" history-beginning-search-forward-end
@@ -39,3 +39,4 @@ bindkey '^Ed' _bkdate
 #Shortcut for \kbd{fg<enter>}
 bindkey -s '^z' " &\n"
 
+bindkey '^[[Z' reverse-menu-complete
