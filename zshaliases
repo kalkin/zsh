@@ -27,6 +27,16 @@ alias lsd='ls -ld -- ^(\.)*(/)'   # show all directories
 alias lsf='ls -d -- *(^/)'  # only show files
 alias lse='ls -d -- *(/^F)' # only show empty dirs
 
+alias ci="git commit -v" 
+alias co="git co" 
+alias lg="git lg" 
+alias st="git status -sb" 
+alias add="git add -p" 
+alias pull="git pull" 
+alias purr="git purr" 
+alias push="git push" 
+alias gd="git diff" 
+
 # Gentoo specific aliases
 if [[ -e /etc/gentoo-release ]]; then
     if (( EUID != 0 )); then
