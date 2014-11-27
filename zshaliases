@@ -1,4 +1,4 @@
-# Last edit on 2014-05-16 
+# Last edit on 2014-11-27
 # This file is a part of my zsh configuration. It's sourced from the .zshrc
 # file. It contains my aliases
 
@@ -36,6 +36,8 @@ alias pull="git pull"
 alias purr="git purr" 
 alias push="git push" 
 alias gd="git diff" 
+
+alias tree="tree -FAC"
 
 # Gentoo specific aliases
 if [[ -e /etc/gentoo-release ]]; then
