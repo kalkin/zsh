@@ -1,4 +1,4 @@
-# Last edit on 2014-10-26
+# Last edit on 2015-03-24
 
 autoload -U compinit && compinit
 zmodload zsh/complist
@@ -24,11 +24,11 @@ zstyle ':completion:*:kill:*:processes'   list-colors
 
 compctl -k ping telnet ncftp host nslookup irssi rlogin ftp weechat-curses 
 
-compctl -g '*.(pdf|ps|PDF|PS)' + -g '*(-/)' evience xpdf
+compctl -g '*.(pdf|ps|PDF|PS)' + -g '*(-/)' evince xpdf
 compctl -g '*.(jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG|bmp)' + -g '*(-/)' eog feh gimp
 compctl -g "*.html *.htm" + -g "*(-/) .*(-/)" + -H 0 '' w3m lynx links links2 elinks firefox dillo
 compctl -g "*.scala" + -g "*(-/) .*(-/)" + -H 0 '' scalac
-compctl -g "*.rar *.tar *.bz2 *.gz *.ace *.deb *.izs *.tar *.tbz2 *.zip *.Z *.shar" + -g "*(-/) .*(-/)" + -H 0 '' spex
+compctl -g "*.rar *.tar *.bz2 *.gz *.ace *.tgz *.deb *.izs *.tar *.tbz2 *.zip *.Z *.shar" + -g "*(-/) .*(-/)" + -H 0 '' spex
 
 # highlight matching part of available completions
 zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$PREFIX)(?)*=00=$color[green]=$color[bg-green]" )'
