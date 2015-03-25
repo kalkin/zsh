@@ -7,7 +7,7 @@ alias top10='print -l $$${(o)history%% *} | uniq -c | sort -nr | head -n 10'
 
 alias psg='ps ax|grep -v grep|grep -i'
 alias h='history'
-alias hg='history 1|grep'
+alias hs='history 1|grep'
 alias today="date +\"%F\""
 alias fspc='df -h .'
 
@@ -40,31 +40,6 @@ alias stash="git stash"
 
 alias tree="tree -FAC"
 
-# Gentoo specific aliases
-if [[ -e /etc/gentoo-release ]]; then
-    if (( EUID != 0 )); then
-        alias etc-update='sudo etc-update'
-        alias eix-sync='sudo eix-sync'
-        alias cal='cal -m'
-        alias revdep-rebuild='sudo revdep-rebuild'
-    fi
-    alias genup='emerge -avuNDt --keep-going world'
-fi
-
-if [[ -e /etc/debian_version ]]; then
-    if (( EUID != 0 )); then
-        alias apt-get='sudo apt-get'
-        alias dpkg='sudo dpkg'
-        alias dpkg-reconfigure='sudo dpkg-reconfigure'
-        alias debup='aptitude update && aptitude safe-upgrade'
-        alias debup_old='aptitude update && aptitude upgrade'
-    else 
-        alias debup='sudo -i "aptitude update && aptitude safe-upgrade"'
-    fi
-    
-    alias apt-search='apt-cache search'
-fi
-
 if (( $+commands[vim] )) ; then
     alias vi='vim -p'
     alias vim='vim -p'
@@ -90,7 +65,7 @@ alias configmake='./configure && make'
 # Suffix aliases
 alias -s pdf=evince
 alias -s ps=evince
-alias -s {flac,wav,wmv,mpg,avi,mpeg,ogm,m4v,mp4,mkv,ogg}='mplayer -idx'
+alias -s {flac,wav,wmv,mpg,avi,mpeg,ogm,m4v,mp4,mkv,ogg}='totem'
 alias -s {jpg,jpeg,xpm,xbm,png,gif}='eog'
 
 if (( $+commands[firefox] )) ; then
