@@ -246,3 +246,6 @@ setopt EXTENDEDHISTORY
 # Allow the short forms of for, select, if, and function constructs, i.
 # e.: ``for i (*.o) rm $i'' instead of ``for i in *.o; do rm $i; done''
 setopt shortloops
+
+WORDCHARS='*_-.[]~&!#$%^(){}<>'
+
