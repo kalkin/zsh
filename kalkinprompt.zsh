@@ -65,7 +65,7 @@ prompt_construct_second_line_left(){
     local user_machine_context    
 
     # only show the username if it's not kalkin
-    if [[ "$USERNAME" != "user"  ]]; then
+    if [[ "$USERNAME" != "user" && "$USERNAME" != "kalkin" ]]; then
         user_machine_context="%F{blue}%n%f%F{green}@%f%F{blue}%m%f:"
     else 
         user_machine_context="%F{blue}%m%f:"
