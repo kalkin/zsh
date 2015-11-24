@@ -65,7 +65,7 @@ alias configmake='./configure && make'
 # Suffix aliases
 alias -s pdf=evince
 alias -s ps=evince
-alias -s {flac,wav,wmv,mpg,avi,mpeg,ogm,m4v,mp4,mkv,ogg}='totem'
+alias -s {flac,wav,wmv,mpg,avi,mpeg,ogm,m4v,mp4,mkv,ogg}='mpv'
 alias -s {jpg,jpeg,xpm,xbm,png,gif}='eog'
 
 if (( $+commands[firefox] )) ; then
