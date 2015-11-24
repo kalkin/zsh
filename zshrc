@@ -108,6 +108,11 @@ fi
 
 source /home/user/.zsh/zaw/zaw.zsh
 
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Setup zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
+
 # Test and than source the bindings
 if [ -f ~/.zsh/zshbindings ]; then
     source ~/.zsh/zshbindings
@@ -115,4 +120,3 @@ else
     print -Pn "Warning: ~/.zsh/zshbindings is unavailable" 
 fi
 
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
