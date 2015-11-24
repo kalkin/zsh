@@ -45,3 +45,7 @@ bindkey '^Ed' _bkdate
 bindkey -s '^z' " &\n"
 
 bindkey '^[[Z' reverse-menu-complete
+
+# Auto quote pasted urls
+autoload -Uz url-quote-magic
+zle -N self-insert url-quote-magic
