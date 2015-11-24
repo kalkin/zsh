@@ -66,3 +66,4 @@ zle -N zle-line-init
 
 export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=13'
 bindkey '^f' vi-forward-blank-word
+bindkey '^g' end-of-line
