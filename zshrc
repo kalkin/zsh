@@ -71,12 +71,6 @@ else
     print -Pn "Warning: ~/.zsh/zshalias is unavailable" 
 fi
 
-# Test and than source the bindings
-if [ -f ~/.zsh/zshbindings ]; then
-    source ~/.zsh/zshbindings
-else
-    print -Pn "Warning: ~/.zsh/zshbindings is unavailable" 
-fi
 
 # Test and than source the functions
 if [ -f ~/.zsh/zshfunctions ]; then
@@ -110,6 +104,15 @@ fi
 
 if [ -f ~/.zsh/zshlocal ]; then
     source ~/.zsh/zshlocal
+fi
+
+source /home/user/.zsh/zaw/zaw.zsh
+
+# Test and than source the bindings
+if [ -f ~/.zsh/zshbindings ]; then
+    source ~/.zsh/zshbindings
+else
+    print -Pn "Warning: ~/.zsh/zshbindings is unavailable" 
 fi
 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
