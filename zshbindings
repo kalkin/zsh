@@ -53,3 +53,5 @@ bindkey "^K" insert-composed-char
 
 bindkey "^P" zaw
 bindkey "^R" zaw-history
+
+bindkey ' ' magic-space  # also do history expansion on space
