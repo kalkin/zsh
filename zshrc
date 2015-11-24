@@ -111,3 +111,5 @@ fi
 if [ -f ~/.zsh/zshlocal ]; then
     source ~/.zsh/zshlocal
 fi
+
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
