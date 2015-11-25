@@ -106,7 +106,7 @@ if [ -f ~/.zsh/zshlocal ]; then
     source ~/.zsh/zshlocal
 fi
 
-source /home/user/.zsh/zaw/zaw.zsh
+source ~/.zsh/zaw/zaw.zsh
 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
