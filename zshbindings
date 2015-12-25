@@ -22,18 +22,24 @@ key[Left]=${terminfo[kcub1]}
 key[Right]=${terminfo[kcuf1]}
 key[PageUp]=${terminfo[kpp]}
 key[PageDown]=${terminfo[knp]}
+key[Enter]=${terminfo[kent]}
+
+function setup-key(){
+    [[ -n "$1" ]] && bindkey "$1" $2
+}
 
 # setup key accordingly
-[[ -n "${key[Home]}"    ]]  && bindkey  "${key[Home]}"    beginning-of-line
-[[ -n "${key[End]}"     ]]  && bindkey  "${key[End]}"     end-of-line
-[[ -n "${key[Insert]}"  ]]  && bindkey  "${key[Insert]}"  overwrite-mode
-[[ -n "${key[PageUp]}"  ]]  && bindkey  "${key[PageUp]}"  history-beginning-search-backward-end
-[[ -n "${key[PageDown]}"  ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward-end
-[[ -n "${key[Delete]}"  ]]  && bindkey  "${key[Delete]}"  delete-char
-[[ -n "${key[Up]}"      ]]  && bindkey  "${key[Up]}"      up-line-or-history
-[[ -n "${key[Down]}"    ]]  && bindkey  "${key[Down]}"    down-line-or-history
-[[ -n "${key[Left]}"    ]]  && bindkey  "${key[Left]}"    backward-char
-[[ -n "${key[Right]}"   ]]  && bindkey  "${key[Right]}"   forward-char
+setup-key $key[Home]    beginning-of-line
+setup-key $key[End]     end-of-line
+setup-key $key[Insert]  overwrite-mode
+setup-key $key[PageUp]  history-beginning-search-backward-end
+setup-key $key[PageDown]  history-beginning-search-forward-end
+setup-key $key[Delete]  delete-char
+setup-key $key[Enter]  accept-line
+setup-key $key[Up]      up-line-or-history
+setup-key $key[Down]    down-line-or-history
+setup-key $key[Left]    backward-char
+setup-key $key[Right]   forward-char
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
@@ -85,7 +91,7 @@ bindkey ' ' magic-space  # also do history expansion on space
 
 # Enable autosuggestions automatically
 zle-line-init() {
-zle autosuggest-start
+    zle autosuggest-start
 }
 
 zle -N zle-line-init
