@@ -41,8 +41,8 @@ alias stash="git stash"
 alias tree="tree -FAC"
 
 if (( $+commands[vim] )) ; then
+    alias vim='vim -u ~/.vim/vimrc -p'
     alias vi='vim -p'
-    alias vim='vim -p'
     alias view='vim -R'
 elif (( $+commands[vi] )) ; then
     alias vim='vi'
