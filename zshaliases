@@ -82,6 +82,8 @@ if [[ -x `which vim` || -x `which vi` ]]; then
     alias -s py=vim
 fi
 
+alias htod='fc -il -1000|grep `today`'
+
 
 # Global alias
 alias -g NE='2>|/dev/null'
