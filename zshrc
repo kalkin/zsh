@@ -106,12 +106,13 @@ if [ -f ~/.zsh/zshlocal ]; then
     source ~/.zsh/zshlocal
 fi
 
-source ~/.zsh/zaw/zaw.zsh
 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+source ~/.zsh/zaw/zaw.zsh
+
 # Setup zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/autosuggestions.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Test and than source the bindings
 if [ -f ~/.zsh/zshbindings ]; then
