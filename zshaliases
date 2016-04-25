@@ -27,7 +27,7 @@ alias lsd='ls -ld -- ^(\.)*(/)'   # show all directories
 alias lsf='ls -d -- *(^/)'  # only show files
 alias lse='ls -d -- *(/^F)' # only show empty dirs
 
-alias ci="git commit -v" 
+alias ci="git ci" 
 alias co="git co" 
 alias lg="git lg" 
 alias st="git status -sb" 
