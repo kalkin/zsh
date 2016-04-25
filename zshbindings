@@ -14,6 +14,7 @@ if [[ -f /etc/fedora-release ]] ; then
         bindkey "^[[4~" end-of-line
     else
         bindkey "^[[H" beginning-of-line
+        bindkey "^[[3~" delete-char
         bindkey "^[[F" end-of-line
     fi
 
@@ -102,13 +103,6 @@ bindkey "^A" zaw-cdr
 
 bindkey ' ' magic-space  # also do history expansion on space
 
-# Enable autosuggestions automatically
-zle-line-init() {
-    zle autosuggest-start
-}
-
-zle -N zle-line-init
-
-export AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=13'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=13'
 bindkey '^f' vi-forward-blank-word
 bindkey '^g' end-of-line
