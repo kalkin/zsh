@@ -103,6 +103,13 @@ bindkey "^A" zaw-cdr
 
 bindkey ' ' magic-space  # also do history expansion on space
 
+# Enable autosuggestions automatically
+zle-line-init() {
+    # weird workaround, so zsh_autosuggest doesn't break Home and Endkey
+}
+
+zle -N zle-line-init
+
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=13'
 bindkey '^f' vi-forward-blank-word
 bindkey '^g' end-of-line
