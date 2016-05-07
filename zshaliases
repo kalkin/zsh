@@ -29,7 +29,7 @@ alias lse='ls -d -- *(/^F)' # only show empty dirs
 
 alias ci="git ci" 
 alias co="git co" 
-alias lg="git lg" 
+alias rebase="git rebase"
 alias st="git status -sb" 
 alias add="git add -p" 
 alias pull="git pull" 
