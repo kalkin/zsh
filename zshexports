@@ -5,20 +5,29 @@
 # (( ${+*} )) = if variable is set don't set it anymore
 (( ${+OS} )) || export OS="${OSTYPE%%[0-9.]*}"  
 
-PATH="/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/sbin:/usr/sbin"
+PATH=
 
 if [[ -d $HOME/bin ]]; then
     PATH=$PATH:$HOME/bin
 fi
 
-if [[ -d "/opt/bin" ]]; then
-    PATH=$PATH":/opt/bin"
+if [[ -d $HOME/.local/bin ]]; then
+    PATH=$PATH:$HOME/.local/bin
 fi
 
-# Test if we have custom Latex
+if [[ -d /opt/bin ]]; then
+    PATH=$PATH:/opt/bin
+fi
+
+if [[ -d /usr/local/sbin ]]; then
+    PATH=$PATH:/usr/local/sbin
+fi
+
 if [[ -d /usr/local/bin ]]; then
     PATH=$PATH:/usr/local/bin
 fi
+
+PATH="$PATH:/bin:/sbin:/usr/sbin:/usr/bin"
 
 path=($^path(/FN))
 export PATH
