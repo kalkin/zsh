@@ -83,6 +83,7 @@ if [[ -x `which vim` || -x `which vi` ]]; then
 fi
 
 alias htod='fc -il -1000|grep `today`'
+alias iotop="sudo iotop -o $@"
 
 
 # Global alias
