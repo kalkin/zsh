@@ -9,6 +9,7 @@ alias psg='ps ax|grep -v grep|grep -i'
 alias h='history'
 alias hs='history 1|grep'
 alias today="date +\"%F\""
+alias yesterday="date -d yesterday +%F"
 alias fspc='df -h .'
 
 # Linux specific aliases
