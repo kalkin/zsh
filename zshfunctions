@@ -200,3 +200,8 @@ function iptables-clear()
     sudo zsh -c "iptables -F; iptables -X; iptables -t nat -F; iptables -t nat -X; iptables -t mangle -F; iptables -t mangle -X; iptables -P INPUT ACCEPT; iptables -P FORWARD ACCEPT; iptables -P OUTPUT ACCEPT "
 }
 
+# MISC: Sed wrapper to remove colors, accepts sed options
+function strip-ansi-colors()
+{
+    sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" $@
+}
