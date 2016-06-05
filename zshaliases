@@ -28,6 +28,10 @@ alias lsd='ls -ld -- ^(\.)*(/)'   # show all directories
 alias lsf='ls -d -- *(^/)'  # only show files
 alias lse='ls -d -- *(/^F)' # only show empty dirs
 
+if (( $+commands[hub] )) ; then
+    alias git=hub
+fi
+
 alias ci="git ci" 
 alias co="git co" 
 alias rebase="git rebase"
