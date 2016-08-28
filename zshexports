@@ -58,14 +58,21 @@ export LANG="en_US.utf8"
 export LC_TIME="de_DE.utf8"
 export LC_MESSAGES="en_US.utf8"
 export LC_ALL=""
-
-
-if (( $+commands[most] )) ; then
-    export PAGER=most;
-elif (( $+commands[less] )) ; then
-    export PAGER=less;
-fi
+export PAGER='less -s';
 
 if (( $+commands[keychain] )) ; then
     eval `keychain --eval ~/.ssh/id_rsa -q`
 fi
+
+# LEES COLORS
+
+export LESS=-R
+export LESS_TERMCAP_mb=$'\E[1;31m'
+export LESS_TERMCAP_md=$'\E[1;36m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[1;32m'
+
+
