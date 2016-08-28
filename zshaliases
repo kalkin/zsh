@@ -30,6 +30,7 @@ alias lse='ls -d -- *(/^F)' # only show empty dirs
 
 if (( $+commands[hub] )) ; then
     alias git=hub
+    alias fork="hub fork"
 fi
 
 alias ci="git ci" 
