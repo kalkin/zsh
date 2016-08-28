@@ -1,0 +1,52 @@
+#compdef qvm-run 
+
+if (( $+commands[qvm-ls] )) ; then
+    local app_vms ret context exc
+    app_vms=( $(qvm-ls --raw-list|grep -v "^dom0$") )
+    ret=1
+
+    if (( words[(I)--all] )); then
+        exc=("*--exclude=[When --all is used: exclude this VM name (may be repeated)]:QubesVMs:($app_vms)")
+    fi
+
+    if (( app_vms[(I)$words[2]] && ! $words[(I)-a] )); then
+        local s 
+        s=$(qvm-ls $words[2]|tail -n +4|tr -d " "|cut -d"|" -f2)
+        if [[ $s != "*" ]]; then
+            _message "$words[2] $s is Halted add -a"                
+        fi
+    fi
+
+    _arguments -S '(-a --auto)'{-a,--auto}'[Auto start the VM if not running]'\
+        '(1)--all[ Run command on all currently running VMs (or all paused, in case of --unpause)]'\
+        '(--no-color-output --color-output)--color-output[Force marking VM output with given ANSI style (use 31 for red)]'\
+        '(--no-color-output --color-output)--no-color-output[Disable marking VM output with red color]'\
+        '(--no-filter-escape-chars --filter-escape-charas)--filter-escape-charas[Filter terminal escape sequences (default if output is terminal)]'\
+        '(--no-filter-escape-chars --filter-escape-charas)--no-filter-escape-chars[Do not filter terminal escape sequences - overrides --filter-escape-chars, DANGEROUS when output is terminal]'\
+        '--force[Force operation, even if may damage other VMs (eg shutdown of NetVM)]'\
+        '(- *)'{-h,--help}'[show help message and exit]'\
+        '--localcmd=[With --pass-io, pass stdin/stdout/stderr to the given program]:cmd:_path_commands' \
+        '--nogui[Run command without gui]'\
+        '(--pause --unpause)--pause[Do xl pause for the VM(s) (can be combined this with --all and --wait)]'\
+        '(--pause --unpause)--unpause[Do xl unpause for the VM(s) (can be combined this with --all and --wait)]'\
+        '(-p --pass-io)'{-p,--pass-io}'[Pass stdin/stdout/stderr from remote program (implies quiet -q)]'\
+        '(-q --quiet)'{-q,--quiet}'[]'\
+        '--shutdown[(deprecated) Do xl shutdown for the VM(s) (can be combined this with --all and --wait)]'\
+        '--tray[Use tray notifications instead of stdout]'\
+        '(-u --user)'{-u,--user}'[Run command in a VM as a specified user]:user:_users'\
+        '--wait+[Wait for the VM(s) to shutdown]:'\
+        $exc \
+        "1:QubesVMs:($app_vms)"\
+        '2:Commands:->his' && ret=0;
+
+    if [[ $state == his ]]; then
+        #try to complete from history
+        local cmds app
+        app=$words[2]
+        cmds=(firefox xfce4-terminal '"')
+        cmds+=( "${(@f)$(history -n 0|grep \^qvm-run\ $app|sed -e 's/  \+//' -e 's/-[ap]\{1,2\}//' -e s/qvm-run\ $app//  -e 's/^[ \t]*//g' -e 's/[ \t]*$//g' -e '/^$/d'|sort|uniq)}" )
+        _wanted prog exc 'Programm in VM' compadd "$@"  -kQ cmds && ret=0
+    fi
+
+    return ret
+fi

@@ -1,0 +1,5 @@
+#compdef qvm-rename
+
+local app_vms 
+app_vms=( $(qls -1 -a) )
+_arguments : "1:VMs:($app_vms)" && return 0;

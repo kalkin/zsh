@@ -1,0 +1,14 @@
+#compdef qvm-ls
+
+local app_vms
+app_vms=( $(qvm-ls --raw-list) )
+_arguments -S '(- *)'{-h,--help}'[show help message and exit]'\
+    '(-n --network)'{-n,--network}'[Show network addresses assigned to VMs]'\
+    '(-c --cpu)'{-c,--cpu}'[Show CPU load]'\
+    '(-m --mem)'{-m,--mem}'[Show memory usage]'\
+    '(-d --disk)'{-d,--disk}'[Show VM disk utilization statistics]'\
+    '(-k --kernel)'{-k,--kernel}'[Show VM kernel options]'\
+    '(-i --ids)'{-i,--ids}'[Show Qubes and Xen id#s]'\
+    '(-b --last-backup)'{-b,--last-backup}'[Show date of last VM backup]'\
+    '(- *)--raw-list[List only VM names on per line]' \
+    "*:QubesVMs:($app_vms)" && return 0
