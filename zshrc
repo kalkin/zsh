@@ -51,73 +51,27 @@
 # }}}
 
 # Test and than source the options
-if [ -f ~/.zsh/zshoptions ]; then
-    source ~/.zsh/zshoptions
-else
-   print -Pn "Warning: ~/.zsh/zshoptions is unavailable" 
-fi
+function source_file {
+    f="$HOME/.zsh/$1"
+    if [ -f ${f} ]; then
+    	source "$f"
+    else
+        echo "Warning: $f is unavailable" 
+    fi
+}
 
-# Test and than source the exported variables
-if [ -f ~/.zsh/zshexports ]; then
-    source ~/.zsh/zshexports
-else
-   print -Pn "Warning: ~/.zsh/zshexport is unavailable" 
-fi
-
-# Test and than source the aliases
-if [ -f ~/.zsh/zshaliases ]; then
-    source ~/.zsh/zshaliases
-else
-    print -Pn "Warning: ~/.zsh/zshalias is unavailable" 
-fi
-
-
-# Test and than source the functions
-if [ -f ~/.zsh/zshfunctions ]; then
-    source ~/.zsh/zshfunctions
-else
-    print -Pn "Warning: ~/.zsh/zshfunctions is unavailable" 
-fi
-
-# Test and than source the zsh completitionws
-if [ -f ~/.zsh/zshcompl ]; then
-    source ~/.zsh/zshcompl
-else
-   print -Pn "Warning: ~/.zsh/zshcompl is unavailable" 
-fi
-
-# Test and than source the prompt
-if [ -f ~/.zsh/zshprompt ]; then
-    source ~/.zsh/zshprompt
-else
-    print -Pn "Warning: ~/.zsh/zshprompt is unavailable" 
-fi
-
-
-
-# Test and than source the prompt
-if [ -f ~/.zsh/zshhooks ]; then
-    source ~/.zsh/zshhooks
-else
-    print -Pn "Warning: ~/.zsh/zshhooks is unavailable" 
-fi
-
-if [ -f ~/.zsh/zshlocal ]; then
-    source ~/.zsh/zshlocal
-fi
-
-
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-source ~/.zsh/zaw/zaw.zsh
-
-# Setup zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Test and than source the bindings
-if [ -f ~/.zsh/zshbindings ]; then
-    source ~/.zsh/zshbindings
-else
-    print -Pn "Warning: ~/.zsh/zshbindings is unavailable" 
-fi
+source_file zshmodules      # see also `man zshmodules`
+source_file zshcompl        # see also `man zshcontrib`
+source_file zshoptions      # see also `man zshoptions`
+source_file zshparam        # see also `man zshparam`
+source_file zshfunctions
+source_file zshexports
+source_file zshaliases
+source_file zshfunctions
+source_file zshprompt
+source_file zshhooks
+source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source_file zaw/zaw.zsh
+source_file zsh-autosuggestions/zsh-autosuggestions.zsh
+source_file zshbindings
 
