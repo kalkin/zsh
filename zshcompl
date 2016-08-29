@@ -1,15 +1,11 @@
-# Last edit on 2015-03-24
+# vim: et sta ft=zsh ts=4 sw=4 tw=80 fenc=utf8 fdm=marker fmr={{{,}}} 
+# Last edit on 2016-08-20
+autoload -Uz zmv    # Smarter mv(1) zmv '(*).lis' '$1.txt'
 
-fpath=(~/.zsh/completions/ $fpath)
+autoload -Uz compinit && compinit
 
-autoload -U compinit && compinit
-zmodload zsh/complist
-
-
-# Make completion (yeah im getting fucking lazy)
-compile=(install clean remove uninstall deinstall)
-compctl -k compile make
-
+# == Fine tuning completions
+# Cache completions
 zstyle ':comletion:*' use-cache on 
 zstyle ':comletion:*' cache-path ~/.zsh/cache
 
@@ -19,18 +15,10 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # Completing process IDs with menu selection:
-zstyle ':completion:*processes' command 'ps -au$USER|grep -v 365d' # filter out the qubes sleep hooks
 zstyle ':completion:*:*:kill:*' menu yes select
 zstyle ':completion:*:kill:*'   force-list always
 zstyle ':completion:*:kill:*:processes'   list-colors 
 
-compctl -k ping telnet ncftp host nslookup irssi rlogin ftp weechat-curses 
-
-compctl -g '*.(pdf|ps|PDF|PS)' + -g '*(-/)' evince xpdf
-compctl -g '*.(jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG|bmp)' + -g '*(-/)' eog feh gimp
-compctl -g "*.html *.htm" + -g "*(-/) .*(-/)" + -H 0 '' w3m lynx links links2 elinks firefox dillo
-compctl -g "*.scala" + -g "*(-/) .*(-/)" + -H 0 '' scalac
-compctl -g "*.rar *.tar *.bz2 *.gz *.ace *.tgz *.deb *.izs *.tar *.tbz2 *.zip *.Z *.shar" + -g "*(-/) .*(-/)" + -H 0 '' spex
 
 # highlight matching part of available completions
 zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$PREFIX)(?)*=00=$color[green]=$color[bg-green]" )'
@@ -80,4 +68,43 @@ zstyle ':chpwd:*' recent-dirs-file $ZSH_CDR_DIR/recent-dirs
 zstyle ':chpwd:*' recent-dirs-max 1000
 # fall through to cd
 zstyle ':chpwd:*' recent-dirs-default yes
+
+
+# Help command
+# Unlike bash, zsh does not enable a built in help command. To use help in zsh,
+# add following to your zshrc:
+autoload -Uz run-help
+unalias run-help
+function help() {
+    # helper function to not display hub(1) man page
+    if [ "$1"="git" ]; then
+        man "$@"
+    else
+        run-help "$@"
+    fi
+}
+compdef '_dispatch man man' help
+
+# Auto quote pasted urls
+autoload -Uz url-quoue-magic
+zle -N self-insert url-quote-magic
+autoload -Uz bracketed-paste-magic
+zle -N bracketed-paste bracketed-paste-magic
+
+#autoload -Uz predict-on && predict-on
+
+# Make completion (yeah im getting fucking lazy)
+compile=(install clean remove uninstall deinstall)
+compctl -k compile make
+
+compctl -k ping telnet ncftp host nslookup irssi rlogin ftp weechat-curses 
+
+compctl -g '*.(pdf|ps|PDF|PS)' + -g '*(-/)' evince xpdf
+compctl -g '*.(jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG|bmp)' + -g '*(-/)' eog feh gimp
+compctl -g "*.html *.htm" + -g "*(-/) .*(-/)" + -H 0 '' w3m lynx links links2 elinks firefox dillo
+compctl -g "*.scala" + -g "*(-/) .*(-/)" + -H 0 '' scalac
+compctl -g "*.rar *.tar *.bz2 *.gz *.ace *.tgz *.deb *.izs *.tar *.tbz2 *.zip *.Z *.shar" + -g "*(-/) .*(-/)" + -H 0 '' spex
+
+
+fpath=(~/.zsh/completions/ $fpath)
 
