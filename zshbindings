@@ -72,6 +72,8 @@ bindkey -s "\C-t" "dirs -v\r"
 
 run-with-sudo () { LBUFFER="sudo $LBUFFER" }
 zle -N run-with-sudo
+run-with-help () { LBUFFER="help $LBUFFER" }
+zle -N run-with-help
 bindkey '^N' run-with-sudo
 
 # press esc-e for editing command line in $EDITOR or $VISUAL
@@ -97,8 +99,7 @@ autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 
 autoload -Uz insert-composed-char
-zle -N insert-composed-char
-bindkey "^K" insert-composed-char
+bindkey "^K" run-with-help
 
 bindkey "^P" zaw
 bindkey "^R" zaw-history
