@@ -5,10 +5,8 @@
 # (( ${+*} )) = if variable is set don't set it anymore
 (( ${+OS} )) || export OS="${OSTYPE%%[0-9.]*}"  
 
-PATH=
-
 if [[ -d $HOME/bin ]]; then
-    PATH=$PATH:$HOME/bin
+    PATH=$HOME/bin:$PATH
 fi
 
 if [[ -d $HOME/.local/bin ]]; then
