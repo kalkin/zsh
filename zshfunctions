@@ -223,3 +223,21 @@ function print_function() {
     echo "$functions[$1]"
     echo "}"
 }
+
+# GIT: List changes of subdirectories of "$1" since "$2"
+function repos_log() {
+    [ ! $# = 2 ] && echo "usage: repos_log DIR SINCE" >&2 && return 1
+    dir="$1"
+    shift
+    since="$1"
+    shift
+	for d in "$dir"/*
+	do
+		result=$(git --no-pager --git-dir="$d/.git" log \
+                    --graph --oneline --decorate=short --all \
+                    --color=always --since="$since" "$@")
+                 
+		len=$(echo "$result"|wc -l) 
+		[ "$len" -ge 2 ] && print -P "===>$fg_bold[green]$d" && echo "$result"
+	done
+}

@@ -66,6 +66,7 @@ source_file zshparam        # see also `man zshparam`
 source_file zshfunctions
 source_file zshexports
 source_file zshaliases
+source_file qubes-builder.zsh
 source_file zshcompl        # see also `man zshcontrib`
 source_file zshfunctions
 source_file zshprompt
