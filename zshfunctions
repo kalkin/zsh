@@ -219,7 +219,7 @@ function man() {
 
 # MISC: Prints the named function
 function print_function() {
-    echo "$1() {"
+    echo "function $1() {"
     echo "$functions[$1]"
     echo "}"
 }
