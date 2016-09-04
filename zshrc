@@ -61,12 +61,12 @@ function source_file {
 }
 
 source_file zshmodules      # see also `man zshmodules`
-source_file zshcompl        # see also `man zshcontrib`
 source_file zshoptions      # see also `man zshoptions`
 source_file zshparam        # see also `man zshparam`
 source_file zshfunctions
 source_file zshexports
 source_file zshaliases
+source_file zshcompl        # see also `man zshcontrib`
 source_file zshfunctions
 source_file zshprompt
 source_file zshhooks
