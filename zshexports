@@ -45,10 +45,6 @@ export LC_MESSAGES="en_US.utf8"
 export LC_ALL=""
 export PAGER='less -s';
 
-if (( $+commands[keychain] )) ; then
-    eval `keychain --eval ~/.ssh/id_rsa -q`
-fi
-
 # LEES COLORS
 
 export LESS=-R
