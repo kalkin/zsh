@@ -5,30 +5,17 @@
 # (( ${+*} )) = if variable is set don't set it anymore
 (( ${+OS} )) || export OS="${OSTYPE%%[0-9.]*}"  
 
-if [[ -d $HOME/bin ]]; then
-    PATH=$HOME/bin:$PATH
-fi
+function prepend_to_path(){
+    [ -d "$1" ] && PATH="$1:$PATH"
+}
 
-if [[ -d $HOME/.local/bin ]]; then
-    PATH=$PATH:$HOME/.local/bin
-fi
-
-if [[ -d /opt/bin ]]; then
-    PATH=$PATH:/opt/bin
-fi
-
-if [[ -d /usr/local/sbin ]]; then
-    PATH=$PATH:/usr/local/sbin
-fi
-
-if [[ -d /usr/local/bin ]]; then
-    PATH=$PATH:/usr/local/bin
-fi
-
-PATH="$PATH:/bin:/sbin:/usr/sbin:/usr/bin"
-
-path=($^path(/FN))
-export PATH
+prepend_to_path /usr/local/bin
+prepend_to_path /usr/local/sbin
+prepend_to_path /opt/bin
+prepend_to_path $HOME/.local/bin
+prepend_to_path $HOME/.local/sbin
+prepend_to_path $HOME/bin
+path=($^path(/FN))  # deduplicate paths
 
 export DISPLAY=:0.0
 export MANWIDH=80
