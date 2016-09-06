@@ -8,6 +8,9 @@ autoload -Uz compinit && compinit
 # Cache completions
 zstyle ':comletion:*' use-cache on 
 zstyle ':comletion:*' cache-path ~/.zsh/cache
+#
+# highlight matching part of available completions
+zstyle ':completion:*' list-colors
 
 # Fuzzy matching of completions for when you mistype them:
 zstyle ':completion:*' completer _complete _match _approximate
@@ -15,13 +18,8 @@ zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 # Completing process IDs with menu selection:
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:kill:*'   force-list always
-zstyle ':completion:*:kill:*:processes'   list-colors 
-
-
-# highlight matching part of available completions
-zstyle ':completion:*' list-colors 'reply=( "=(#b)(*$PREFIX)(?)*=00=$color[green]=$color[bg-green]" )'
+zstyle ':completion:*:processes' command 'ps x -U $USER -o pid,%cpu,cmd'
+zstyle ':completion:*:processes-names' command  'ps c -u ${USER} -o command | uniq'
 
 # add colors to completions
 # # general completion
