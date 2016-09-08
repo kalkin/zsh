@@ -45,6 +45,17 @@ export LC_MESSAGES="en_US.utf8"
 export LC_ALL=""
 export PAGER='less -s';
 
+HELPDIR=
+for d in /usr/share/zsh/*; do 
+    if [ -d "$d/help" ]; then
+        if [ "$HELPDIR" = "" ]; then
+            HELPDIR="$d"
+        else
+            HELPDIR="$HELPDIR:$d"
+        fi
+    fi
+done
+
 # LEES COLORS
 
 export LESS=-R
