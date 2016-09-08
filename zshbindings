@@ -78,8 +78,8 @@ function zle-line-init () {
     auto-fu-init;
 }
 
-bindkey "^[[2;5~" insert-last-word  # STRG+Einfg
-bindkey "^W" backward-delete-word    # "Entf" or "Del"
+setup-key "^u" insert-last-word 
+bindkey "^W" backward-delete-word
 bindkey -s "\C-t" "dirs -v\r" 
 
 run-with-sudo () { LBUFFER="sudo $LBUFFER" }
@@ -99,8 +99,6 @@ bindkey '^Ed' _bkdate
 #Shortcut for \kbd{fg<enter>}
 bindkey -s '^z' " &\n"
 
-bindkey '^[[Z' reverse-menu-complete
-
 # Auto quote pasted urls
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
@@ -108,13 +106,21 @@ autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 #autoload -Uz predict-on && predict-on
 
-autoload -Uz insert-composed-char
-bindkey "^K" run-help
+setup-key $key[F1] run-help
 bindkey -M vicmd "K" run-help
 
-bindkey "^P" zaw
-bindkey "^R" zaw-history
-bindkey "^A" zaw-cdr
+
+# MISC : If command line empty show bookmarks, else bookmark command
+function zaw-bookmark-wrapper() {
+    if [ "$BUFFER" = "" ]; then
+         zaw-bookmark
+    else
+        zaw-bookmark-add-buffer
+    fi
+}
+
+zle -N zaw-bookmark-wrapper
+setup-key "^A"  zaw-bookmark-wrapper
 
 bindkey ' ' magic-space  # also do history expansion on space
 
@@ -126,3 +132,12 @@ zle -N zle-line-init
 
 zstyle ':completion:*' completer _oldlist _complete
 zle -N zle-keymap-select auto-fu-zle-keymap-select
+
+setup-key "^X" zaw
+setup-key $key[F2]  zaw-zsh-config
+setup-key $key[F12] zaw-process
+setup-key "^ " zaw-dirs
+setup-key "^r" zaw-history
+setup-key "^o"  zaw-command-output
+setup-key "^P" zaw-applications
+

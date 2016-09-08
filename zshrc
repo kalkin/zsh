@@ -76,6 +76,8 @@ source_file zshcompl        # see also `man zshcontrib`
 source_file zshprompt
 source_file zshhooks
 source_file zaw/zaw.zsh
+source_file hashed-dirs.zsh
+source_file zaw-zshrc.zsh
 source_file zsh-autosuggestions/zsh-autosuggestions.zsh
 [ ! -f "$HOME/.zsh/auto-fu" ] && compile-auto-fu
 [ "$HOME/.zsh/auto-fu.zsh/auto-fu.zsh" -nt "$HOME/.zsh/auto-fu.zwc" ] && compile-auto-fu
