@@ -60,6 +60,11 @@ function source_file {
     fi
 }
 
+function compile-auto-fu(){
+    A="$HOME/.zsh/"auto-fu.zsh/auto-fu.zsh;
+    (zsh -c "source $A ; auto-fu-zcompile $A ~/.zsh")
+}
+
 source_file zshmodules      # see also `man zshmodules`
 source_file zshoptions      # see also `man zshoptions`
 source_file zshparam        # see also `man zshparam`
@@ -72,7 +77,9 @@ source_file zshprompt
 source_file zshhooks
 source_file zaw/zaw.zsh
 source_file zsh-autosuggestions/zsh-autosuggestions.zsh
-source_file auto-fu.zsh/auto-fu.zsh
+[ ! -f "$HOME/.zsh/auto-fu" ] && compile-auto-fu
+[ "$HOME/.zsh/auto-fu.zsh/auto-fu.zsh" -nt "$HOME/.zsh/auto-fu.zwc" ] && compile-auto-fu
+source_file auto-fu; auto-fu-install
 source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_file zshbindings
 autoload -Uz zmv            # Smarter mv(1) zmv '(*).lis' '$1.txt'

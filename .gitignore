@@ -1,3 +1,4 @@
 zshlocal
+*.zwc
 *.swp
 *.swo
