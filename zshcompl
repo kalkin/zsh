@@ -1,6 +1,5 @@
 # vim: et sta ft=zsh ts=4 sw=4 tw=80 fenc=utf8 fdm=marker fmr={{{,}}} 
 # Last edit on 2016-08-20
-autoload -Uz zmv    # Smarter mv(1) zmv '(*).lis' '$1.txt'
 
 autoload -Uz compinit && compinit
 
