@@ -83,14 +83,6 @@ function help() {
 }
 compdef '_dispatch man man' help
 
-# Auto quote pasted urls
-autoload -Uz url-quoue-magic
-zle -N self-insert url-quote-magic
-autoload -Uz bracketed-paste-magic
-zle -N bracketed-paste bracketed-paste-magic
-
-#autoload -Uz predict-on && predict-on
-
 # Make completion (yeah im getting fucking lazy)
 compile=(install clean remove uninstall deinstall)
 compctl -k compile make

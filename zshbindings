@@ -90,11 +90,11 @@ bindkey -s '^z' " &\n"
 bindkey '^[[Z' reverse-menu-complete
 
 # Auto quote pasted urls
-# Auto quote pasted urls
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
+#autoload -Uz predict-on && predict-on
 
 autoload -Uz insert-composed-char
 bindkey "^K" run-help
