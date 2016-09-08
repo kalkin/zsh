@@ -141,3 +141,6 @@ setup-key "^r" zaw-history
 setup-key "^o"  zaw-command-output
 setup-key "^P" zaw-applications
 
+setup-key "^j" history-beginning-search-backward-end
+setup-key "^k"   history-beginning-search-forward-end
+
