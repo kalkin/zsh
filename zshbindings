@@ -4,6 +4,7 @@
 
 bindkey -v  #vi keybindings
 
+autoload -U history-search-end
 # History completion on pgup and pgdown
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
