@@ -121,7 +121,7 @@ function _git_alias_completions() {
 	done
 }
 
-_git_alias_completions
+#_git_alias_completions
 
 fpath=(~/.zsh/completions/ $fpath)
 

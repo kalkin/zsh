@@ -70,8 +70,9 @@ source_file qubes-builder.zsh
 source_file zshcompl        # see also `man zshcontrib`
 source_file zshprompt
 source_file zshhooks
-source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_file zaw/zaw.zsh
 source_file zsh-autosuggestions/zsh-autosuggestions.zsh
+source_file auto-fu.zsh/auto-fu.zsh
+source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_file zshbindings
 autoload -Uz zmv            # Smarter mv(1) zmv '(*).lis' '$1.txt'

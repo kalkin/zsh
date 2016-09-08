@@ -59,12 +59,8 @@ fi
 # active. Only then are the values from $terminfo valid.
 function zle-line-init () {
     echoti smkx
+    auto-fu-init;
 }
-function zle-line-finish () {
-    echoti rmkx
-}
-zle -N zle-line-init
-zle -N zle-line-finish  
 
 bindkey "^[[2;5~" insert-last-word  # STRG+Einfg
 bindkey "^W" backward-delete-word    # "Entf" or "Del"
@@ -106,13 +102,11 @@ bindkey "^A" zaw-cdr
 
 bindkey ' ' magic-space  # also do history expansion on space
 
-# Enable autosuggestions automatically
-zle-line-init() {
-    # weird workaround, so zsh_autosuggest doesn't break Home and Endkey
-}
-
-zle -N zle-line-init
-
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=13'
 bindkey '^f' vi-forward-blank-word
 bindkey '^g' end-of-line
+
+zle -N zle-line-init
+
+zstyle ':completion:*' completer _oldlist _complete
+zle -N zle-keymap-select auto-fu-zle-keymap-select
