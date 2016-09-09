@@ -140,7 +140,10 @@ setup-key "^ " zaw-dirs
 setup-key "^r" zaw-history
 setup-key "^o"  zaw-command-output
 setup-key "^P" zaw-applications
+bindkey -M vicmd '^I' expand-or-complete
 
+setup-key '\e' vi-cmd-mode
+setup-key 'jj' vi-cmd-mode
 setup-key "^j" history-beginning-search-backward-end
-setup-key "^k"   history-beginning-search-forward-end
+setup-key "^k" history-beginning-search-forward-end
 
