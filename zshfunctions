@@ -230,3 +230,21 @@ function repos_log() {
 		[ "$len" -ge 2 ] && print -P "===>$fg_bold[green]$d" && echo "$result"
 	done
 }
+
+# MISC: Print ANSI Color Table
+function color-tbl() {
+    header="fg_color  |bg_color| reset    | bold     | dim      | standout | undscr   | blink    | ???      | rev      | invis    | strike"
+    RESULT=""
+    colors=("black  " "red    " "green  " "yellow " "blue   " "magenta" "cyan   " "white  " "???    " "default")
+    for f in `seq 0 9`; do;
+        FG_COLOR=" $colors[f+1]  "
+        for b in `seq 0 9`; do
+            LINE="$FG_COLOR| $colors[b+1]|"
+            for x in `seq 0 9`; do 
+                LINE="$LINE\e[$x;3$f;4$b"m"$x""XX3""$f""XX4""$b""X\e[0;39;49m|"
+            done
+            RESULT="$RESULT""$LINE\n"
+        done
+    done
+   echo "$header\n$RESULT$header"
+}
