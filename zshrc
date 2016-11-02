@@ -84,3 +84,5 @@ source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_file zshbindings
 autoload -Uz zmv            # Smarter mv(1) zmv '(*).lis' '$1.txt'
 [ -f "$HOME/.zshafter" ] && source "$HOME/.zshafter"
+
+precmd () {print -Pn "\e]0;%n@%m: %~\a"}
