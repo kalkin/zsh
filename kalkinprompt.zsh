@@ -1,4 +1,6 @@
 
+VCS_BRANCH_ICON=$'\UF126'              # 
+
 prompt_kalkin_setup() {
     local prompt_gfx_tlc="┌" 
     local prompt_gfx_mlc="├"
@@ -9,7 +11,7 @@ prompt_kalkin_setup() {
     prompt_gfx_bbox="${prompt_gfx_blc}${prompt_gfx_hyphen}"
 
     prompt_prepare_git
-    git_part=%(1v.%F{yellow}↳%1v%f.)
+    git_part=%(1v.%F{yellow}%1v%f.)
     prompt_line_1a="${prompt_gfx_tbox}[${git_part}%F{cyan}%~/%f]"
     prompt_line_1b="(%D{%H:%M:%S})"
 
@@ -26,7 +28,7 @@ prompt_prepare_git() {
     zstyle ':vcs_info:*' check-for-changes true
     zstyle ':vcs_info:git:*' stagedstr 'Ⓐ '
     zstyle ':vcs_info:(git|hg):*' unstagedstr 'Ⓜ '
-    zstyle ':vcs_info:*' formats '%b@%8.8i-%c%u'
+    zstyle ':vcs_info:*' formats "%b$VCS_BRANCH_ICON%8.8i-%c%u"
 }
 
 prompt_construct_first_line(){
@@ -88,7 +90,20 @@ prompt_vcs_info(){
 prompt_kalkin_precmd(){
     prompt_vcs_info
     prompt_construct_first_line
-    PS1="$first_line_left$prompt_newline$second_line_left"
+    print -rP "$first_line_left"
+    PS1="$second_line_left"
+}
+
+TRAPWINCH ()
+{
+    prompt_vcs_info
+    prompt_construct_first_line
+    echo 
+    print -rP "$first_line_left"
+    zle redisplay
+    if [ ! "$BUFFER" = "" ]; then
+        auto-fu-init;
+    fi
 }
 
 prompt_kalkin_setup

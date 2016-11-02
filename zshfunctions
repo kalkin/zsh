@@ -206,13 +206,6 @@ function strip-ansi-colors()
     sed "s,\x1B\[[0-9;]*[a-zA-Z],,g" $@
 }
 
-# MISC: Prints the named function
-function print_function() {
-    echo "function $1() {"
-    echo "$functions[$1]"
-    echo "}"
-}
-
 # GIT: List changes of subdirectories of "$1" since "$2"
 function repos_log() {
     [ ! $# = 2 ] && echo "usage: repos_log DIR SINCE" >&2 && return 1
