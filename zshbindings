@@ -58,7 +58,7 @@ else
 
 fi
 function setup-key(){
-	[[ -n "$1" ]] && bindkey "$1" $2 && bindkey  -M afu "$1" "$2"
+	[[ -n "$1" ]] && bindkey "$1" $2
 }
 setup-key $key[Home]    beginning-of-line
 setup-key $key[End]     end-of-line
@@ -74,10 +74,6 @@ setup-key $key[Right]   forward-char
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
-function zle-line-init () {
-    auto-fu-init;
-}
-
 setup-key "^u" insert-last-word 
 bindkey "^W" backward-delete-word
 bindkey -s "\C-t" "dirs -v\r" 
@@ -127,8 +123,6 @@ bindkey ' ' magic-space  # also do history expansion on space
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=13'
 bindkey '^f' vi-forward-blank-word
 bindkey '^g' end-of-line
-
-zle -N zle-line-init
 
 zstyle ':completion:*' completer _oldlist _complete
 zle -N zle-keymap-select auto-fu-zle-keymap-select

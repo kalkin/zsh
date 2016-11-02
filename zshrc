@@ -1,4 +1,5 @@
 # Last edit on 2008-02-25 
+#
 # vim:foldmarker={{{,}}} tw=80
 # {{{
 # Filename       : ~/.zshrc
@@ -79,9 +80,6 @@ source_file zaw/zaw.zsh
 source_file hashed-dirs.zsh
 source_file zaw-zshrc.zsh
 source_file zsh-autosuggestions/zsh-autosuggestions.zsh
-[ ! -f "$HOME/.zsh/auto-fu" ] && compile-auto-fu
-[ "$HOME/.zsh/auto-fu.zsh/auto-fu.zsh" -nt "$HOME/.zsh/auto-fu.zwc" ] && compile-auto-fu
-source_file auto-fu; auto-fu-install
 source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_file zshbindings
 autoload -Uz zmv            # Smarter mv(1) zmv '(*).lis' '$1.txt'
