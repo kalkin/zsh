@@ -125,7 +125,6 @@ bindkey '^f' vi-forward-blank-word
 bindkey '^g' end-of-line
 
 zstyle ':completion:*' completer _oldlist _complete
-zle -N zle-keymap-select auto-fu-zle-keymap-select
 
 setup-key "^X" zaw
 setup-key $key[F2]  zaw-zsh-config

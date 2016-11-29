@@ -61,11 +61,6 @@ function source_file {
     fi
 }
 
-function compile-auto-fu(){
-    A="$HOME/.zsh/"auto-fu.zsh/auto-fu.zsh;
-    (zsh -c "source $A ; auto-fu-zcompile $A ~/.zsh")
-}
-
 source_file zshmodules      # see also `man zshmodules`
 source_file zshoptions      # see also `man zshoptions`
 source_file zshparam        # see also `man zshparam`

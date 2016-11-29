@@ -101,9 +101,6 @@ TRAPWINCH ()
     echo 
     print -rP "$first_line_left"
     zle redisplay
-    if [ ! "$BUFFER" = "" ]; then
-        auto-fu-init;
-    fi
 }
 
 prompt_kalkin_setup
