@@ -48,12 +48,14 @@ alias drop="git stash drop"
 
 alias tree="tree -FAC"
 
-if (( $+commands[vim] )) ; then
-    alias vim='vim -u ~/.vim/vimrc -p'
+if (( $+commands[vimx] )) then
+    alias vim=vimx
+fi
+
+if (( $+aliases[vim] )) ; then
+    alias vim="$aliases[vim] -u ~/.vim/vimrc -p"
     alias vi='vim -p'
     alias view='vim -R'
-elif (( $+commands[vi] )) ; then
-    alias vim='vi'
 fi
 
 if (( $+commands[links2] )) ; then
