@@ -44,6 +44,8 @@ alias push="git push"
 alias gd="git diff" 
 alias gf="git diff --name-only"
 alias stash="git stash"
+alias pop="git stash pop"
+alias drop="git stash drop"
 
 alias tree="tree -FAC"
 
