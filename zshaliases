@@ -104,15 +104,3 @@ alias -g NO='&>|/dev/null'
 alias -g PG='|$PAGER'
 
 alias -g TIME_REGEX="\"[0-2][0-9]:[0-6][0-9]\""
-
-# !1 is just stupd. I never need access to the first item in history, but last
-alias -g '!1'='!-2'
-alias -g '!2'='!-3'
-alias -g '!3'='!-4'
-alias -g '!4'='!-5'
-alias -g '!5'='!-6'
-alias -g '!6'='!-7'
-alias -g '!7'='!-8'
-alias -g '!8'='!-9'
-alias -g '!9'='!-10'
-alias -g '!10'='!-11'
