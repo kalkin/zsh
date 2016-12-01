@@ -18,6 +18,7 @@ prepend_to_path $HOME/bin
 path=($^path(/FN))  # deduplicate paths
 
 export DISPLAY=:0.0
+export MANPATH="$XDG_CONFIG_HOME/man:$(manpath)"
 export MANWIDH=80
 
 # I know vi is part of POSIX but some destris i.g Gentoo doesn't have vi in
