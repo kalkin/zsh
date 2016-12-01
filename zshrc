@@ -53,7 +53,7 @@
 
 # Test and than source the options
 function source_file {
-    f="$HOME/.zsh/$1"
+    f="$ZDOTDIR/$1"
     if [ -f ${f} ]; then
     	source "$f"
     else

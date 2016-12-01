@@ -53,7 +53,7 @@ if (( $+commands[vimx] )) then
 fi
 
 if (( $+aliases[vim] )) ; then
-    alias vim="$aliases[vim] -u ~/.vim/vimrc -p"
+    alias vim="$aliases[vim] -u $XDG_CONFIG_HOME/vim/vimrc -p"
     alias vi='vim -p'
     alias view='vim -R'
 fi
