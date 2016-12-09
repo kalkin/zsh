@@ -2,3 +2,4 @@ zshlocal
 *.zwc
 *.swp
 *.swo
+.zcompdump
