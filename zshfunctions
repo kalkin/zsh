@@ -9,7 +9,7 @@
 # Display all function()'s with her descriptions
 function funlist()
 {
-  grep -B 1 "^function" $HOME/.zsh/zshfunctions | \
+  grep -B 1 "^function" "$XDG_CONFIG_HOME/zsh/zshfunctions" | \
   grep -v "^\-\-$" | \
   awk '{ if(/^#/) { gsub(/^#[:space:]*/, ""); ht=$0 }; getline; gsub(/ ?\(\)/, ":"); printf("-> %-20s %s\n", $2, ht); }' | \
   sort
