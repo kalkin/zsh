@@ -24,17 +24,9 @@ export MANWIDH=80
 
 # I know vi is part of POSIX but some destris i.e Gentoo doesn't have vi in
 # standart destribution
-if [[ -x `which vim` ]]; then
-    export EDITOR=vim
-    export VISUAL=vim
-
-    # Nice hack for adapting the vimruntime in dependence of the vim version
-    export VIMVERSION=`vim --version|grep "^VIM"|cut -d " " -f5 | sed 's/\.//'`
-    if [[ -d "/usr/local/share/vim/vim$VIMVERSION" ]] then
-        export VIMRUNTIME=/usr/local/share/vim/vim$VIMVERSION
-    else 
-        export VIMRUNTIME=/usr/share/vim/vim$VIMVERSION
-    fi
+if (( $+aliases[vim] )) ; then
+    export EDITOR="$aliases[vim]"
+    export VISUAL="$aliases[vim]"
 fi
 
 
