@@ -58,8 +58,8 @@ elif (( $+commands[vim] )) ; then
 fi
 
 if (( $+aliases[vim] )) ; then
-    alias vi="$aliases[nvim]"
-    alias view="$aliases[nvim] -R"
+    alias vi="$aliases[vim]"
+    alias view="$aliases[vim] -R"
 fi
 
 if (( $+commands[links2] )) ; then
