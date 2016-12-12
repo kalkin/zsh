@@ -5,19 +5,6 @@
 # (( ${+*} )) = if variable is set don't set it anymore
 (( ${+OS} )) || export OS="${OSTYPE%%[0-9.]*}"  
 
-function prepend_to_path(){
-    [ -d "$1" ] && PATH="$1:$PATH"
-}
-
-prepend_to_path /usr/local/bin
-prepend_to_path /usr/local/sbin
-prepend_to_path /opt/bin
-prepend_to_path $HOME/.local/bin
-prepend_to_path $HOME/.local/sbin
-prepend_to_path $HOME/bin
-prepend_to_path $XDG_CONFIG_HOME/bin
-path=($^path(/FN))  # deduplicate paths
-
 export DISPLAY=:0.0
 export MANPATH="$XDG_CONFIG_HOME/man:$(manpath)"
 export MANWIDH=80

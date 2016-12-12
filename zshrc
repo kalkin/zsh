@@ -61,6 +61,7 @@ function source_file {
     fi
 }
 
+source_file init_path.zsh
 source_file zshmodules      # see also `man zshmodules`
 source_file zshoptions      # see also `man zshoptions`
 source_file zshparam        # see also `man zshparam`
