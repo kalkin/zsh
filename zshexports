@@ -52,3 +52,4 @@ export BROWSER=firefox
 hash -dL|grep "\=/$"|cut -d" " -f3|cut -d"=" -f1|while read n; do hash -d "$n="; done
 
 export GIT_ALLOW_PROTOCOL=file:git:http:https:ssh:qubes
+export QUBES_GPG_DOMAIN=gpg
