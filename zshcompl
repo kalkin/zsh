@@ -46,6 +46,8 @@ zstyle ':completion:*' insert-tab false
 
 
 
+zstyle ':completion:*:*:vim:*:*files' ignored-patterns '*.precomp'
+
 zstyle ':completion:*:*:cd:*:directory-stack' menu yes select
 # If there are more than 5 options, allow selecting from a menu with
 # arrows (case insensitive completion!).
