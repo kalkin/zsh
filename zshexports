@@ -53,3 +53,9 @@ hash -dL|grep "\=/$"|cut -d" " -f3|cut -d"=" -f1|while read n; do hash -d "$n=";
 
 export GIT_ALLOW_PROTOCOL=file:git:http:https:ssh:qubes
 export QUBES_GPG_DOMAIN=gpg
+
+SSH_VAULT_VM="ssh"
+
+if [ "$SSH_VAULT_VM" != "" ]; then
+	export SSH_AUTH_SOCK=~user/.SSH_AGENT_$SSH_VAULT_VM
+fi
