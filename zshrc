@@ -78,6 +78,11 @@ source_file zaw-zshrc.zsh
 source_file zsh-autosuggestions/zsh-autosuggestions.zsh
 source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_file zshbindings
+
+for f in units/*; do
+    source_file "$f"
+done
+
 autoload -Uz zmv            # Smarter mv(1) zmv '(*).lis' '$1.txt'
 [ -f "$HOME/.zshafter" ] && source "$HOME/.zshafter"
 
