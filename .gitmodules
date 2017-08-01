@@ -1,7 +1,7 @@
 [submodule "zsh-syntax-highlighting"]
 	path = zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-	branch = origin/master
+	branch = origin/0.6.0-rc1
 [submodule "zaw"]
 	path = zaw
 	url = https://github.com/zsh-users/zaw.git
