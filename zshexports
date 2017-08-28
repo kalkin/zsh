@@ -16,11 +16,6 @@ if (( $+aliases[vim] )) ; then
     export VISUAL="$aliases[vim]"
 fi
 
-if (( $+commands[nvim] )); then
-    export VIMRUNTIME=$XDG_CONFIG_HOME/nvim/runtime
-fi
-
-
 export MAIL=mail@kalkin.de
 export PGPPATH=$HOME/.gnupg
 
