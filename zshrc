@@ -62,22 +62,22 @@ function source_file {
 }
 
 source_file init_path.zsh
-source_file zshmodules      # see also `man zshmodules`
-source_file zshoptions      # see also `man zshoptions`
-source_file zshparam        # see also `man zshparam`
-source_file zshfunctions
-source_file zshaliases
-source_file zshexports
+source_file modules.zsh      # see also `man zshmodules`
+source_file options.zsh      # see also `man zshoptions`
+source_file param.zsh        # see also `man zshparam`
+source_file functions.zsh
+source_file aliases.zsh
+source_file exports.zsh
 source_file qubes-builder.zsh
-source_file zshcompl        # see also `man zshcontrib`
-source_file zshprompt
-source_file zshhooks
+source_file compl.zsh        # see also `man zshcontrib`
+source_file prompt.zsh
+source_file hooks.zsh
 source_file zaw/zaw.zsh
 source_file hashed-dirs.zsh
 source_file zaw-zshrc.zsh
 source_file zsh-autosuggestions/zsh-autosuggestions.zsh
 source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source_file zshbindings
+source_file bindings.zsh
 
 for f in "$ZDOTDIR"/units/*; do
     source "$f"
