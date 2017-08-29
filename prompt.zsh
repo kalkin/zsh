@@ -5,4 +5,4 @@
 
 autoload -U colors
 colors
-source "$ZDOTDIR/kalkinprompt.zsh"
+source "$HOME/.config/zsh/kalkinprompt.zsh"
