@@ -60,8 +60,8 @@ setopt HIST_IGNORE_SPACE    # Don't save commands prefixed with a space ' '
 setopt HIST_LEX_WORDS       # More accurate delimeted words. Performance?
 setopt HIST_REDUCE_BLANKS   # Remove trailing space before adding to history
 setopt HIST_VERIFY          # Show history expansion before executing
-setopt INC_APPEND_HISTORY_TIME   # Add command to history file, as soon as it 
-# finishes. We don't use SHARE_HISTORY because this breaks INC_APPEND_HISTORY_TIME
+setopt INC_APPEND_HISTORY_TIME   # Add command to history file, as soon as it finishes. 
+setopt NO_SHARE_HISTORY     # Don't use SHARE_HISTORY it breaks INC_APPEND_HISTORY_TIME
 # }}}
 
 # == Input/Ouput

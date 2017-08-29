@@ -2,6 +2,7 @@
 
 XDG_CONFIG_HOME ?= $(HOME)/.config
 TARGET_DIR 	= $(XDG_CONFIG_HOME)/zsh
+ZSH_DATA	= $(HOME)/.local/share/zsh
 ZSH_FILES 	= $(shell find . -name '*.zsh') zsh-syntax-highlighting/.version zsh-syntax-highlighting/.revision-hash zaw/functions/fill-vars-or-accept zaw/functions/filter-select
 TARGETS 	= $(addprefix $(TARGET_DIR)/,$(ZSH_FILES))
 
@@ -15,7 +16,7 @@ $(HOME)/.zshrc:
 $(ZSH_DATA):
 	install -d $(ZSH_DATA)
 
-install: $(TARGETS) $(HOME)/.zshrc
+install: $(TARGETS) $(HOME)/.zshrc $(ZSH_DATA)
 
 about:
 	cat README.md
