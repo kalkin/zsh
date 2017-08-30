@@ -80,8 +80,8 @@ source_file zsh-autosuggestions/zsh-autosuggestions.zsh
 source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_file bindings.zsh
 
-for f in units/*; do
-    source_file "$f"
+for f in "$HOME"/.config/zsh/units/*; do
+    source "$f"
 done
 
 autoload -Uz zmv            # Smarter mv(1) zmv '(*).lis' '$1.txt'
