@@ -10,7 +10,7 @@ $(TARGET_DIR)/%: %
 	install -d $(@D)
 	install $< $(@D)
 
-$(HOME)/.zshrc:
+$(HOME)/.zshrc: zshrc
 	cp zshrc $(HOME)/.zshrc
 
 $(ZSH_DATA):
