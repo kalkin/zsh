@@ -33,18 +33,21 @@ if (( $+commands[hub] )) ; then
     alias fork="hub fork"
 fi
 
-alias ci="git ci" 
-alias co="git co" 
 alias rebase="git rebase"
-alias st="git status -sb" 
 alias add="git add -p" 
 alias pull="git pull" 
-alias purr="git purr" 
 alias push="git push" 
 alias gd="git diff" 
 alias stash="git stash"
 alias pop="git stash pop"
 alias drop="git stash drop"
+
+for line in $(git alias|cut -d'.' -f2-|cut -d" " -f1,2|grep -v "alias"); do
+    an_alias=$(echo "$line"|cut -d" " -f1)
+    git_cmd=$(echo "$line"|cut -d" " -f2)
+    echo alias "$an_alias"="git $git_cmd"
+    alias "$an_alias"="git $git_cmd"
+done
 
 alias tree="tree -FAC"
 
