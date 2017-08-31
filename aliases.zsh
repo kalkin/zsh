@@ -45,7 +45,6 @@ alias drop="git stash drop"
 for line in $(git alias|cut -d'.' -f2-|cut -d" " -f1,2|grep -v "alias"); do
     an_alias=$(echo "$line"|cut -d" " -f1)
     git_cmd=$(echo "$line"|cut -d" " -f2)
-    echo alias "$an_alias"="git $git_cmd"
     alias "$an_alias"="git $git_cmd"
 done
 
