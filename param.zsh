@@ -2,7 +2,9 @@
 # Last edit on 2016-08-29 
 #
 typeset -g CORRECT_IGNORE_FILE=".*"	# Useful with CORRECT_ALL option set in zshoptions
-typeset -g HISTFILE="$HOME/.local/share/zsh/histfile"	# The history file to be saved to
+HISTDIR="$HOME/.local/share/zsh"
+[ ! -d "$HISTDIR" ] && mkdir -p "$HISTDIR"
+typeset -g HISTFILE="$HISTDIR/histfile"	# The history file to be saved to
 typeset -g HISTSIZE=100000		# if we ever get in to performance issues we can tune it down
 typeset -g LISTMAX=0			# Only ask before displaying if completions would scroll
 typeset -g READNULLCMD=less		# Default was more
