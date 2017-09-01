@@ -21,6 +21,13 @@ CONFIG_DIR      = $(sysconfdir)/@PACKAGE_NAME@
 VPATH=.
 srcdir         ?= $(VPATH)
 
+SUB_COMPONENTS = zaw zsh-autosuggestions zsh-syntax-highlighting
+
+$(SUB_COMPONENTS): Makefile | zaw/.git zsh-autosuggestions/.git zsh-syntax-highlighting/.git
+
+%/.git: Makefile
+	git submodule update --init $(*F)
+
 Makefile: Makefile.in config.status
 	./config.status
 
