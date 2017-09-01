@@ -1,3 +1,6 @@
+autoload -U colors          # Enable colors
+colors
+
 # Test and than source the options
 function source_file {
     f="$HOME/.config/zsh/$1"
@@ -17,7 +20,6 @@ source_file aliases.zsh
 source_file exports.zsh
 source_file qubes-builder.zsh
 source_file compl.zsh        # see also `man zshcontrib`
-source_file prompt.zsh
 source_file hooks.zsh
 source_file zaw/zaw.zsh
 source_file hashed-dirs.zsh
