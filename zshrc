@@ -3,7 +3,7 @@ colors
 
 # Test and than source the options
 function source_file {
-    f="$HOME/.config/zsh/$1"
+    f="~/.zsh/$1"
     if [ -f ${f} ]; then
     	source "$f"
     else
@@ -28,7 +28,7 @@ source_file zsh-autosuggestions/zsh-autosuggestions.zsh
 source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_file bindings.zsh
 
-for f in "$HOME"/.config/zsh/units/*; do
+for f in ~/.zsh/units/*; do
     source "$f"
 done
 
