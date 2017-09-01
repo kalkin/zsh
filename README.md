@@ -3,31 +3,66 @@
 This is my zsh config.
 
 ## Installation
-- Install with `make install`.
-- Uninstall with `make uninstall`.
+
+There're multiple ways to install this configuration, but first you have to
+clone this repository:
+
+### 1. In $HOME
+
+- `git clone https://github.com/kalkin/zsh.git .zsh`
+- `ln -s ~/.zsh/zshrc .zshrc`
+
+### 2. According to XDG Base Specification
+
+This will install all but the `zshrc` config files in to `$XDG_CONFIG_BASE/zsh`.
+The `zshrc` will be installed in `$HOME/.zshrc`. You will need to have autotools
+for this. ☺
+
+- `git clone https://github.com/kalkin/zsh.git zsh-config`
+- `cd zsh-config`
+- `autoconf`
+- `./configure --enable-xdg`
+- `make install`
+
+### 3. Globally for all users
+
+This will install all but the `zshrc` config files in to `etc/zsh`.
+The `zshrc` will be installed in `/etc/zshrc` and will source `/etc/profile.d/`.
+You will need to have autotools for this. ☺
+
+- `git clone https://github.com/kalkin/zsh.git zsh-config`
+- `cd zsh-config`
+- `autoconf`
+- `./configure --prefix=`
+- `make install`
+- `sudo make install`
+
+## Deinstallation
+
+`make uninstall`
 
 ## Important manpages
 
-| Name        | Section | Description                                     |
-|-------------|---------|-------------------------------------------------|
-| zshroadmap  | (1)     | informal introduction to the zsh manual         |
-| zsh         | (1)     | the Z shell                                     |
-| zsh-lovers  | (1)     | tips, tricks and examples (often own package)   |
-| zshbuiltins | (1)     | zsh built-in commands                           |
-| zshcalsys   | (1)     | zsh calendar system                             |
-| zshcompctl  | (1)     | zsh programmable completion                     |
-| zshcompsys  | (1)     | zsh completion system                           |
-| zshcompwid  | (1)     | zsh completion widgets                          |
-| zshcontrib  | (1)     | user contributions to zsh                       |
-| zshexpn     | (1)     | zsh expansion and substitution                  |
-| zshmisc     | (1)     | everything and then some                        |
-| zshmodules  | (1)     | zsh loadable modules                            |
-| zshoptions  | (1)     | zsh options                                     |
-| zshparam    | (1)     | zsh parameters                                  |
-| zshtcpsys   | (1)     | zsh tcp system                                  |
-| zshzftpsys  | (1)     | zftp function front-end                         |
-| zshzle      | (1)     | zsh command line editor                         |
-| zshall      | (1)     | the Z shell meta-man page Only for hardliner :) |
+| Name        | Description                                     |
+|-------------|-------------------------------------------------|
+| zshroadmap  | informal introduction to the zsh manual         |
+| zsh         | the Z shell                                     |
+| zsh-lovers  | tips, tricks and examples (often own package)   |
+| zshbuiltins | zsh built-in commands                           |
+| zshcalsys   | zsh calendar system                             |
+| zshcompctl  | zsh programmable completion                     |
+| zshcompsys  | zsh completion system                           |
+| zshcompwid  | zsh completion widgets                          |
+| zshcontrib  | user contributions to zsh                       |
+| zshexpn     | zsh expansion and substitution                  |
+| zshmisc     | everything and then some                        |
+| zshmodules  | zsh loadable modules                            |
+| zshoptions  | zsh options                                     |
+| zshparam    | zsh parameters                                  |
+| zshtcpsys   | zsh tcp system                                  |
+| zshzftpsys  | zftp function front-end                         |
+| zshzle      | zsh command line editor                         |
+| zshall      | the Z shell meta-man page Only for hardliner :) |
 
 ## Zsh start up sequence:
 
