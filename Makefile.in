@@ -52,6 +52,9 @@ install: $(TARGETS)
 about:
 	cat README.md
 
+clean-all:
+	rm ./Makefile ./configure
+
 uninstall:
 	rm -f $(TARGETS)
 	rm -rf $(TARGET_DIR)/zsh-syntax-highlighting
