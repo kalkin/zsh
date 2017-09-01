@@ -1,5 +1,3 @@
-.DEFAULT_GOAL := about
-
 bindir         ?= @bindir@
 datadir        ?= @datadir@
 datarootdir    ?= @datarootdir@
@@ -20,7 +18,17 @@ sysconfdir     ?= @sysconfdir@
 
 XDG_ENABLED     = @enable_xdg@
 CONFIG_DIR      = $(sysconfdir)/@PACKAGE_NAME@
+VPATH=.
+srcdir         ?= $(VPATH)
 
+Makefile: Makefile.in config.status
+	./config.status
+
+config.status: configure
+	./config.status --recheck
+
+$(srcdir)/configure: configure.ac
+	cd '$(srcdir)' && autoconf
 
 
 TARGET_DIR 	= ${sysconfdir}/zsh
@@ -37,7 +45,6 @@ else
   TARGETS += $(sysconfdir)/zshrc
 endif
 
-
 $(HOME)/.zshrc: zshrc
 	sed -e 's#~/.zsh/#$(CONFIG_DIR)/#g' zshrc > $(HOME)/.zshrc
 
@@ -47,7 +54,7 @@ $(sysconfdir)/zshrc: zshrc profile-d
   endif
 	sed -e 's#~/.zsh/#$(CONFIG_DIR)/#g' zshrc >> $(sysconfdir)/zshrc
 
-install: $(TARGETS)
+install: $(TARGETS) $(srcdir)/Makefile
 
 about:
 	cat README.md
