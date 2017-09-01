@@ -1,4 +1,5 @@
 AC_INIT(zsh, 1.0)
+AC_CHECK_PROG(PRINT,pygmentize,pygmentize,cat)
 AC_ARG_ENABLE([xdg],
     AC_HELP_STRING([--enable-xdg],
                    [Install according to XDG Base Directory specification]),

@@ -57,7 +57,8 @@ $(sysconfdir)/zshrc: zshrc profile-d
 install: $(TARGETS) $(srcdir)/Makefile
 
 about:
-	cat README.md
+	@PRINT@ README.md
+
 
 clean-all:
 	rm $(srcdir)/Makefile $(srcdir)/configure
