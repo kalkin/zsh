@@ -60,7 +60,7 @@ about:
 	cat README.md
 
 clean-all:
-	rm ./Makefile ./configure
+	rm $(srcdir)/Makefile $(srcdir)/configure
 
 uninstall:
 	rm -f $(TARGETS)
