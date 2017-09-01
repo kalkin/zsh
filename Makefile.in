@@ -19,7 +19,8 @@ $(ZSH_DATA):
 install: $(TARGETS) $(HOME)/.zshrc $(ZSH_DATA)
 
 about:
-	cat README.md
+	@PRINT@ README.md
+
 
 uninstall:
 	rm -f $(TARGETS)
