@@ -43,8 +43,7 @@ ZSH_FILES 	= $(shell find . -name '*.zsh') zsh-syntax-highlighting/.version zsh-
 TARGETS 	= $(addprefix $(TARGET_DIR)/,$(ZSH_FILES))
 
 $(TARGET_DIR)/%: %
-	install -d $(@D)
-	install $< $(@D)
+	install -D $< $@
 
 ifeq ($(XDG_ENABLED), yes)
   TARGETS += $(HOME)/.zshrc
