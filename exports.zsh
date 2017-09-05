@@ -11,9 +11,12 @@ export MANWIDH=80
 
 # I know vi is part of POSIX but some destris i.e Gentoo doesn't have vi in
 # standart destribution
-if (( $+aliases[vim] )) ; then
-    export EDITOR="$aliases[vim]"
-    export VISUAL="$aliases[vim]"
+if (( $+commands[nvim] )) ; then
+    export EDITOR=/usr/bin/nvim
+    export VISUAL=/usr/bin/nvim
+elif (( $+commands[vim] )) ; then
+    export EDITOR=/usr/bin/vim
+    export VISUAL=/usr/bin/vim
 fi
 
 export MAIL=mail@kalkin.de
@@ -23,7 +26,8 @@ export LANG="en_US.utf8"
 export LC_TIME="de_DE.utf8"
 export LC_MESSAGES="en_US.utf8"
 export LC_ALL=""
-export PAGER='less -R';
+export PAGER='less';
+export LESS='-R'
 
 HELPDIR=
 for d in /usr/share/zsh/*; do 
