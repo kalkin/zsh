@@ -11,4 +11,5 @@ prepend_to_path $HOME/bin
 prepend_to_path $XDG_CONFIG_HOME/bin
 prepend_to_path /opt/rakudo/bin
 prepend_to_path $HOME/.perl6/bin
+prepend_to_path $HOME/.nimble/bin
 path=($^path(/FN))  # deduplicate paths
