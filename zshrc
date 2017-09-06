@@ -11,6 +11,8 @@ function source_file {
     fi
 }
 
+fpath=(~/.zsh/completions/ $fpath)
+
 source_file init_path.zsh
 source_file modules.zsh      # see also `man zshmodules`
 source_file options.zsh      # see also `man zshoptions`

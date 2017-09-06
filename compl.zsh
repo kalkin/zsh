@@ -125,6 +125,4 @@ function _git_alias_completions() {
 
 _git_alias_completions
 
-fpath=(~/.zsh/completions/ $fpath)
-
 # vim set tw=120
