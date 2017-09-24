@@ -1,4 +1,3 @@
-# Last edit on 2014-11-27 
 # This file is a part of my zsh configuration. It's sourced from the .zshrc
 # file. It contains my key bindings
 
@@ -43,7 +42,7 @@ if [[ -f /etc/fedora-release ]] ; then
 		key[Down]='^[[B'
 		key[Right]='^[[C'
     fi
-else 
+else
     key[Home]=${terminfo[khome]}
     key[End]=${terminfo[kend]}
     key[Insert]=${terminfo[kich1]}
@@ -57,28 +56,26 @@ else
     key[Enter]=${terminfo[kent]}
 
 fi
-function setup-key(){
-	[[ -n "$1" ]] && bindkey "$1" $2
-}
-setup-key $key[Home]    beginning-of-line
-setup-key $key[End]     end-of-line
-setup-key $key[Insert]  overwrite-mode
-setup-key $key[PageUp]  history-beginning-search-backward-end
-setup-key $key[PageDown]  history-beginning-search-forward-end
-setup-key $key[Delete]  delete-char
-setup-key $key[Up]      up-line-or-history
-setup-key $key[Down]    down-line-or-history
-setup-key $key[Left]    backward-char
-setup-key $key[Right]   forward-char
+
+bindkey $key[Home]    beginning-of-line
+bindkey $key[End]     end-of-line
+bindkey $key[Insert]  overwrite-mode
+bindkey $key[PageUp]  history-beginning-search-backward-end
+bindkey $key[PageDown]  history-beginning-search-forward-end
+bindkey $key[Delete]  delete-char
+bindkey $key[Up]      up-line-or-history
+bindkey $key[Down]    down-line-or-history
+bindkey $key[Left]    backward-char
+bindkey $key[Right]   forward-char
 
 # Finally, make sure the terminal is in application mode, when zle is
 # active. Only then are the values from $terminfo valid.
-setup-key "^u" insert-last-word 
+bindkey "^u" insert-last-word
 bindkey "^W" backward-delete-word
 
 run-with-sudo () { LBUFFER="sudo $LBUFFER" }
 zle -N run-with-sudo
-setup-key '^N' run-with-sudo
+bindkey '^N' run-with-sudo
 
 # press esc-e for editing command line in $EDITOR or $VISUAL
 if  zle -N edit-command-line ; then
@@ -100,7 +97,7 @@ zle -N self-insert url-quote-magic
 autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 
-setup-key $key[F1] run-help
+bindkey $key[F1] run-help
 bindkey -M vicmd "K" run-help
 
 
@@ -114,7 +111,7 @@ function zaw-bookmark-wrapper() {
 }
 
 zle -N zaw-bookmark-wrapper
-setup-key "^A"  zaw-bookmark-wrapper
+bindkey "^A"  zaw-bookmark-wrapper
 
 bindkey ' ' magic-space  # also do history expansion on space
 
@@ -124,16 +121,16 @@ bindkey '^g' end-of-line
 
 zstyle ':completion:*' completer _oldlist _complete
 
-setup-key "^X" zaw
-setup-key $key[F2]  zaw-zsh-config
-setup-key $key[F12] zaw-process
-setup-key "^ " zaw-dirs
-setup-key "^r" zaw-history
-setup-key "^o"  zaw-command-output
-setup-key "^P" zaw-applications
+bindkey "^X" zaw
+bindkey $key[F2]  zaw-zsh-config
+bindkey $key[F12] zaw-process
+bindkey "^ " zaw-dirs
+bindkey "^r" zaw-history
+bindkey "^o"  zaw-command-output
+bindkey "^P" zaw-applications
 
-setup-key '\e' vi-cmd-mode
-setup-key 'jj' vi-cmd-mode
-setup-key "^j" history-beginning-search-backward-end
-setup-key "^k" history-beginning-search-forward-end
+bindkey '\e' vi-cmd-mode
+bindkey 'jj' vi-cmd-mode
+bindkey "^j" history-beginning-search-backward-end
+bindkey "^k" history-beginning-search-forward-end
 
