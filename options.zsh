@@ -22,7 +22,6 @@ setopt AUTO_LIST        # Show list choices on ambiguous completion
 setopt AUTO_MENU        # Show menu completion after second <Tab> press
 setopt AUTO_PARAM_KEYS  # Smart removale of uneeded space, comma & ect… see man
 setopt AUTO_PARAM_SLASH # Add / if completed parameter value is a directory
-setopt COMPLETE_ALIASES # List alias as distinct command during completion
 setopt HASH_LIST_ALL    # Minimize false positive completions through hashing
 setopt LIST_AMBIGUOUS   # If completion is not possible list alternative completions
 setopt LIST_PACKED      # Make completion use less lines, but also no columns

@@ -96,33 +96,4 @@ compctl -g "*.html *.htm" + -g "*(-/) .*(-/)" + -H 0 '' w3m lynx links links2 el
 compctl -g "*.scala" + -g "*(-/) .*(-/)" + -H 0 '' scalac
 compctl -g "*.rar *.tar *.bz2 *.gz *.ace *.tgz *.deb *.izs *.tar *.tbz2 *.zip *.Z *.shar" + -g "*(-/) .*(-/)" + -H 0 '' spex
 
-
-# COMPL: Initializes completions for aliases in zsh
-function _git_alias_completions() {
-    # 1. get all aliases
-    # 2. strip only git ones
-    # 3. no completion if it's a piped command
-    # 4. get only the alias name
-	IFS=$'\n' git_aliases=($(alias\
-                            |grep "=\s\?['\"]git"\
-                            |grep -v "|" \
-                            |cut -d "=" -f1))
-
-	IFS=$'\n' all_cmds=($(git --help\
-                        |grep "^\s\+[a-z]"\
-                        |sed -e"s/\s\+/ /g"\
-                        |cut -f "2" -d " "))
-	for a in $git_aliases; do
-		command=$(alias "$a"|cut -d"=" -f2|tr -d "'\"" |cut -d" " -f2)
-		if [[ ! ${all_cmds[(i)$command]} -le ${#all_cmds} ]] ; then
-			# if not a default git command, check if it's an alias
-			command=$(git alias|grep "alias.$a "|cut -d" " -f2)
-			[ ! $? = 0 ] && echo "Can not resolve alias $a" >&2 && continue
-		fi
-		compdef _git "$a"="git-$command"
-	done
-}
-
-_git_alias_completions
-
 # vim set tw=120
