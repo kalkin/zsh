@@ -91,8 +91,8 @@ _bkdate() { BUFFER="$BUFFER$(today)"; CURSOR=$#BUFFER; }
 zle -N _bkdate
 bindkey '^id' _bkdate
 
-#Shortcut for \kbd{fg<enter>}
-bindkey -s '^z' " &\n"
+#Execute command and push it in to background
+bindkey -s '^z' " &\r"
 
 # Auto quote pasted urls
 autoload -Uz url-quote-magic
