@@ -91,7 +91,7 @@ fi
 # press "ctrl-e d" to insert the actual date in the form yyyy-mm-dd
 _bkdate() { BUFFER="$BUFFER$(today)"; CURSOR=$#BUFFER; }
 zle -N _bkdate
-bindkey '^Ed' _bkdate
+bindkey '^id' _bkdate
 
 #Shortcut for \kbd{fg<enter>}
 bindkey -s '^z' " &\n"
