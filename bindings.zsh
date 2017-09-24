@@ -84,7 +84,8 @@ setup-key '^N' run-with-sudo
 
 # press esc-e for editing command line in $EDITOR or $VISUAL
 if  zle -N edit-command-line ; then
-    bindkey '\ee' edit-command-line
+    autoload -Uz edit-command-line
+    bindkey '^e' edit-command-line
 fi
 
 # press "ctrl-e d" to insert the actual date in the form yyyy-mm-dd
