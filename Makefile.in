@@ -52,7 +52,7 @@ else
 endif
 
 $(HOME)/.zshrc: zshrc
-	sed -e 's#~/.zsh/#$(CONFIG_DIR)/#g' zshrc > $(HOME)/.zshrc
+	sed -e 's#~/.zsh#$(CONFIG_DIR)#g' zshrc > $(HOME)/.zshrc
 
 $(sysconfdir)/zshrc: zshrc profile-d
   ifeq ($(sysconfdir), /etc)

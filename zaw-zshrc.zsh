@@ -2,7 +2,7 @@ function zaw-src-zshrc() {
     title="Hashed dirs"
 setopt EXTENDED_GLOB    # Allow to use '#', '~' and '^' in file name generation
     tmp=$(hash -dL|cut -d" " -f3-)
-    candidates=(${HOME}/.zsh/(z*|*.zsh)(.om))
+    candidates=($ZDOTDIR/(z*|*.zsh)(.om))
     cand_descriptions=()
     for c in $candidates; do
        cand_descriptions+=$(basename $c) 

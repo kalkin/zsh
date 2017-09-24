@@ -1,9 +1,11 @@
 autoload -U colors          # Enable colors
 colors
 
+ZDOTDIR="~/.zsh"
+
 # Test and than source the options
 function source_file {
-    f="~/.zsh/$1"
+    f=$ZDOTDIR/$1
     if [ -f ${f} ]; then
     	source "$f"
     else
@@ -11,7 +13,7 @@ function source_file {
     fi
 }
 
-fpath=(~/.zsh/completions/ $fpath)
+fpath=($ZDOTDIR/completions/ $fpath)
 
 source_file init_path.zsh
 source_file modules.zsh      # see also `man zshmodules`
@@ -30,7 +32,7 @@ source_file zsh-autosuggestions/zsh-autosuggestions.zsh
 source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_file bindings.zsh
 
-for f in ~/.zsh/units/*; do
+for f in $ZDOTDIR/units/*; do
     source "$f"
 done
 
