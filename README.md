@@ -82,4 +82,5 @@ You will need to have autotools for this. ☺
 This config started as a fork of Christian `strcat` Schneider's zsh config.
 special thanks to him at this point.
 
-<!-- vim: ft=markdown -->
+<!-- vim: ft=markdown
+-->
