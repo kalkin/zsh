@@ -66,7 +66,6 @@ setup-key $key[Insert]  overwrite-mode
 setup-key $key[PageUp]  history-beginning-search-backward-end
 setup-key $key[PageDown]  history-beginning-search-forward-end
 setup-key $key[Delete]  delete-char
-#setup-key $key[Enter]  accept-line
 setup-key $key[Up]      up-line-or-history
 setup-key $key[Down]    down-line-or-history
 setup-key $key[Left]    backward-char
@@ -76,7 +75,6 @@ setup-key $key[Right]   forward-char
 # active. Only then are the values from $terminfo valid.
 setup-key "^u" insert-last-word 
 bindkey "^W" backward-delete-word
-bindkey -s "\C-t" "dirs -v\r" 
 
 run-with-sudo () { LBUFFER="sudo $LBUFFER" }
 zle -N run-with-sudo
@@ -101,7 +99,6 @@ autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
 autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
-#autoload -Uz predict-on && predict-on
 
 setup-key $key[F1] run-help
 bindkey -M vicmd "K" run-help
@@ -134,7 +131,6 @@ setup-key "^ " zaw-dirs
 setup-key "^r" zaw-history
 setup-key "^o"  zaw-command-output
 setup-key "^P" zaw-applications
-bindkey -M vicmd '^I' expand-or-complete
 
 setup-key '\e' vi-cmd-mode
 setup-key 'jj' vi-cmd-mode
