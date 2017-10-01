@@ -36,7 +36,10 @@ fi
 
 alias tree="tree -FAC"
 
-if (( $+commands[vimx] )) ; then
+if (( $+commands[nvim] )) ; then
+    alias nvim="nvim -p"
+    alias vim="$aliases[nvim]"
+elif (( $+commands[vimx] )) ; then
     alias vim="vimx -p"
 elif (( $+commands[vim] )) ; then
     alias vim="vim -p"

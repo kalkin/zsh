@@ -9,9 +9,12 @@ export DISPLAY=:0.0
 export MANPATH="$XDG_CONFIG_HOME/man:$(manpath)"
 export MANWIDH=80
 
-# I know vi is part of POSIX but some distris i.e Gentoo doesn't have vi in
+# I know vi is part of POSIX but some destris i.e Gentoo doesn't have vi in
 # standart destribution
-if (( $+commands[vim] )) ; then
+if (( $+commands[nvim] )) ; then
+    export EDITOR=/usr/bin/nvim
+    export VISUAL=/usr/bin/nvim
+elif (( $+commands[vim] )) ; then
     export EDITOR=/usr/bin/vim
     export VISUAL=/usr/bin/vim
 fi
