@@ -34,3 +34,6 @@ tags
 /missing
 /stamp-h1
 /Makefile
+
+# Bugseverwhere
+.be/id-cache
