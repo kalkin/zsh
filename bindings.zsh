@@ -9,52 +9,37 @@ zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 typeset -g -A key
 
-if [[ -f /etc/fedora-release ]] ; then
-	key[F1]='^[OP'
-	key[F2]='^[OQ'
-	key[F3]='^[OR'
-	key[F4]='^[OS'
-	key[F5]='^[[15~'
-	key[F6]='^[[17~'
-	key[F7]='^[[18~'
-	key[F8]='^[[19~'
-	key[F9]='^[[20~'
-	key[F10]='^[[21~'
-	key[F11]='^[[23~'
-	key[F12]='^[[24~'
-	key[Backspace]='^?'
-	key[Insert]='^[[2~'
-	key[PageUp]='^[[5~'
-	key[Delete]='^[[3~'
-	key[PageDown]='^[[6~'
-    if [ "$TERM" = "screen-256color" ]; then
-		key[Home]='^[[1~'
-		key[End]='^[[4~'
-		key[Up]='^[OA'
-		key[Left]='^[OD'
-		key[Down]='^[OB'
-		key[Right]='^[OC'
-    elif [ "$TERM" = "xterm-256color" ]; then
-		key[Home]='^[[H'
-		key[End]='^[[F'
-		key[Up]='^[[A'
-		key[Left]='^[[D'
-		key[Down]='^[[B'
-		key[Right]='^[[C'
-    fi
-else
-    key[Home]=${terminfo[khome]}
-    key[End]=${terminfo[kend]}
-    key[Insert]=${terminfo[kich1]}
-    key[Delete]=${terminfo[kdch1]}
-    key[Up]=${terminfo[kcuu1]}
-    key[Down]=${terminfo[kcud1]}
-    key[Left]=${terminfo[kcub1]}
-    key[Right]=${terminfo[kcuf1]}
-    key[PageUp]=${terminfo[kpp]}
-    key[PageDown]=${terminfo[knp]}
-    key[Enter]=${terminfo[kent]}
-
+key[F1]='^[OP'
+key[F2]='^[OQ'
+key[F3]='^[OR'
+key[F4]='^[OS'
+key[F5]='^[[15~'
+key[F6]='^[[17~'
+key[F7]='^[[18~'
+key[F8]='^[[19~'
+key[F9]='^[[20~'
+key[F10]='^[[21~'
+key[F11]='^[[23~'
+key[F12]='^[[24~'
+key[Backspace]='^?'
+key[Insert]='^[[2~'
+key[PageUp]='^[[5~'
+key[Delete]='^[[3~'
+key[PageDown]='^[[6~'
+if [ "$TERM" = "screen-256color" ]; then
+    key[Home]='^[[1~'
+    key[End]='^[[4~'
+    key[Up]='^[OA'
+    key[Left]='^[OD'
+    key[Down]='^[OB'
+    key[Right]='^[OC'
+elif [ "$TERM" = "xterm-256color" ]; then
+    key[Home]='^[[H'
+    key[End]='^[[F'
+    key[Up]='^[[A'
+    key[Left]='^[[D'
+    key[Down]='^[[B'
+    key[Right]='^[[C'
 fi
 
 bindkey $key[Home]    beginning-of-line
