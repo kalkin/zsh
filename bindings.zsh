@@ -74,8 +74,15 @@ bindkey "^u" insert-last-word
 bindkey "^W" backward-delete-word
 
 run-with-sudo () {
-    if [ $(echo $LBUFFER|cut -d" " -f1) = "sudo" ]; then
-        LBUFFER=$(echo $LBUFFER|cut -d" " -f2-)
+    [[ -z $BUFFER ]] && zle up-history
+    if [[ $BUFFER == sudo\ * ]]; then
+        LBUFFER="${LBUFFER#sudo }"
+    elif [[ $BUFFER == $EDITOR\ * ]]; then
+        LBUFFER="${LBUFFER#$EDITOR }"
+        LBUFFER="sudoedit $LBUFFER"
+    elif [[ $BUFFER == sudoedit\ * ]]; then
+        LBUFFER="${LBUFFER#sudoedit }"
+        LBUFFER="$EDITOR $LBUFFER"
     else
         LBUFFER="sudo $LBUFFER"
     fi
