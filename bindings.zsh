@@ -26,14 +26,15 @@ key[Insert]='^[[2~'
 key[PageUp]='^[[5~'
 key[Delete]='^[[3~'
 key[PageDown]='^[[6~'
-if [ "$TERM" = "screen-256color" ]; then
+
+if [[ $TERM == screen* ]]; then
     key[Home]='^[[1~'
     key[End]='^[[4~'
     key[Up]='^[OA'
     key[Left]='^[OD'
     key[Down]='^[OB'
     key[Right]='^[OC'
-elif [ "$TERM" = "xterm-256color" ]; then
+elif [[ $TERM == xterm* ]]; then
     key[Home]='^[[H'
     key[End]='^[[F'
     key[Up]='^[[A'
