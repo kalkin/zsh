@@ -1,7 +1,7 @@
 autoload -U colors          # Enable colors
 colors
 
-ZDOTDIR="~/.zsh"
+ZDOTDIR=~/.zsh
 
 # Test and than source the options
 function source_file {
