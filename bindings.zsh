@@ -73,7 +73,14 @@ bindkey $key[Right]   forward-char
 bindkey "^u" insert-last-word
 bindkey "^W" backward-delete-word
 
-run-with-sudo () { LBUFFER="sudo $LBUFFER" }
+run-with-sudo () {
+    if [ $(echo $LBUFFER|cut -d" " -f1) = "sudo" ]; then
+        LBUFFER=$(echo $LBUFFER|cut -d" " -f2-)
+    else
+        LBUFFER="sudo $LBUFFER"
+    fi
+}
+
 zle -N run-with-sudo
 bindkey '^N' run-with-sudo
 
