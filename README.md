@@ -18,7 +18,7 @@ This will install all but the `zshrc` config files in to `$XDG_CONFIG_BASE/zsh`.
 The `zshrc` will be installed in `$HOME/.zshrc`. You will need to have autotools
 for this. ☺
 
-- `git clone https://github.com/kalkin/zsh.git zsh-config`
+- `git clone https://github.com/kalkin/zsh.git zsh-config --recursive`
 - `cd zsh-config`
 - `autoconf`
 - `./configure --enable-xdg`
