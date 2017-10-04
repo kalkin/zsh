@@ -9,7 +9,7 @@ clone this repository:
 
 ### 1. In $HOME
 
-- `git clone https://github.com/kalkin/zsh.git .zsh`
+- `git clone https://github.com/kalkin/zsh.git .zsh --recursive`
 - `ln -s ~/.zsh/zshrc .zshrc`
 
 ### 2. According to XDG Base Specification
@@ -18,7 +18,7 @@ This will install all but the `zshrc` config files in to `$XDG_CONFIG_BASE/zsh`.
 The `zshrc` will be installed in `$HOME/.zshrc`. You will need to have autotools
 for this. ☺
 
-- `git clone https://github.com/kalkin/zsh.git zsh-config --recursive`
+- `git clone https://github.com/kalkin/zsh.git zsh-config`
 - `cd zsh-config`
 - `autoconf`
 - `./configure --enable-xdg`
