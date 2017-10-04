@@ -37,17 +37,17 @@ fi
 alias tree="tree -FAC"
 
 if (( $+commands[nvim] )) ; then
-    alias nvim="nvim -p"
-    alias vim="$aliases[nvim]"
+    alias vim=nvim
+    alias vi=vim
 elif (( $+commands[vimx] )) ; then
-    alias vim="vimx -p"
-elif (( $+commands[vim] )) ; then
-    alias vim="vim -p"
+    alias vim=vimx
+    alias vi=vim
 fi
 
 if (( $+aliases[vim] )) ; then
-    alias vi="$aliases[vim]"
     alias view="$aliases[vim] -R"
+else
+    alias view="vim -R"
 fi
 
 if (( $+commands[links2] )) ; then
