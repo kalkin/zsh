@@ -63,8 +63,11 @@ run-with-sudo () {
     [[ -z $BUFFER ]] && zle up-history
     if [[ $BUFFER == sudo\ * ]]; then
         LBUFFER="${LBUFFER#sudo }"
-    elif [[ $BUFFER == $EDITOR\ * ]]; then
-        LBUFFER="${LBUFFER#$EDITOR }"
+    elif [[ $BUFFER == $EDITOR\ * ]] ||\
+         [[ $BUFFER == vim\ * ]]     ||\
+         [[ $BUFFER == vi\ * ]];
+    then
+        LBUFFER="${LBUFFER[(w)2,-1]}"
         LBUFFER="sudoedit $LBUFFER"
     elif [[ $BUFFER == sudoedit\ * ]]; then
         LBUFFER="${LBUFFER#sudoedit }"
