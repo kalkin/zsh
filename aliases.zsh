@@ -86,7 +86,7 @@ fi
 
 alias htod="fc -inl -1000|grep `today`|strip-ansi-colors|grep TIME_REGEX"
 alias hyes="fc -inl -2000|grep `yesterday`|strip-ansi-colors|grep TIME_REGEX"
-alias iotop="sudo iotop -o $@"
+alias iotop="sudo iotop -o"
 
 
 # Global alias
