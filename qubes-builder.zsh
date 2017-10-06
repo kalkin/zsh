@@ -1,4 +1,4 @@
-if [ -d ~/qb ]; then
+if [ -d ~/qb/qubes-src ]; then
     hash -d qb=~/qb
     hash -d src=~/qb/qubes-src
     for d in ~/qb/qubes-src/*; do
