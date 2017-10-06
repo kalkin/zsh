@@ -33,6 +33,7 @@ if (( $+commands[hub] )) ; then
     alias fork="hub fork"
 fi
 
+alias be="LC_TIME= be"
 
 alias tree="tree -FAC"
 
