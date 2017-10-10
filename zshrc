@@ -1,6 +1,8 @@
 autoload -U colors          # Enable colors
 colors
 
+autoload -Uz is-at-least    # Used for version checks
+
 ZDOTDIR=~/.zsh
 
 # Test and than source the options

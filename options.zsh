@@ -59,7 +59,11 @@ setopt HIST_IGNORE_SPACE    # Don't save commands prefixed with a space ' '
 setopt HIST_LEX_WORDS       # More accurate delimeted words. Performance?
 setopt HIST_REDUCE_BLANKS   # Remove trailing space before adding to history
 setopt HIST_VERIFY          # Show history expansion before executing
-setopt INC_APPEND_HISTORY_TIME   # Add command to history file, as soon as it finishes. 
+
+if is-at-least 5.1.1 $ZSH_VERSION; then
+    setopt INC_APPEND_HISTORY_TIME   # Add command to history file, as soon as it finishes. 
+fi
+
 setopt NO_SHARE_HISTORY     # Don't use SHARE_HISTORY it breaks INC_APPEND_HISTORY_TIME
 # }}}
 
@@ -91,14 +95,17 @@ setopt LONG_LIST_JOBS   # Effect??
 
 # == Scripts and Functions
 # {{{
-setopt LOCAL_LOOPS  # A break/continue doesn't propagate to outer loops
+if is-at-least 5.1.1 $ZSH_VERSION; then
+    setopt LOCAL_LOOPS  # A break/continue doesn't propagate to outer loops
+fi
 setopt MULTIOS      # Enable awesome multiple redirections also see zshmisc(1)
 # }}}
 
 
 # == Shell Emulation
-setopt APPEND_CREATE    # Allow to use '>>' instead of '>>|' for existing files
-
+if is-at-least 5.1.1 $ZSH_VERSION; then
+    setopt APPEND_CREATE    # Allow to use '>>' instead of '>>|' for existing files
+fi
 
 # == Shell State
 
