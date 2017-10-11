@@ -1,0 +1,80 @@
+bindir         ?= @bindir@
+datadir        ?= @datadir@
+datarootdir    ?= @datarootdir@
+docdir         ?= @docdir@
+dvidir         ?= @dvidir@
+htmldir        ?= @htmldir@
+includedir     ?= @includedir@
+infodir        ?= @infodir@
+libdir         ?= @libdir@
+libexecdir     ?= @libexecdir@
+localstatedir  ?= @localstatedir@
+mandir         ?= @mandir@
+pdfdir         ?= @pdfdir@
+prefix         ?= @prefix@
+psdir          ?= @psdir@
+sbindir        ?= @sbindir@
+sysconfdir     ?= @sysconfdir@
+
+XDG_ENABLED     = @enable_xdg@
+CONFIG_DIR      = $(sysconfdir)/@PACKAGE_NAME@
+VPATH=.
+srcdir         ?= $(VPATH)
+
+SUB_COMPONENTS = zaw zsh-autosuggestions zsh-syntax-highlighting
+
+$(SUB_COMPONENTS): Makefile | zaw/.git zsh-autosuggestions/.git zsh-syntax-highlighting/.git
+
+%/.git: Makefile
+	git submodule update --init $(*F)
+
+Makefile: Makefile.in config.status
+	./config.status
+
+config.status: configure
+	./config.status --recheck
+
+$(srcdir)/configure: configure.ac
+	cd '$(srcdir)' && autoconf
+
+
+TARGET_DIR 	= ${sysconfdir}/zsh
+ZSH_FILES 	= $(shell find . -name '*.zsh') zsh-syntax-highlighting/.version zsh-syntax-highlighting/.revision-hash zaw/functions/fill-vars-or-accept zaw/functions/filter-select
+TARGETS 	= $(addprefix $(TARGET_DIR)/,$(ZSH_FILES))
+
+$(TARGET_DIR)/%: %
+	install -D $< $@
+
+ifeq ($(XDG_ENABLED), yes)
+  TARGETS += $(HOME)/.zshrc
+else
+  TARGETS += $(sysconfdir)/zshrc
+endif
+
+$(HOME)/.zshrc: zshrc
+	sed -e 's#~/.zsh#$(CONFIG_DIR)#g' zshrc > $(HOME)/.zshrc
+
+$(sysconfdir)/zshrc: zshrc profile-d
+  ifeq ($(sysconfdir), /etc)
+	install -D profile-d $(sysconfdir)/zshrc
+  endif
+	sed -e 's#~/.zsh/#$(CONFIG_DIR)/#g' zshrc >> $(sysconfdir)/zshrc
+
+install: $(TARGETS) $(srcdir)/Makefile
+
+about:
+	@PRINT@ README.md
+
+
+clean-all:
+	rm $(srcdir)/Makefile $(srcdir)/configure
+
+uninstall:
+	rm -f $(TARGETS)
+	rm -rf $(TARGET_DIR)/zsh-syntax-highlighting
+	rm -rf $(TARGET_DIR)/zaw
+	rm -rf $(TARGET_DIR)/zsh-autosuggestions
+	-rm -d $(TARGET_DIR)/units
+	-rm -d $(TARGET_DIR)
+
+reinstall: uninstall install
