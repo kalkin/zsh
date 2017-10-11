@@ -29,7 +29,7 @@ source_file zaw/zaw.zsh
 source_file hashed-dirs.zsh
 source_file zaw-zshrc.zsh
 source_file zsh-autosuggestions/zsh-autosuggestions.zsh
-source_file zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source_file fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source_file bindings.zsh
 
 for f in $ZDOTDIR/units/*; do
