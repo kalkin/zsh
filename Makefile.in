@@ -23,7 +23,7 @@ srcdir         ?= $(VPATH)
 
 SUB_COMPONENTS = zaw zsh-autosuggestions zsh-syntax-highlighting
 
-$(SUB_COMPONENTS): Makefile | zaw/.git zsh-autosuggestions/.git zsh-syntax-highlighting/.git
+$(SUB_COMPONENTS): Makefile | zaw/.git zsh-autosuggestions/.git
 
 %/.git: Makefile
 	git submodule update --init $(*F)
@@ -39,7 +39,7 @@ $(srcdir)/configure: configure.ac
 
 
 TARGET_DIR 	= ${sysconfdir}/zsh
-ZSH_FILES 	= $(shell find . -name '*.zsh') zsh-syntax-highlighting/.version zsh-syntax-highlighting/.revision-hash zaw/functions/fill-vars-or-accept zaw/functions/filter-select
+ZSH_FILES 	= $(shell find . -name '*.zsh') fast-syntax-highlighting/fast-highlight zaw/functions/fill-vars-or-accept zaw/functions/filter-select
 TARGETS 	= $(addprefix $(TARGET_DIR)/,$(ZSH_FILES))
 
 $(TARGET_DIR)/%: %
@@ -71,7 +71,7 @@ clean-all:
 
 uninstall:
 	rm -f $(TARGETS)
-	rm -rf $(TARGET_DIR)/zsh-syntax-highlighting
+	rm -rf $(TARGET_DIR)/fast-syntax-highlight
 	rm -rf $(TARGET_DIR)/zaw
 	rm -rf $(TARGET_DIR)/zsh-autosuggestions
 	-rm -d $(TARGET_DIR)/units
