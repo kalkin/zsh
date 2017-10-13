@@ -1,0 +1,7 @@
+#compdef qubes-hcl-report
+
+local app_vms
+app_vms=( $(qvm-ls --raw-list) )
+_arguments -S '(- *)'{-h,--help}'[show help message and exit]'\
+    "1:Target VM name:($app_vms)" && return 0;
+

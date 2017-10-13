@@ -1,0 +1,34 @@
+#autoload
+
+local -a running_vms halted_vms broken_vms all_vms  halted_dis running_dis broken_dis
+local expl
+all_vms=( $(qvm-ls|tail -n +5 |cut -d"|" -f1,3,5|sed -e 's/[\=<> {}\[]\+//g' -e 's/|$/ App/' -e 's/$/VM/g' -e 's/|/ /g' -e 's/\]//g') )
+local name vmstate vmtype
+for (( i = 1; i < #all_vms; i+=3 )); do
+    name=$all_vms[$i]
+    vmstate=$all_vms[$i+1]
+    vmtype=$all_vms[$i+2]
+    case $vmstate in
+        Running)
+            running_vms+=("${name}")
+            running_dis+=("▶ ${name}")
+        ;;
+        Halted)                     
+            halted_vms+=("${name}")
+            halted_dis+=("■ ${name}")
+        ;;
+        Transient)                  
+             broken_vms+=("${name}")
+             broken_dis+=(◍"${name} ")
+        ;;
+    esac
+            
+done
+
+_message "Transient VMs:$broken_vms"
+_wanted qubesvm expl 'QubesVMs' compadd "$@" -P 'qvm-run '  -d running_dis  -a running_vms 
+_wanted qubesvm expl 'QubesVMs' compadd "$@" -P 'qvm-shutdown ' -d broken_dis  -a broken_vms
+_wanted halted expl 'QubesVMs' compadd "$@" -P 'qvm-run ' -d halted_dis  -S ' -a '  -a halted_vms
+
+
+return 0

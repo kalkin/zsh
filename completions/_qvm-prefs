@@ -1,0 +1,51 @@
+#compdef qvm-prefs
+local app_vms properties values state expl colors foo
+colors=(red green black yellow orange gray blue purple)
+app_vms=( $(qvm-ls --raw-list) )
+
+properties=( autostart debug default_user include_in_backups internal kernel kernelopts label mac maxmem memory name netvm pcidevs qrexec_timeout template vcpus )
+
+#echo "${app_vms[(I)$words[2]]}"
+if (( app_vms[(I)$words[2]] )); then
+    values="(-l)-s[Set property]:Property:($properties):value:->set";
+else
+    values="(-l)-s[Set property]:QubesVM:($app_vms):Property:($properties):value:->set";
+fi
+_arguments '(- *)'{-h,--help}'[show help message and exit]'\
+    "(-s)-l[List properties]"\
+    $values \
+    '--force-root[Force to run, even with root privileges]'\
+    "1:QubesVM2:($app_vms)"\
+    && return 0
+
+if [[ $state == set ]]; then
+    foo=$words[CURRENT-1]
+    case "$foo" in
+        autostart|debug|include_in_backups|internal)
+            _describe -t colors "Boolean" "(True False)" && return
+            ;;
+        dir)
+            _wanted directory expl 'Directory' _directories && return;
+            ;;
+        label)
+            _describe -t colors "Colors" colors && return
+            ;;
+        netvm)
+            netvm=( $(qvm-ls |grep 'netvm |'|grep -v updbl|cut -d'|' -f 1|tr -d " {}[]<>=") )
+            _describe -t netvm "NetVM" netvm && return
+            ;;
+        template)
+            templates=( $(qvm-ls|grep 'Tpl |'|cut -d'|' -f1|tr -d " =<>[]{}") )
+            _describe -t templates "Template" templates && return
+            ;;
+        kernel)
+            values=( 'default:Default Choice' 'none:Use kernel subdir in VM' )
+            values+=( $(qvm-prefs java -s kernel 2>&1|grep ' \- '|tr -d ' \-') )
+            _describe -t kernel "Kernel" values && return
+            ;;
+
+
+    esac
+
+fi
+return 0;
