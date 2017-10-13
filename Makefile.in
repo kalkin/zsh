@@ -72,6 +72,7 @@ clean-all:
 uninstall:
 	rm -f $(TARGETS)
 	rm -rf $(TARGET_DIR)/fast-syntax-highlight
+	rm -rf $(TARGET_DIR)/you-should-use
 	rm -rf $(TARGET_DIR)/zaw
 	rm -rf $(TARGET_DIR)/zsh-autosuggestions
 	-rm -d $(TARGET_DIR)/units
