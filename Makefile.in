@@ -39,7 +39,12 @@ $(srcdir)/configure: configure.ac
 
 
 TARGET_DIR 	= ${sysconfdir}/zsh
-ZSH_FILES 	= $(shell find . -name '*.zsh') fast-syntax-highlighting/fast-highlight zaw/functions/fill-vars-or-accept zaw/functions/filter-select
+ZSH_FILES 	= $(shell find . -name '*.zsh') \
+			  fast-syntax-highlighting/fast-highlight\
+			  zaw/functions/fill-vars-or-accept\
+			  zaw/functions/filter-select\
+			  $(wildcard functions/*)
+
 TARGETS 	= $(addprefix $(TARGET_DIR)/,$(ZSH_FILES))
 
 $(TARGET_DIR)/%: %

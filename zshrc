@@ -13,7 +13,7 @@ function source_file {
     fi
 }
 
-fpath=($ZDOTDIR/completions/ $fpath)
+fpath=($ZDOTDIR/completions/ "$ZDOTDIR/functions/" $fpath)
 
 source_file init_path.zsh
 source_file modules.zsh      # see also `man zshmodules`
@@ -31,6 +31,9 @@ source_file zaw-zshrc.zsh
 source_file zsh-autosuggestions/zsh-autosuggestions.zsh
 source_file fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 source_file bindings.zsh
+
+autoload -Uz git-escape-magic    # Auto-Escape HEAD^
+git-escape-magic
 
 for f in $ZDOTDIR/units/*; do
     source "$f"
