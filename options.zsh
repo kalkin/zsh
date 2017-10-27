@@ -64,7 +64,7 @@ if is-at-least 5.1.1 $ZSH_VERSION; then
     setopt INC_APPEND_HISTORY_TIME   # Add command to history file, as soon as it finishes. 
 fi
 
-setopt NO_SHARE_HISTORY     # Don't use SHARE_HISTORY it breaks INC_APPEND_HISTORY_TIME
+setopt SHARE_HISTORY     # Don't use SHARE_HISTORY it breaks INC_APPEND_HISTORY_TIME
 # }}}
 
 # == Input/Ouput
