@@ -12,6 +12,7 @@ setopt AUTO_CD      # Change directory without cd
 setopt AUTO_PUSHD   # cd pushes the old directory onto a directory stack. 
 setopt CDABLE_VARS  # When doing cd src, if src does not exists try cd ~src
 setopt PUSHD_MINUS  # reverse the numbering of the dir stack
+setopt PUSHD_IGNORE_DUPS  # Ignore duplicate dir paths
 #}}}
 
 # == Completion
