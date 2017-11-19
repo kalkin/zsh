@@ -13,12 +13,8 @@ alias yesterday="date -d yesterday +%F"
 alias fspc='df -h .'
 
 # Linux specific aliases
-if [[  $(uname -s)  = 'Linux' ]] then
-    alias ls='ls -F --color'
-    alias grep='grep --color'
-else 
-    alias ls='ls -F'
-fi
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
 
 alias ll='ls -lh'
 alias la='ls -Alh'
