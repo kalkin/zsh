@@ -8,6 +8,7 @@
 export DISPLAY=:0.0
 export MANPATH="$XDG_CONFIG_HOME/man:$(manpath)"
 export MANWIDH=80
+eval $(dircolors -b $ZDOTDIR/LS_COLORS)
 
 # I know vi is part of POSIX but some destris i.e Gentoo doesn't have vi in
 # standart destribution

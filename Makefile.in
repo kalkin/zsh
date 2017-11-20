@@ -43,6 +43,7 @@ ZSH_FILES 	= $(shell find . -name '*.zsh') \
 			  fast-syntax-highlighting/fast-highlight\
 			  zaw/functions/fill-vars-or-accept\
 			  zaw/functions/filter-select\
+			  LS_COLORS\
 			  $(wildcard functions/*)
 
 TARGETS 	= $(addprefix $(TARGET_DIR)/,$(ZSH_FILES))
