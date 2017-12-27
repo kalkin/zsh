@@ -15,7 +15,7 @@ function source_file {
     fi
 }
 
-fpath=($ZDOTDIR/completions/ "$ZDOTDIR/functions/" $fpath)
+fpath=($ZDOTDIR/completions/* "$ZDOTDIR/functions/" $fpath)
 
 source_file init_path.zsh
 source_file modules.zsh      # see also `man zshmodules`
