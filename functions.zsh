@@ -241,36 +241,3 @@ function color-tbl() {
     done
    echo "$header\n$RESULT$header"
 }
-
-# TRACKER: Workaround bug
-function tinsert() {
-    if [ "$#" = 0 ]; then
-        echo "Need at least one parameter" > /dev/stderr
-        exit 1
-    elif [ "$#" = 1 ]; then
-        tracker sparql --query "INSERT { kalkin:$1 }" -u
-    else 
-        tracker sparql --query "INSERT { kalkin:$1  pimo:$2 kalkin:$3 }" -u
-    fi
-}
-
-function tlist() {
-    if [ "$#" = 0 ]; then
-        DATA=$(tracker sparql --query "SELECT * { ?a a pimo:Thing }")
-    elif [ "$#" = 1 ]; then
-        DATA=$(tracker sparql --query "SELECT * { ?a a pimo:$1 }")
-    elif [ "$#" = 2 ]; then
-        DATA=$(tracker sparql --query "SELECT * { ?a $1 $2 }")
-    fi
-    DATA=$(echo "$DATA"|sed -e 's;https://bahtiar.gadimov.de/pimo#;kalkin:;' -e 's/^\s\+//g')
-    echo "$DATA"|tail -n +2
-}
-function tinfo() {
-    echo "Displaying: kalkin:$1"
-    DATA=$(tracker info https://bahtiar.gadimov.de/pimo\#"$1"|tail -n +3)
-    DATA=$(echo "$DATA"|sed -e 's;https\?://www.semantic.*/\([a-z]\+\)#;\1:;')
-    DATA=$(echo "$DATA"|egrep -v 'tracker:|pimo:occurrence|pimo:groundingOccurrence|pimo:Class|rdf-schema#')
-    DATA=$(echo "$DATA"|sed -e "s/^\s\+//g")
-    echo "$DATA"|column -t -s"="
-}
-
