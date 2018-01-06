@@ -1,5 +1,5 @@
 AC_INIT(zsh, 1.0)
-AC_CHECK_PROG(PRINT,pygmentize,pygmentize,cat)
+AC_CHECK_PROG(PRINT,cat)
 AC_CONFIG_MACRO_DIR([m4])
 BKG_ENABLE_XDG
 AC_CONFIG_FILES([Makefile])
