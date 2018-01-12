@@ -64,7 +64,7 @@ You will need to have autotools for this. ☺
 | zshzle      | zsh command line editor                         |
 | zshall      | the Z shell meta-man page Only for hardliner :) |
 
-## Zsh start up sequence:
+## Zsh start up sequence
 
 |\# | File            | Comment                       | Shell Type                    |
 | - | --------------- | ----------------------------- | ----------------------------- |
@@ -77,10 +77,10 @@ You will need to have autotools for this. ☺
 | 7 | `/etc/zlogin`   | - Run for login shells.       | (login)                       |
 | 8 | `~/.zlogin`     | - Run for login shells.       | (login)                       |
 
-
 ## Thanks
+
 This config started as a fork of Christian `strcat` Schneider's zsh config.
-special thanks to him at this point.
+Special thanks to him at this point.
 
 <!-- vim: ft=markdown
 -->
