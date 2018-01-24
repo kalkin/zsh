@@ -41,11 +41,6 @@ for d in /usr/share/zsh/*; do
     fi
 done
 
-# LEES COLORS
-
-export LESS_TERMCAP_so=$'\E[0;30;43m'
-export LESS_TERMCAP_se=$'\E[0m'
-
 export BROWSER=firefox
 
 # sanitize directory hashes
