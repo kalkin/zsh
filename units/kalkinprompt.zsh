@@ -1,5 +1,5 @@
 
-VCS_BRANCH_ICON=$'\UF126'              # 
+VCS_BRANCH_ICON='↯'
 
 prompt_kalkin_setup() {
     local prompt_gfx_tlc="┌" 
@@ -28,7 +28,7 @@ prompt_prepare_git() {
     zstyle ':vcs_info:*' check-for-changes true
     zstyle ':vcs_info:git:*' stagedstr 'Ⓐ '
     zstyle ':vcs_info:(git|hg):*' unstagedstr 'Ⓜ '
-    zstyle ':vcs_info:*' formats "%b$VCS_BRANCH_ICON%8.8i-%c%u"
+    zstyle ':vcs_info:*' formats "%b$VCS_BRANCH_ICON%8.8i-%c"
 }
 
 prompt_construct_first_line(){
