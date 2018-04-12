@@ -27,7 +27,6 @@ tags
 /config.sub
 /config.log
 /config.status
-/configure
 /configure.scan
 /depcomp
 /install-sh
