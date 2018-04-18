@@ -14,4 +14,10 @@ do
     alias "$an_alias"="git $git_cmd"
 done
 
-
+unstage() {
+    if [ $# -gt 0 ]; then
+        git reset $@
+    else
+        git reset .
+    fi
+}
