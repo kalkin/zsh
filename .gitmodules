@@ -1,6 +1,3 @@
-[submodule "zaw"]
-	path = zaw
-	url = https://github.com/zsh-users/zaw.git
 [submodule "zsh-autosuggestions"]
 	path = zsh-autosuggestions
 	url = https://github.com/tarruda/zsh-autosuggestions
