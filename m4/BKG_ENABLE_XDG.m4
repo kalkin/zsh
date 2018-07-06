@@ -1,3 +1,9 @@
+dnl BKG_ENABLE_XDG
+dnl --------------
+dnl
+dnl If '--enable-xdg' is set, adjust directory vars according to XDG
+dnl
+
 AC_DEFUN([BKG_ENABLE_XDG], [AC_ARG_ENABLE([xdg],
     AC_HELP_STRING([--enable-xdg],
                    [Install according to XDG Base Directory specification]),
