@@ -5,7 +5,6 @@
 # Just for fun :)
 alias top10='print -l $$${(o)history%% *} | uniq -c | sort -nr | head -n 10'
 
-alias psg='ps ax|grep -v grep|grep -i'
 alias h='history'
 alias hs='history 1|grep'
 alias today="date +\"%F\""
