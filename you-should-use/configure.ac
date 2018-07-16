@@ -1,0 +1,7 @@
+AC_INIT(you-should-use, 0.4.4)
+AM_INIT_AUTOMAKE([foreign])
+AC_CONFIG_MACRO_DIR([m4])
+BKG_ENABLE_XDG
+AC_CONFIG_FILES([Makefile])
+AC_OUTPUT
+
