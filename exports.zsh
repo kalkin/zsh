@@ -27,8 +27,6 @@ export LANG="en_US.utf8"
 export LC_TIME="de_DE.utf8"
 export LC_MESSAGES="en_US.utf8"
 export LC_ALL=""
-export PAGER='less';
-export LESS='-R -F'
 
 HELPDIR=
 for d in /usr/share/zsh/*; do 
