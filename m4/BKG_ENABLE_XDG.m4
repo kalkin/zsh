@@ -13,6 +13,7 @@ AC_DEFUN([BKG_ENABLE_XDG], [AC_ARG_ENABLE([xdg],
      prefix="$HOME/.local"
      bindir="$HOME/.local/bin"
      datadir=$HOME/.local/share
+     datarootdir=$HOME/.local/share
      docdir=$HOME/Documents
      includedir="$HOME/.local/include"
      infodir=$HOME/.local/man
