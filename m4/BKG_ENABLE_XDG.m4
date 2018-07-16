@@ -10,6 +10,7 @@ AC_DEFUN([BKG_ENABLE_XDG], [AC_ARG_ENABLE([xdg],
     [
      test -z "$XDG_CONFIG_HOME" && XDG_CONFIG_HOME="$HOME/.config"
      test -z "$XDG_DATA_HOME" && XDG_DATA_HOME="$HOME/.local/share"
+     prefix="$HOME/.local"
      bindir="$HOME/.local/bin"
      datadir=$HOME/.local/share
      docdir=$HOME/Documents
