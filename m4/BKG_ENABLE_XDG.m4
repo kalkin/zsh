@@ -14,7 +14,7 @@ AC_DEFUN([BKG_ENABLE_XDG], [AC_ARG_ENABLE([xdg],
      bindir="$HOME/.local/bin"
      datadir=$HOME/.local/share
      datarootdir=$HOME/.local/share
-     docdir=$HOME/Documents
+     docdir="$HOME/Documents/$PACKAGE_NAME"
      includedir="$HOME/.local/include"
      infodir=$HOME/.local/man
      libdir="$HOME/.local/lib"
