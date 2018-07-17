@@ -5,8 +5,6 @@ colors
 
 autoload -Uz is-at-least    # Used for version checks
 autoload -Uz add-zsh-hook
-
-autoload -Uz @BKG_INSTALL_DIR@/site-functions/git-escape-magic
 autoload -Uz zmv
 
 [ -f /etc/locale.conf ] && source /etc/locale.conf
@@ -25,3 +23,5 @@ if [ ! -z "$(ls -A $HOME/.config/zsh)" ]; then
     done
 fi
 
+autoload -Uz git-escape-magic
+git-escape-magic
