@@ -5,7 +5,6 @@ typeset -g CORRECT_IGNORE_FILE=".*"	# Useful with CORRECT_ALL option set in zsho
 typeset -g LISTMAX=0			# Only ask before displaying if completions would scroll
 typeset -g READNULLCMD=less		# Default was more
 typeset -g REPORTTIME=15		# Report if commands takes longer than 15 seconds
-typeset -g SAVEHIST=100000		# if we ever get in to performance issues we can tune it down
 typeset -g WATCH=notme  		# Watch for logins of other users Do we need that?
 typeset -g WORDCHARS='*_[]~&!#$%^(){}<>' # Sane defaults
 

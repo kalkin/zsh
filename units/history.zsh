@@ -25,3 +25,4 @@ HISTDIR="$HOME/.cache/zsh"
 [ ! -d "$HISTDIR" ] && mkdir -p "$HISTDIR"
 typeset -g HISTFILE="$HISTDIR/histfile"	# The history file to be saved to
 typeset -g HISTSIZE=100000		# if we ever get in to performance issues we can tune it down
+typeset -g SAVEHIST=100000		# if we ever get in to performance issues we can tune it down
