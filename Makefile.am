@@ -1,88 +1,27 @@
-bindir         ?= @bindir@
-datadir        ?= @datadir@
-datarootdir    ?= @datarootdir@
-docdir         ?= @docdir@
-dvidir         ?= @dvidir@
-htmldir        ?= @htmldir@
-includedir     ?= @includedir@
-infodir        ?= @infodir@
-libdir         ?= @libdir@
-libexecdir     ?= @libexecdir@
-localstatedir  ?= @localstatedir@
-mandir         ?= @mandir@
-pdfdir         ?= @pdfdir@
-prefix         ?= @prefix@
-psdir          ?= @psdir@
-sbindir        ?= @sbindir@
-sysconfdir     ?= @sysconfdir@
+SUBDIRS = you-should-use fast-syntax-higlighting zaw zsh-autosuggestions
+zsh_contrib_dir = $(pkgdatadir)/site-contrib
+zsh_contrib__DATA = $(wildcard units/*.zsh)
+zsh_functions_dir = $(pkgdatadir)/site-functions
+zsh_functions__DATA = $(wildcard functions/*)
+dist_pkgdata_DATA = $(wildcard *.zsh) LS_COLORS
+if ENABLE_XDG
+home_dir = $(HOME)
+home__DATA = .zshrc
 
-XDG_ENABLED     = @enable_xdg@
-CONFIG_DIR      = $(sysconfdir)/@PACKAGE_NAME@
-VPATH=.
-srcdir         ?= $(VPATH)
+.zshrc: zshenv
+	cp zshenv .zshrc
 
-SUB_COMPONENTS = zaw zsh-autosuggestions zsh-syntax-highlighting
-
-$(SUB_COMPONENTS): Makefile | zaw/.git zsh-autosuggestions/.git
-
-%/.git: Makefile
-	git submodule update --init $(*F)
-
-Makefile: Makefile.in config.status
-	./config.status
-
-config.status: configure
-	./config.status --recheck
-
-$(srcdir)/configure: configure.ac
-	cd '$(srcdir)' && autoconf
-
-
-TARGET_DIR 	= ${sysconfdir}/zsh
-ZSH_FILES 	= $(shell find ${srcdir}/completions -name '_*') \
-			  $(shell find . -name '*.zsh') \
-			  fast-syntax-highlighting/fast-highlight\
-			  zaw/functions/fill-vars-or-accept\
-			  zaw/functions/filter-select\
-			  LS_COLORS\
-			  $(wildcard functions/*)
-
-TARGETS 	= $(addprefix $(TARGET_DIR)/,$(ZSH_FILES))
-
-$(TARGET_DIR)/%: %
-	install -D $< $@
-
-ifeq ($(XDG_ENABLED), yes)
-  TARGETS += $(HOME)/.zshrc
+install-data-hook:
+	test "@enable_xdg@" = 'yes' && mv @sysconfdir@/zshrc "$$HOME/.zshrc"; true
 else
-  TARGETS += $(sysconfdir)/zshrc
+dist_pkgdata_DATA += zshrc
+
+zshrc: zshenv
+	cat @srcdir@/zshenv > @srcdir@/zshrc
+install-data-hook:
+	grep -q "source $(pkgdatadir)/zshrc" @sysconfdir@/zshrc || echo "source $(pkgdatadir)/zshrc" >> @sysconfdir@/zshrc
+
+uninstall-hook:
+	sed -e "s#source $(pkgdatadir)/zshrc##" @sysconfdir@/zshrc -i
+
 endif
-
-$(HOME)/.zshrc: zshrc
-	sed -e 's#~/.zsh#$(CONFIG_DIR)#g' zshrc > $(HOME)/.zshrc
-
-$(sysconfdir)/zshrc: zshrc profile-d
-  ifeq ($(sysconfdir), /etc)
-	install -D profile-d $(sysconfdir)/zshrc
-  endif
-	sed -e 's#~/.zsh/#$(CONFIG_DIR)/#g' zshrc >> $(sysconfdir)/zshrc
-
-install: $(TARGETS) $(srcdir)/Makefile
-
-about:
-	@PRINT@ README.md
-
-
-clean-all:
-	rm $(srcdir)/Makefile $(srcdir)/configure
-
-uninstall:
-	rm -f $(TARGETS)
-	rm -rf $(TARGET_DIR)/fast-syntax-highlight
-	rm -rf $(TARGET_DIR)/you-should-use
-	rm -rf $(TARGET_DIR)/zaw
-	rm -rf $(TARGET_DIR)/zsh-autosuggestions
-	-rm -d $(TARGET_DIR)/units
-	-rm -d $(TARGET_DIR)
-
-reinstall: uninstall install

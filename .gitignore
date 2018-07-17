@@ -33,6 +33,16 @@ tags
 /missing
 /stamp-h1
 /Makefile
+/Makefile.in
 
 # Bugseverwhere
 .be/id-cache
+
+/zshenv
+/units/you-should-use.plugin.zsh
+/units/zaw.plugins.zsh
+/units/fast-syntax-highlighting.plugin.zsh
+/units/zsh-autosuggestions.plugin.zsh
+/units/ls-setup.zsh
+/.zshrc
+/zshrc

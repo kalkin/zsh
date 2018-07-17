@@ -1,0 +1,25 @@
+# @configure_input@
+autoload -U colors          # Enable colors
+colors
+
+autoload -Uz is-at-least    # Used for version checks
+autoload -Uz add-zsh-hook
+
+autoload -Uz @BKG_INSTALL_DIR@/site-functions/git-escape-magic
+autoload -Uz zmv
+
+for f in @BKG_INSTALL_DIR@/site-contrib/*; do
+    source $f
+done
+
+for f in @BKG_INSTALL_DIR@/*.zsh; do
+    source $f
+done
+
+if [ ! -z "$(ls -A $HOME/.config/zsh)" ]; then
+    for f in $HOME/.config/zsh/*.zsh; do
+        source $f
+    done
+fi
+
+[ -f /etc/locale.conf ] && source /etc/locale.conf
