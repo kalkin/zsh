@@ -23,5 +23,6 @@ if [ ! -z "$(ls -A $HOME/.config/zsh)" ]; then
     done
 fi
 
+autoload -Uz run-with-sudo
 autoload -Uz git-escape-magic
 git-escape-magic

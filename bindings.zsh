@@ -59,24 +59,6 @@ bindkey $key[Right]   forward-char
 bindkey "^u" insert-last-word
 bindkey "^W" backward-delete-word
 
-run-with-sudo () {
-    [[ -z $BUFFER ]] && zle up-history
-    if [[ $BUFFER == sudo\ * ]]; then
-        LBUFFER="${LBUFFER#sudo }"
-    elif [[ $BUFFER == $EDITOR\ * ]] ||\
-         [[ $BUFFER == vim\ * ]]     ||\
-         [[ $BUFFER == vi\ * ]];
-    then
-        LBUFFER="${LBUFFER[(w)2,-1]}"
-        LBUFFER="sudoedit $LBUFFER"
-    elif [[ $BUFFER == sudoedit\ * ]]; then
-        LBUFFER="${LBUFFER#sudoedit }"
-        LBUFFER="$EDITOR $LBUFFER"
-    else
-        LBUFFER="sudo $LBUFFER"
-    fi
-}
-
 zle -N run-with-sudo
 bindkey '^N' run-with-sudo
 
