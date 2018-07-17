@@ -11,48 +11,9 @@ alias today="date +\"%F\""
 alias yesterday="date -d yesterday +%F"
 alias fspc='df -h .'
 
-# Linux specific aliases
-alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
-alias ll='ls -lh'
-alias la='ls -Alh'
-alias lad='ls -d -- .*(/)'  # only show dot-direcotories
-alias laf='ls -d -- .*(^/)' # only show dot-files
-alias lsd='ls -ld -- ^(\.)*(/)'   # show all directories
-alias lsf='ls -d -- *(^/)'  # only show files
-alias lse='ls -d -- *(/^F)' # only show empty dirs
-
-if (( $+commands[hub] )) ; then
-    alias git=hub
-    alias fork="hub fork"
-fi
-
-alias be="LC_TIME= be"
-
 alias tree="tree -FAC"
-
-if (( $+commands[nvim] )) ; then
-    alias vim=nvim
-    alias vi=vim
-elif (( $+commands[vimx] )) ; then
-    alias vim=vimx
-    alias vi=vim
-fi
-
-if (( $+aliases[vim] )) ; then
-    alias view="$aliases[vim] -R"
-else
-    alias view="vim -R"
-fi
-
-if (( $+commands[links2] )) ; then
-    export LINKS_BROWSER="links2"
-elif (( $+commands[links] )) ; then
-    export LINKS_BROWSER="links"
-elif (( $+commands[lynx] )) ; then
-    export LINKS_BROWSER="lynx"
-fi
 
 alias myip='curl -s http://www.myip.ch/ | grep -o "[[:digit:]].*[[:digit:]]"'
 
@@ -68,28 +29,6 @@ else
     alias -s html=$LINKS_BROWSER
 fi
 
-if [[ -x `which vim` || -x `which vi` ]]; then
-    alias -s tex=vim
-    alias -s php=vim
-    alias -s java=vim
-    alias -s pl=vim
-    alias -s py=vim
-fi
-
 alias htod="fc -inl -1000|grep `today`|strip-ansi-colors|grep TIME_REGEX"
 alias hyes="fc -inl -2000|grep `yesterday`|strip-ansi-colors|grep TIME_REGEX"
 alias iotop="sudo iotop -o"
-
-
-# Global alias
-alias -g NE='2>|/dev/null'
-alias -g NO='&>|/dev/null'
-
-alias -g PG='|$PAGER'
-
-alias -g TIME_REGEX="\"[0-2][0-9]:[0-6][0-9]\""
-alias -g unbl="--extra-string='^$,(?!BLOCKED-BY)'"
-
-if (( $+commands[hub] )) ; then
-    alias fork="hub fork"
-fi

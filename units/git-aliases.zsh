@@ -1,3 +1,7 @@
+if (( $+commands[hub] )) ; then
+    alias fork="hub fork"
+fi
+
 alias rebase="git rebase"
 alias add="git add -p" 
 alias pull="git pull" 

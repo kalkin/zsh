@@ -1,4 +1,5 @@
 # @configure_input@
+
 autoload -U colors          # Enable colors
 colors
 
@@ -7,6 +8,8 @@ autoload -Uz add-zsh-hook
 
 autoload -Uz @BKG_INSTALL_DIR@/site-functions/git-escape-magic
 autoload -Uz zmv
+
+[ -f /etc/locale.conf ] && source /etc/locale.conf
 
 for f in @BKG_INSTALL_DIR@/site-contrib/*; do
     source $f
@@ -22,4 +25,3 @@ if [ ! -z "$(ls -A $HOME/.config/zsh)" ]; then
     done
 fi
 
-[ -f /etc/locale.conf ] && source /etc/locale.conf
