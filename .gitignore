@@ -29,11 +29,9 @@ tags
 /config.status
 /configure.scan
 /depcomp
-/install-sh
-/missing
 /stamp-h1
 /Makefile
-/Makefile.in
+/confdefs.h
 
 # Bugseverwhere
 .be/id-cache

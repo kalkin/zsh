@@ -34,11 +34,7 @@ tags
 /config.sub
 /config.log
 /config.status
-/configure
 /configure.scan
 /depcomp
-/install-sh
-/missing
 /stamp-h1
 /Makefile
-/Makefile.in
