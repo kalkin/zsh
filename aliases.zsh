@@ -54,7 +54,7 @@ elif (( $+commands[lynx] )) ; then
     export LINKS_BROWSER="lynx"
 fi
 
-alias myip=$LINKS_BROWSER' -dump http://www.myip.ch/ | grep -o "[[:digit:]].*[[:digit:]]"'
+alias myip='curl -s http://www.myip.ch/ | grep -o "[[:digit:]].*[[:digit:]]"'
 
 # some config shortcuts
 alias confighelp='./configure --help=short'
