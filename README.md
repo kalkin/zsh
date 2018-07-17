@@ -1,39 +1,32 @@
-# README
+# ZSH-BKG
 
-This is my zsh config.
+This is good and sane zsh config.
 
 ## Installation
 
 There're multiple ways to install this configuration, but first you have to
 clone this repository:
 
-### 1. In $HOME
-
 - `git clone https://github.com/kalkin/zsh.git .zsh --recursive`
 - `ln -s ~/.zsh/zshrc .zshrc`
 
-### 2. According to XDG Base Specification
 
-This will install all but the `zshrc` config files in to `$XDG_CONFIG_BASE/zsh`.
-The `zshrc` will be installed in `$HOME/.zshrc`. You will need to have autotools
-for this. ☺
+### 1. According to XDG Base Specification
 
-- `git clone https://github.com/kalkin/zsh.git zsh-config`
-- `cd zsh-config`
-- `autoconf`
+This will install all the config files in to `$XDG_DATA_HOME/zsh`. A line
+sourcing the main file will be added to the end of your `.zshrc`
+
 - `./configure --enable-xdg`
 - `make install`
 
 ### 3. Globally for all users
 
-This will install all but the `zshrc` config files in to `etc/zsh`.
-The `zshrc` will be installed in `/etc/zshrc` and will source `/etc/profile.d/`.
-You will need to have autotools for this. ☺
+This will install all the config files in to `$datarootdir/zsh`. A line
+sourcing the main file will be added to the end of your `.zshrc`
 
 - `git clone https://github.com/kalkin/zsh.git zsh-config`
 - `cd zsh-config`
-- `autoconf`
-- `./configure --prefix=`
+- `./configure --prefix=/usr`
 - `make install`
 - `sudo make install`
 
@@ -68,14 +61,14 @@ You will need to have autotools for this. ☺
 
 |\# | File            | Comment                       | Shell Type                    |
 | - | --------------- | ----------------------------- | ----------------------------- |
-| 1 | `/etc/zshenv`   | - Always run for every zsh.   | (login + interactive + other) |
-| 2 | `~/.zshenv`     | - Usually run for every zsh.  | (login + interactive + other) |
-| 3 | `/etc/zprofile` | - Run for login shells.       | (login)                       |
-| 4 | `~/.zprofile`   | - Run for login shells.       | (login)                       |
+| 1 | `/etc/zshenv`   | - Always run for every zsh    | (login + interactive + other) |
+| 2 | `~/.zshenv`     | - Usually run for every zsh   | (login + interactive + other) |
+| 3 | `/etc/zprofile` | - Run for login shells        | (login)                       |
+| 4 | `~/.zprofile`   | - Run for login shells        | (login)                       |
 | 5 | `/etc/zshrc`    | - Run for interactive shells. | (login + interactive)         |
 | 6 | `~/.zshrc`      | - Run for interactive shells. | (login + interactive)         |
-| 7 | `/etc/zlogin`   | - Run for login shells.       | (login)                       |
-| 8 | `~/.zlogin`     | - Run for login shells.       | (login)                       |
+| 7 | `/etc/zlogin`   | - Run for login shells        | (login)                       |
+| 8 | `~/.zlogin`     | - Run for login shells        | (login)                       |
 
 ## Thanks
 
