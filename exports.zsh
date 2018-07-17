@@ -21,5 +21,3 @@ for d in /usr/share/zsh/*; do
         fi
     fi
 done
-
-export GIT_ALLOW_PROTOCOL=file:git:http:https:ssh
