@@ -56,10 +56,6 @@ fi
 
 alias myip='curl -s http://www.myip.ch/ | grep -o "[[:digit:]].*[[:digit:]]"'
 
-# some config shortcuts
-alias confighelp='./configure --help=short'
-alias configmake='./configure && make'
-
 # Suffix aliases
 alias -s pdf=evince
 alias -s ps=evince
