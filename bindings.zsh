@@ -103,19 +103,6 @@ zle -N bracketed-paste bracketed-paste-magic
 bindkey $key[F1] run-help
 bindkey -M vicmd "K" run-help
 
-
-# MISC : If command line empty show bookmarks, else bookmark command
-function zaw-bookmark-wrapper() {
-    if [ "$BUFFER" = "" ]; then
-         zaw-bookmark
-    else
-        zaw-bookmark-add-buffer
-    fi
-}
-
-zle -N zaw-bookmark-wrapper
-bindkey "^A"  zaw-bookmark-wrapper
-
 bindkey ' ' magic-space  # also do history expansion on space
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=13'
