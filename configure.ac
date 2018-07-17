@@ -1,6 +1,5 @@
 AC_INIT(zsh, 1.0)
 AM_INIT_AUTOMAKE([foreign])
-AC_CHECK_PROG(PRINT,cat)
 
 AC_CONFIG_MACRO_DIR([m4])
 
