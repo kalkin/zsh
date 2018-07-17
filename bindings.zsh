@@ -3,10 +3,6 @@
 
 bindkey -v  #vi keybindings
 
-autoload -U history-search-end
-# History completion on pgup and pgdown
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
 typeset -g -A key
 
 key[F1]='^[OP'
@@ -104,6 +100,3 @@ bindkey "^P" zaw-applications
 
 bindkey '\e' vi-cmd-mode
 bindkey 'jj' vi-cmd-mode
-bindkey "^j" history-beginning-search-backward-end
-bindkey "^k" history-beginning-search-forward-end
-
