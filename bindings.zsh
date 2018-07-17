@@ -114,7 +114,6 @@ bindkey '^g' end-of-line
 zstyle ':completion:*' completer _oldlist _complete
 
 bindkey "^X" zaw
-bindkey $key[F2]  zaw-zsh-config
 bindkey $key[F12] zaw-process
 bindkey "^ " zaw-dirs
 bindkey "^r" zaw-history
