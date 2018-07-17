@@ -103,6 +103,7 @@ zle -N bracketed-paste bracketed-paste-magic
 bindkey $key[F1] run-help
 bindkey -M vicmd "K" run-help
 
+autoload -U magic-space
 bindkey ' ' magic-space  # also do history expansion on space
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=13'
