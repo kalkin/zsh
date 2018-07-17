@@ -69,21 +69,6 @@ zstyle ':chpwd:*' recent-dirs-max 1000
 zstyle ':chpwd:*' recent-dirs-default yes
 
 
-# Help command
-# Unlike bash, zsh does not enable a built in help command. To use help in zsh,
-# add following to your zshrc:
-autoload -Uz run-help
-#unalias run-help
-#function help() {
-    ## helper function to not display hub(1) man page
-    #if [ "$1"="git" ]; then
-        #man "$@"
-    #else
-        #run-help "$@"
-    #fi
-#}
-#compdef '_dispatch man man' help
-
 # Make completion (yeah im getting fucking lazy)
 compile=(install clean remove uninstall deinstall)
 compctl -k compile make
