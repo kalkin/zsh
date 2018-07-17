@@ -3,8 +3,12 @@ AM_INIT_AUTOMAKE([foreign])
 AC_CHECK_PROG(PRINT,cat)
 
 AC_CONFIG_MACRO_DIR([m4])
+
 BKG_ENABLE_XDG
 AM_CONDITIONAL([ENABLE_XDG], [test x"$enable_xdg" = x"yes"])
+
+AC_CHECK_PROG([MAN2ROFF], [md2man-roff], [md2man-roff], [''])
+AM_CONDITIONAL([MANGENERATOR], [test "$MAN2ROFF" = "md2man-roff"])
 
 test "$prefix" = 'NONE' && prefix=/usr/local
 

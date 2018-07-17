@@ -75,5 +75,3 @@ sourcing the main file will be added to the end of your `.zshrc`
 This config started as a fork of Christian `strcat` Schneider's zsh config.
 Special thanks to him at this point.
 
-<!-- vim: ft=markdown
--->
