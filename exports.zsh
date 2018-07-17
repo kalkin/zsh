@@ -23,11 +23,6 @@ fi
 export MAIL=mail@kalkin.de
 export PGPPATH=$HOME/.gnupg
 
-export LANG="en_US.utf8"
-export LC_TIME="de_DE.utf8"
-export LC_MESSAGES="en_US.utf8"
-export LC_ALL=""
-
 HELPDIR=
 for d in /usr/share/zsh/*; do 
     if [ -d "$d/help" ]; then
