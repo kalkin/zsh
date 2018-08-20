@@ -17,7 +17,7 @@ for f in @BKG_INSTALL_DIR@/*.zsh; do
     source $f
 done
 
-if [ ! -z "$(ls -A $HOME/.config/zsh)" ]; then
+if [ -d $HOME/.config/zsh ]; then
     for f in $HOME/.config/zsh/*.zsh; do
         source $f
     done
