@@ -3,7 +3,6 @@ alias -s tex=$EDITOR
 alias -s php=$EDITOR
 alias -s java=$EDITOR
 alias -s pl=$EDITOR
-alias -s py=$EDITOR
 
 alias -s html=$BROWSER
 
