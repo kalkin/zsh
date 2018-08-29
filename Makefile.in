@@ -944,7 +944,7 @@ uninstall-man: uninstall-man1
 @MANGENERATOR_TRUE@man/zsh-bkg.1: README.md
 @MANGENERATOR_TRUE@	md2man-roff @srcdir@/README.md > @srcdir@/man/zsh-bkg.1
 @MANGENERATOR_FALSE@man/zsh-bkg.1: README.md
-@MANGENERATOR_FALSE@	$(error Please install mdl2man via 'gem install mdl2man' for generating manpages)
+@MANGENERATOR_FALSE@	$(error Please install md2man via 'gem install md2man' for generating manpages)
 
 @ENABLE_XDG_TRUE@.zshrc: zshenv
 @ENABLE_XDG_TRUE@	cp zshenv .zshrc

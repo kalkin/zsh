@@ -11,7 +11,7 @@ man/zsh-bkg.1: README.md
 	md2man-roff @srcdir@/README.md > @srcdir@/man/zsh-bkg.1
 else
 man/zsh-bkg.1: README.md
-	$(error Please install mdl2man via 'gem install mdl2man' for generating manpages)
+	$(error Please install md2man via 'gem install md2man' for generating manpages)
 endif
 
 
