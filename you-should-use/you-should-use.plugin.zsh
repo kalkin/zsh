@@ -9,6 +9,13 @@ YELLOW='\e[33m'
 DEFAULT='\e[39m'
 DEFAULT_MESSAGE_FORMAT="${BOLD}${YELLOW}Found existing %alias_type for \"%command\". You should use: \"%alias\"${NONE}${DEFAULT}"
 
+YSU_WHITELIST=()
+
+
+function _is_whitelisted() {
+    [[ ${YSU_WHITELIST[(ie)$1]} -le ${#YSU_WHITELIST} ]]
+}
+
 
 function ysu_message() {
   local MESSAGE=""
