@@ -9,11 +9,41 @@
                              |___/                                  |___/           |___/                   |___/
 ```
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Zshell Fast Syntax Highlighting](#zshell-fast-syntax-highlighting)
+- [Updates (2018)](#updates-2018)
+- [Installation](#installation)
+    - [Zplugin](#zplugin)
+    - [Antigen](#antigen)
+    - [Oh-My-Zsh](#oh-my-zsh)
+    - [Zgen](#zgen)
+- [Customization](#customization)
+  - [Secondary Theme](#secondary-theme)
+  - [Custom Working Directory](#custom-working-directory)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Zshell Fast Syntax Highlighting
 
 60 commits that optimized standard `zsh-syntax-highlighting` to the point that it can edit `10 kB`
 functions with `zed`/`vared` (optimizations done in
-[history-search-multi-word](https://github.com/zdharma/history-search-multi-word)). Also added:
+[history-search-multi-word](https://github.com/zdharma/history-search-multi-word)).
+
+Fast-Syntax-Highlighting has great granularity and a few crucial extensions, compare:
+
+![image](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/highlight-much.png)
+
+to regular:
+
+![image](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/highlight-less.png)
+
+It can be seen, FSH highlights `-c` contents (thanks to chroma-architecture), `(( ))` contents (thanks to
+math-mode highlighting – yes it works in `zcalc`), `eval` contents (thanks to recursive highlighting), etc.
+
+Other extensions:
 
 1. Variable highlighting
 
@@ -35,7 +65,8 @@ functions with `zed`/`vared` (optimizations done in
 
 6. Paths from `$CDPATH` aren't colorized unless the command is `cd`
 
-7. Five 256-color themes, switched with `fast-theme {theme-name}` (also try `-t` option to obtain the below snippet):
+7. Five 256-color themes, switched with `fast-theme {theme-name}` (also try `-t` option to obtain the below snippet).
+   also note the ideal brackets highlighting in the `sidx=...`, `eidx=...` lines, and math-mode highlighting in `$(( ))`:
 
     ![image](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/theme.png)
 
@@ -48,16 +79,72 @@ functions with `zed`/`vared` (optimizations done in
     ![image](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/eval_cmp.png)
 
 10. New architecture – **chroma functions** – highlighting that is **specific** for given command. There
-    are two chromas currently, for `git` (verifies correct remote & branch, also see below)  and `grep`
-    (highlights regular expression):
+    are chromas for `git` (verifies correct remote & branch, also see below), `grep` (highlights regular
+    expression):
 
     ![image](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/git_chroma.png)
+
+    Also for `awk`, `make`, `perl`, `printf`, `ruby`, `sh`, `source` and more. The chromas can be considered
+    "plugins" for specific commands.
+
+11. Ideal highlighting of brackets (pairing, etc.) – no quoting can disturb the result:
+
+    ![image](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/brackets.gif)
+
+    Add `FAST_HIGHLIGHT[use_brackets]=1` to `.zshrc` to enable (**2018-07-31**: not needed anymore, this highlighting is active by default and can be disabled).
+
+12. Highlighting of here-string:
+
+    ![image](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/herestring.png)
+
+13. Highlighting of for-loop, also with support for the *alternate syntax* (i.e. braces instead of do...done):
+
+    ![sshot](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/for-loop-cmp.png)
 
 Performance differencies can be observed at Asciinema recording, where `10 kB` function is being edited:
 
 [![asciicast](https://asciinema.org/a/112367.png)](https://asciinema.org/a/112367)
 
 # Updates (2018)
+**2018-08-02**
+
+Global aliases are now supported:
+
+![image](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/global-alias.png)
+
+**2018-08-01**
+
+Hint – how to customize styles when using Zplugin and turbo mode:
+
+```zsh
+zplugin ice wait"1" atload"set_fast_theme"
+zplugin light zdharma/fast-syntax-highlighting
+
+set_fast_theme() {
+    FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}paired-bracket]='bg=blue'
+    FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}bracket-level-1]='fg=red,bold'
+    FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}bracket-level-2]='fg=magenta,bold'
+    FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}bracket-level-3]='fg=cyan,bold'
+}
+```
+
+If you have set theme before an update of styles (e.g. recent addition of bracket highlighting)
+then please repeat `fast-theme {theme}` call to regenerate theme files. (**2018-08-09**: FSH
+now has full user-theme support, refer to [appropriate section of README](#customization)).
+
+**2018-07-30**
+
+Ideal highlighting of brackets (pairing, etc.) – no quoting can disturb the result:
+
+![image](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/brackets.gif)
+
+`FAST_HIGHLIGHT[use_brackets]=1` to enable this feature (**2018-07-31**: not needed anymore, this highlighting is active by default).
+
+**2018-07-21**
+
+Chroma architecture now supports aliases. You can have `alias mygit="git commit"` and when `mygit`
+will be invoked everything will work as expected (Git chroma will be ran).
+
 **2018-07-11**
 
 There were problems with Ctrl-C not working when using FSH. After many days I've found a fix
@@ -157,7 +244,7 @@ them (like the animation below shows) to change colors.
 
 ![animation](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/math.gif)
 
-## Installation
+# Installation
 
 **The plugin is "standalone"**, which means that only sourcing it is needed. So to
 install, unpack `fast-syntax-highlighting` somewhere and add
@@ -200,3 +287,80 @@ cloning the plugin for you automatically the next time you start zsh.
 
 Add `zgen load zdharma/fast-syntax-highlighting` to your `.zshrc` file in the same place you're doing
 your other `zgen load` calls in.
+
+# Customization
+
+`fast-theme` tool is used to select a theme. There are 6 shipped themes, they can be listed with `fast-theme -l`.
+Themes are basic [INI files](https://github.com/zdharma/fast-syntax-highlighting/tree/master/themes) where each
+key is a *style*.
+Besides shipped themes, user can point this tool to any other theme, by simple `fast-theme ~/mytheme.ini`. To
+obtain template to work on when creating own theme, issue `fast-theme --copy-shipped-theme {theme-name}`.
+
+To alter just a few styles and not create a whole new theme, use **overlay**. What is overlay? It is in the same
+format as full theme, but can have only a few styles defined, and these styles will overwrite styles in main-theme.
+Example overlay file:
+
+```ini
+; overlay.ini
+[base]
+commandseparator = yellow,bold
+comment          = 17
+
+[command-point]
+function       = green
+command        = 180
+```
+
+File name `overlay.ini` is treated specially.
+
+When specifing path, following short-hands can be used:
+
+```
+XDG:    = ~/.config/fsh (respects $XDG_CONFIG_HOME env var)
+LOCAL:  = /usr/local/share/fsh/
+HOME:   = ~/.fsh/
+OPT:    = /opt/local/share/fsh/
+```
+
+So for example, issue `fast-theme XDG:overlay` to load `~/.config/fsh/overlay.ini` as overlay. The `.ini`
+extension is optional.
+
+## Secondary Theme
+
+Each theme has key `secondary`, e.g. for theme `free`:
+
+```ini
+; free.ini
+[base]
+default          = none
+unknown-token    = red,bold
+; ...
+; ...
+; ...
+secondary        = zdharma
+```
+
+Secondary theme (`zdharma` in the example) will be used for highlighting of argument for `eval`
+and of `$( ... )` interior (i.e. of interior of command substitution). Basically, recursive
+highlighting uses alternate theme to make the highlighted code distinct:
+
+![sshot](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/cmdsubst.png)
+
+In the above screen-shot the interior of `$( ... )` uses different colors than the rest of the
+code. Example for `eval`:
+
+![image](https://raw.githubusercontent.com/zdharma/fast-syntax-highlighting/master/images/eval_cmp.png)
+
+First line doesn't use recursive highlighting, highlights `eval` argument as regular string.
+Second line switches theme to `zdharma` and does full recursive highlighting of eval argument.
+
+## Custom Working Directory
+
+Set `$FAST_WORK_DIR` before loading the plugin to have e.g. processed theme files (ready to
+load, in Zsh format, not INI) kept under specified location. This is handy if e.g. you install
+Fast-Syntax-Highlighting system-wide (e.g. from AUR on ArchLinux) and want to have per-user
+theme setup.
+
+You can use "~" in the path, e.g. `FAST_WORK_DIR=~/.fsh` and also the `XDG:`, `LOCAL:`, `OPT:`,
+etc. short-hands, so e.g. `FAST_WORK_DIR=XDG` or `FAST_WORK_DIR=XDG:` is allowed (in this case
+it will be changed to `$HOME/.config/fsh` by default by fast-syntax-highlighting loader).
