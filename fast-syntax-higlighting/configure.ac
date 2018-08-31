@@ -1,4 +1,4 @@
-AC_INIT(fast-syntax-highlighting, 1.23)
+AC_INIT(fast-syntax-highlighting, 1.26)
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_MACRO_DIR([m4])
 BKG_ENABLE_XDG
