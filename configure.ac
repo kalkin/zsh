@@ -1,4 +1,4 @@
-AC_INIT(zsh, 2.1)
+AC_INIT(zsh, 2.1.1)
 AM_INIT_AUTOMAKE([foreign])
 
 AC_CONFIG_MACRO_DIR([m4])
