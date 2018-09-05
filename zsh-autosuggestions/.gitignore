@@ -1,5 +1,6 @@
 # automake(1)
 
+Makefile
 Makefile.in
 /ar-lib
 /mdate-sh
