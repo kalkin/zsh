@@ -23,7 +23,7 @@ key[PageUp]='^[[5~'
 key[Delete]='^[[3~'
 key[PageDown]='^[[6~'
 
-if [[ $TERM == screen* ]]; then
+if [[ $TERM == screen* || $TERM == st* ]]; then
     key[Home]='^[[1~'
     key[End]='^[[4~'
     key[Up]='^[OA'
