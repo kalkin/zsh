@@ -68,9 +68,9 @@ prompt_construct_second_line_left(){
 
     # only show the username if it's not kalkin
     if [[ "$USERNAME" != "user" && "$USERNAME" != "kalkin" ]]; then
-        user_machine_context="%F{blue}%n%f%F{green}@%f%F{blue}%m%f:"
+        user_machine_context="%F{38;139;219}%n%f%F{green}@%f%F{38;139;219}%m%f:"
     else 
-        user_machine_context="%F{blue}%m%f:"
+        user_machine_context="%F{38;139;219}%m%f:"
     fi
     second_line_left=$prompt_gfx_bbox
     second_line_left+=$user_machine_context
