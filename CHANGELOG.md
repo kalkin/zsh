@@ -1,13 +1,25 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+### Unreleased - 2018-09-14
 
 ### Added
-- Support building without Automake installed
+
+- Bindings add support for st terminal
+
+### Changed
+
+- gitignore(5) files to contain all automake(1) related files
+- LS_COLORS to be compatible with solarized st(1)
+
+### Removed
+
+- committed autotools files
+- Makefile from autotools enabled projects
 
 ## [2.0.0] - 2018-07-17
 
