@@ -36,9 +36,9 @@
 BLK                   38;5;68
 CAPABILITY            38;5;17
 CHR                   38;5;113;1
-DIR                   38;5;30
+DIR                   1;94
 DOOR                  38;5;127
-EXEC                  38;5;208;1
+EXEC                  31
 FIFO                  38;5;126
 FILE                  0
 LINK                  target
@@ -48,7 +48,7 @@ MULTIHARDLINK         38;5;222;1
 #NORMAL                38;5;254
 NORMAL                0
 ORPHAN                48;5;196;38;5;232;1
-OTHER_WRITABLE        38;5;220;1
+OTHER_WRITABLE        93
 SETGID                48;5;3;38;5;0
 SETUID                38;5;220;1;3;100;1
 SOCK                  38;5;197
@@ -57,43 +57,45 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 
 *LS_COLORS 48;5;89;38;5;197;1;3;4;7 # :-)
 # }}}
-# documents {{{1
-*README               38;5;220;1
-*README.rst           38;5;220;1
-*LICENSE              38;5;220;1
-*COPYING              38;5;220;1
-*INSTALL              38;5;220;1
-*COPYRIGHT            38;5;220;1
-*AUTHORS              38;5;220;1
-*HISTORY              38;5;220;1
-*CONTRIBUTORS         38;5;220;1
-*PATENTS              38;5;220;1
-*VERSION              38;5;220;1
-*NOTICE               38;5;220;1
-*CHANGES              38;5;220;1
-.log                  38;5;190
+# documents {{{
+*README               101;37
+*README.rst           101;37
+*README.md            101;37
+*LICENSE              101;37
+*COPYING              101;37
+*INSTALL              101;37
+*COPYRIGHT            101;37
+*AUTHORS              101;37
+*HISTORY              101;37
+*CONTRIBUTORS         101;37
+*PATENTS              101;37
+*VERSION              101;37
+*NOTICE               101;37
+*CHANGES              101;37
+.log                  3;32
 # plain-text {{{2
-.txt                  38;5;253
+.txt                  0
 # markup {{{2
-.etx                  38;5;184
-.info                 38;5;184
-.markdown             38;5;184
-.md                   38;5;184
-.mkd                  38;5;184
-.nfo                  38;5;184
-.pod                  38;5;184
-.tex                  38;5;184
-.textile              38;5;184
+.etx                  101;37
+.info                 101;37
+.markdown             101;37
+.md                   101;37
+.rst                  101;37
+.mkd                  101;37
+.nfo                  101;37
+.pod                  101;37
+.tex                  101;37
+.textile              101;37
 # key-value, non-relational data {{{2
-.json                 38;5;178
-.msg                  38;5;178
-.pgn                  38;5;178
-.rss                  38;5;178
-.xml                  38;5;178
-.yaml                 38;5;178
-.yml                  38;5;178
-.RData                38;5;178
-.rdata                38;5;178
+.json                 33
+.msg                  33
+.pgn                  33
+.rss                  33
+.xml                  33
+.yaml                 33
+.yml                  33
+.RData                33
+.rdata                33
 # }}}
 # binary {{{2
 .cbr                  38;5;141
@@ -123,7 +125,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 #   Powerpoint show with enabled macros
 .pptsm                38;5;166;4
 # spreadsheet {{{3
-.csv                  38;5;78
+.csv                  3;33
 #   Open document spreadsheet
 .ods                  38;5;112
 .xla                  38;5;76
@@ -159,14 +161,14 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .gitmodules           38;5;240
 
 # shell {{{2
-.awk                  38;5;172
-.bash                 38;5;172
-.bat                  38;5;172
-.BAT                  38;5;172
-.sed                  38;5;172
-.sh                   38;5;172
-.zsh                  38;5;172
-.vim                  38;5;172
+.awk                  3;95
+.bash                 3;95
+.bat                  3;95
+.BAT                  3;95
+.sed                  3;95
+.sh                   3;95
+.zsh                  3;95
+.vim                  3;95
 
 # interpreted {{{2
 .ahk                  38;5;41
@@ -177,88 +179,88 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .PL                   38;5;160
 .t                    38;5;114
 # sql
-.msql                 38;5;222
-.mysql                38;5;222
-.pgsql                38;5;222
-.sql                  38;5;222
+.msql                 3;94
+.mysql                3;94
+.pgsql                3;94
+.sql                  3;94
 #   Tool Command Language
 .tcl                  38;5;64;1
 # R language
 .r                    38;5;49
 .R                    38;5;49
 # GrADS script
-.gs                   38;5;81
+.gs                   34
 
 # compiled {{{2
 #
 #   assembly language
-.asm                  38;5;81
+.asm                  34
 #   LISP
-.cl                   38;5;81
-.lisp                 38;5;81
+.cl                   34
+.lisp                 34
 #   lua
-.lua                  38;5;81
+.lua                  34
 #   Moonscript
-.moon                 38;5;81
+.moon                 34
 #   C
-.c                    38;5;81
-.C                    38;5;81
-.h                    38;5;110
-.H                    38;5;110
-.tcc                  38;5;110
+.c                    34
+.C                    34
+.h                    36
+.H                    36
+.tcc                  36
 #   C++
-.c++                  38;5;81
-.h++                  38;5;110
-.hpp                  38;5;110
-.hxx                  38;5;110
-.ii                   38;5;110
+.c++                  34
+.h++                  36
+.hpp                  36
+.hxx                  36
+.ii                   36
 #   method file for Objective C
-.M                    38;5;110
-.m                    38;5;110
+.M                    36
+.m                    36
 #   Csharp
-.cc                   38;5;81
-.cs                   38;5;81
-.cp                   38;5;81
-.cpp                  38;5;81
-.cxx                  38;5;81
+.cc                   34
+.cs                   34
+.cp                   34
+.cpp                  34
+.cxx                  34
 #   Crystal
-.cr                   38;5;81
+.cr                   34
 #   Google golang
-.go                   38;5;81
+.go                   34
 #   fortran
-.f                    38;5;81
-.for                  38;5;81
-.ftn                  38;5;81
+.f                    34
+.for                  34
+.ftn                  34
 #   pascal
-.s                    38;5;110
-.S                    38;5;110
+.s                    36
+.S                    36
 #   Rust
-.rs                   38;5;81
+.rs                   34
 #   Swift
 .swift                38;5;219
 #   ?
-.sx                   38;5;81
+.sx                   34
 #   interface file in GHC - https://github.com/trapd00r/LS_COLORS/pull/9
-.hi                   38;5;110
+.hi                   36
 #   haskell
-.hs                   38;5;81
-.lhs                  38;5;81
+.hs                   34
+.lhs                  34
 
 # binaries {{{2
 # compiled apps for interpreted languages
 .pyc                  38;5;240
 # }}}
 # html {{{2
-.css                  38;5;125;1
-.less                 38;5;125;1
-.sass                 38;5;125;1
-.scss                 38;5;125;1
-.htm                  38;5;125;1
-.html                 38;5;125;1
-.jhtm                 38;5;125;1
-.mht                  38;5;125;1
-.eml                  38;5;125;1
-.mustache             38;5;125;1
+.css                  3;91
+.less                 3;91
+.sass                 3;91
+.scss                 3;91
+.htm                  3;91
+.html                 3;91
+.jhtm                 3;91
+.mht                  3;91
+.eml                  3;91
+.mustache             3;91
 # }}}
 # java {{{2
 .coffee               38;5;074;1
@@ -269,60 +271,60 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .jsp                  38;5;074;1
 # }}}
 # php {{{2
-.php                  38;5;81
+.php                  34
 #   CakePHP view scripts and helpers
-.ctp                  38;5;81
+.ctp                  34
 #   Twig template engine
-.twig                 38;5;81
+.twig                 34
 # }}}
 # vb/a {{{2
-.vb                   38;5;81
-.vba                  38;5;81
-.vbs                  38;5;81
+.vb                   34
+.vba                  34
+.vbs                  34
 # 2}}}
 # Build stuff {{{2
 *Dockerfile           38;5;155
 .dockerignore         38;5;240
-*Makefile             38;5;155
+*Makefile             1;91
 *MANIFEST             38;5;243
 *pm_to_blib           38;5;240
 # automake
-.am                   38;5;242
-.in                   38;5;242
-.hin                  38;5;242
-.scan                 38;5;242
-.m4                   38;5;242
-.old                  38;5;242
-.out                  38;5;242
-.SKIP                 38;5;244
+.am                   42;37
+.in                   42;37
+.hin                  42;37
+.scan                 42;37
+.m4                   42;37
+.old                  42;37
+.out                  42;37
+.SKIP                 42;37
 # }}}
 # patch files {{{2
-.diff                 48;5;197;38;5;232
-.patch                48;5;197;38;5;232;1
+.diff                 32
+.patch                32
 #}}}
 # graphics {{{1
-.bmp                  38;5;97
-.tiff                 38;5;97
-.tif                  38;5;97
-.TIFF                 38;5;97
-.cdr                  38;5;97
-.gif                  38;5;97
-.ico                  38;5;97
-.jpeg                 38;5;97
-.JPG                  38;5;97
-.jpg                  38;5;97
-.nth                  38;5;97
-.png                  38;5;97
-.psd                  38;5;97
-.xpm                  38;5;97
+.bmp                  91
+.tiff                 91
+.tif                  91
+.TIFF                 91
+.cdr                  91
+.gif                  91
+.ico                  91
+.jpeg                 91
+.JPG                  91
+.jpg                  91
+.nth                  91
+.png                  91
+.psd                  91
+.xpm                  91
 # }}}
 # vector {{{1
-.ai                   38;5;99
-.eps                  38;5;99
-.epsf                 38;5;99
-.drw                  38;5;99
-.ps                   38;5;99
-.svg                  38;5;99
+.ai                   101
+.eps                  101
+.epsf                 101
+.drw                  101
+.ps                   101
+.svg                  101
 # }}}
 # video {{{1
 .avi                  38;5;114
@@ -627,7 +629,6 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .pm                   38;5;7
 .rb                   38;5;7
 .rdf                  38;5;7
-.rst                  38;5;7
 .ru                   38;5;7
 .sch                  38;5;7
 .sty                  38;5;7
@@ -693,6 +694,7 @@ TERM screen-bce
 TERM screen-w
 TERM screen.linux
 TERM screen.rxvt
+TERM st-256color
 TERM terminator
 TERM vt100
 TERM xterm
