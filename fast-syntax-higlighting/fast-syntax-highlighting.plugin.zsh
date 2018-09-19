@@ -299,7 +299,8 @@ autoload -Uz -- is-at-least fast-theme fast-read-ini-file -fast-run-git-command 
 autoload -Uz -- chroma/-git.ch chroma/-example.ch chroma/-grep.ch chroma/-perl.ch chroma/-make.ch \
                 chroma/-awk.ch chroma/-vim.ch chroma/-source.ch chroma/-sh.ch chroma/-docker.ch \
                 chroma/-autoload.ch chroma/-ssh.ch chroma/-scp.ch chroma/-which.ch chroma/-printf.ch \
-                chroma/-ruby.ch
+                chroma/-ruby.ch chroma/-whatis.ch chroma/-alias.ch chroma/-subcommand.ch \
+                chroma/-autorandr.ch chroma/-nmcli.ch chroma/-fast-theme.ch chroma/-node.ch
 source "${ZERO:h}/fast-highlight"
 source "${ZERO:h}/fast-string-highlight"
 
@@ -311,5 +312,7 @@ zstyle -s :plugin:fast-syntax-highlighting theme __fsyh_theme
     FAST_HIGHLIGHT_STYLES[variable]="none"
 
 unset __fsyh_theme
+
+alias fsh-alias=fast-theme
 
 -fast-highlight-fill-option-variables
