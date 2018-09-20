@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-export YSU_VERSION='0.4.4'
+export YSU_VERSION='0.5.0'
 
 BOLD='\e[1m'
 NONE='\e[0m'
@@ -140,11 +140,18 @@ function _check_aliases() {
   fi
 }
 
-autoload -Uz add-zsh-hook
-add-zsh-hook -D preexec _check_aliases
-add-zsh-hook -D preexec _check_global_aliases
-add-zsh-hook -D preexec _check_git_aliases
+function disable_you_should_use() {
+    add-zsh-hook -D preexec _check_aliases
+    add-zsh-hook -D preexec _check_global_aliases
+    add-zsh-hook -D preexec _check_git_aliases
+}
 
-add-zsh-hook preexec _check_aliases
-add-zsh-hook preexec _check_global_aliases
-add-zsh-hook preexec _check_git_aliases
+function enable_you_should_use() {
+    disable_you_should_use   # Delete any possible pre-existing hooks
+    add-zsh-hook preexec _check_aliases
+    add-zsh-hook preexec _check_global_aliases
+    add-zsh-hook preexec _check_git_aliases
+}
+
+autoload -Uz add-zsh-hook
+enable_you_should_use
