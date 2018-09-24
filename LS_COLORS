@@ -263,12 +263,12 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .mustache             3;91
 # }}}
 # java {{{2
-.coffee               38;5;074;1
-.java                 38;5;074;1
-.js                   38;5;074;1
-.jsm                  38;5;074;1
-.jsm                  38;5;074;1
-.jsp                  38;5;074;1
+.coffee               34
+.java                 34
+.js                   34
+.jsm                  34
+.jsm                  34
+.jsp                  34
 # }}}
 # php {{{2
 .php                  34
