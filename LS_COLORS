@@ -98,12 +98,12 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .rdata                33
 # }}}
 # binary {{{2
-.cbr                  38;5;141
-.cbz                  38;5;141
-.chm                  38;5;141
-.djvu                 38;5;141
-.pdf                  38;5;141
-.PDF                  38;5;141
+.cbr                  33;4
+.cbz                  33;4
+.chm                  33;4
+.djvu                 33;4
+.pdf                  33;4
+.PDF                  33;4
 # words {{{3
 .docm                 38;5;111;4
 .doc                  38;5;111
