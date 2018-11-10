@@ -34,6 +34,7 @@ if (( __first_call )); then
     FAST_HIGHLIGHT[chroma-git-checkout-new]=0
     FAST_HIGHLIGHT[chroma-git-fetch-multiple]=0
     FAST_HIGHLIGHT[chroma-git-branch-change]=0
+    FAST_HIGHLIGHT[chroma-git-option-with-argument-active]=0
     return 1
 else
     # Following call, i.e. not the first one
@@ -46,17 +47,56 @@ else
         FAST_HIGHLIGHT[chrome-git-occurred-double-hyphen]=1
         __style=${FAST_THEME_NAME}double-hyphen-option
     elif [[ "$__wrd" = -* && ${FAST_HIGHLIGHT[chroma-git-got-subcommand]} -eq 0 ]]; then
+        # Options occuring before a subcommand
+        if (( FAST_HIGHLIGHT[chroma-git-option-with-argument-active] == 0 )); then
+            if [[ "$__wrd" = "-C" ]]; then
+                FAST_HIGHLIGHT[chroma-git-option-with-argument-active]=2
+            elif [[ "$__wrd" = "-c" ]]; then
+                FAST_HIGHLIGHT[chroma-git-option-with-argument-active]=1
+            fi
+        fi
         return 1
     else
-        if (( FAST_HIGHLIGHT[chroma-git-got-subcommand] == 0 )); then
+        # If at e.g. '>' or destination/source spec (of the redirection)
+        if (( in_redirection > 0 )); then
+            return 1
+        # If at main git option taking argument in a separate word (-C and -c)
+        elif (( FAST_HIGHLIGHT[chroma-git-option-with-argument-active] > 0 && \
+            0 == FAST_HIGHLIGHT[chroma-git-got-subcommand] ))
+        then
+            # Remember the value
+            __idx2=${FAST_HIGHLIGHT[chroma-git-option-with-argument-active]}
+            # Reset the is-argument mark-field
+            FAST_HIGHLIGHT[chroma-git-option-with-argument-active]=0
+
+            (( __idx2 == 2 )) && return 1
+            # Other options' args (i.e. arg of -c) aren't routed to the big-loop
+            # as they aren't paths and aren't handled in any special way there
+        elif (( FAST_HIGHLIGHT[chroma-git-got-subcommand] == 0 )); then
             FAST_HIGHLIGHT[chroma-git-got-subcommand]=1
             FAST_HIGHLIGHT[chroma-git-subcommand]="$__wrd"
             if (( __start_pos >= 0 )); then
                 # if subcommand exists
-                if git help -a | grep "^  [a-z]" | tr ' ' '\n' | grep -x "$__wrd" > /dev/null || git config "alias.$__wrd" > /dev/null; then
+                -fast-run-command "git help -a" chroma-git-subcmd-list "" 10
+                # (s: :) will split on every space, but because the expression
+                # isn't double-quoted, the empty elements will be eradicated
+                # Some further knowledge-base: s-flag is special, it skips
+                # empty elements and creates an array (not a concatenated
+                # string) even when double-quoted. The normally needed @-flag
+                # that breaks the concaetnated string back into array in case
+                # of double-quoting has additional effect for s-flag: it
+                # finally blocks empty-elements eradication.
+                __lines_list=( ${(M)${(s: :)${(M)__lines_list:#  [a-z]*}}:#$__wrd} )
+                if (( ${#__lines_list} > 0 )); then
                     __style=${FAST_THEME_NAME}subcommand
                 else
-                    __style=${FAST_THEME_NAME}incorrect-subtle
+                    -fast-run-command "git alias" chroma-git-alias-list "" 10
+                    __lines_list=( ${(M)__lines_list:#${__wrd}[[:space:]]#=*} )
+                    if (( ${#__lines_list} > 0 )); then
+                        __style=${FAST_THEME_NAME}subcommand
+                    else
+                        __style=${FAST_THEME_NAME}incorrect-subtle
+                    fi
                 fi
             fi
             # The counter includes the subcommand itself
@@ -125,8 +165,8 @@ else
                         (( __start=__start_pos-${#PREBUFFER}, __end=__end_pos-${#PREBUFFER}, __start >= 0 )) && \
                             reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}double-quoted-argument]}")
                     fi
-                    if (( ${#__wrd} > 72 )); then
-                        for (( __idx1 = 1, __idx2 = 1; __idx1 <= 72; ++ __idx1, ++ __idx2 )); do
+                    if (( ${#__wrd} > 50 )); then
+                        for (( __idx1 = 1, __idx2 = 1; __idx1 <= 50; ++ __idx1, ++ __idx2 )); do
                             while [[ "${__arg[__idx2]}" != "${__wrd[__idx1]}" ]]; do
                                 (( ++ __idx2 ))
                                 (( __idx2 > __asize )) && { __idx2=-1; break; }
@@ -163,6 +203,8 @@ else
                 || [[ "${FAST_HIGHLIGHT[chroma-git-subcommand]}" = "diff" ]] \
                 || [[ "${FAST_HIGHLIGHT[chroma-git-subcommand]}" = "reset" ]] \
                 || [[ "${FAST_HIGHLIGHT[chroma-git-subcommand]}" = "rebase" ]]; then
+
+                # if doing `git checkout -b ...'
                 if [[ "$__wrd" = "-b" && "${FAST_HIGHLIGHT[chroma-git-subcommand]}" = "checkout" ]]; then
                     FAST_HIGHLIGHT[chroma-git-checkout-new]=1
                     __style=${FAST_THEME_NAME}single-hyphen-option
@@ -233,6 +275,53 @@ else
                     fi
                 else
                     return 1
+                fi
+            elif [[ "${FAST_HIGHLIGHT[chroma-git-subcommand]}" = "tag" ]]; then
+                if [[ "${FAST_HIGHLIGHT[chroma-git-option-with-argument-active]}" -le 0 ]]; then
+                    if [[ "$__wrd" = (-u|-m) ]]; then
+                        FAST_HIGHLIGHT[chroma-git-option-with-argument-active]=1
+                    elif [[ "$__wrd" = "-F" ]]; then
+                        FAST_HIGHLIGHT[chroma-git-option-with-argument-active]=2
+                    elif [[ "$__wrd" = "-d" ]]; then
+                        FAST_HIGHLIGHT[chroma-git-option-with-argument-active]=3
+                    elif [[ "$__wrd" = (--contains|--no-contains|--points-at|--merged|--no-merged) ]]; then
+                        FAST_HIGHLIGHT[chroma-git-option-with-argument-active]=4
+                    fi
+                    if [[ "$__wrd" != -* ]]; then
+                        (( FAST_HIGHLIGHT[chroma-git-counter] += 1, __idx1 = FAST_HIGHLIGHT[chroma-git-counter] ))
+                        if [[ ${FAST_HIGHLIGHT[chroma-git-counter]} -eq 2 ]]; then
+                            -fast-run-git-command "git for-each-ref --format='%(refname:short)' refs/heads" "chroma-git-branches" "refs/heads"
+                            -fast-run-git-command "+git tag" "chroma-git-tags" ""
+                            [[ -n ${__lines_list[(r)$__wrd]} ]] && __style=${FAST_THEME_NAME}incorrect-subtle
+                        elif [[ ${FAST_HIGHLIGHT[chroma-git-counter]} -eq 3 ]]; then
+                        fi
+                    else
+                        return 1
+                    fi
+                else
+                    case "${FAST_HIGHLIGHT[chroma-git-option-with-argument-active]}" in
+                        (1) 
+                            __style=${FAST_THEME_NAME}optarg-string
+                            ;;
+                        (2)
+                            FAST_HIGHLIGHT[chroma-git-option-with-argument-active]=0
+                            return 1;
+                            ;;
+                        (3)
+                            -fast-run-git-command "git tag" "chroma-git-tags" ""
+                            [[ -n ${__lines_list[(r)$__wrd]} ]] && \
+                                __style=${FAST_THEME_NAME}correct-subtle || \
+                                __style=${FAST_THEME_NAME}incorrect-subtle
+                            ;;
+                        (4)
+                            if git rev-parse --verify --quiet "$__wrd" >/dev/null 2>&1; then
+                                __style=${FAST_THEME_NAME}correct-subtle
+                            else
+                                __style=${FAST_THEME_NAME}incorrect-subtle
+                            fi
+                            ;;
+                    esac
+                    FAST_HIGHLIGHT[chroma-git-option-with-argument-active]=0
                 fi
             else
                 return 1
