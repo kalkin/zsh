@@ -14,6 +14,7 @@ Also supports detection of global and git aliases.
 * `Displaying Results`_
 * `Customising Messages`_
 * `Hardcore Mode`_
+* `Temporarily Disabling Messages`_
 * Contributing_
 * `Running Tests`_
 
@@ -37,7 +38,7 @@ and Git aliases:
 Requirements
 ------------
 
-``you-should-use`` officially supports zsh versions larger than 5.1.
+``you-should-use`` officially supports zsh versions 5.1 onwards.
 
 It is possible the plugin might work on even older versions.
 However they would not have been tested as part of the CI test process.
@@ -162,6 +163,14 @@ it, zsh will refuse to execute that command:
     total 8.0K
     -rw-r--r-- 1 michael users 2.4K Jun 19 20:46 README.md
     -rw-r--r-- 1 michael users  650 Jun 19 20:42 you-should-use.plugin.zsh
+
+
+Temporarily Disabling Messages
+------------------------------
+
+You can temporarily disable you should use by running the command ``disable_you_should_use``.
+
+When you want to re-enable messages, run the command ``enable_you_should_use``.
 
 Contributing
 ------------
