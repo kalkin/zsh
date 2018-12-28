@@ -1,6 +1,26 @@
 Changelog for zsh-you-should-use
 ================================
 
+0.7.3
+-----
+* Fix Default message format conflicting with autoswitch-virtualenv plugin
+
+0.7.2
+-----
+* Use type builtin to check if tput command is available
+
+0.7.1
+-----
+* Suppress error messages showing when tput is not installed
+
+0.7.0
+-----
+* Use tput command instead of raw escape codes
+
+0.6.0
+-----
+* Improved colouring for default message
+
 0.5.1
 -----
 * Minor fixes and updates to README.

@@ -25,15 +25,15 @@ You dont need to do anything. Once it's installed,
 ``zsh-you-should-use`` will let you know if you wrote a command with an
 existing alias.
 
-.. image:: https://imgur.com/kfubO2M.png
+.. image:: img/alias.png
 
 ``you-should-use`` also detects global aliases:
 
-.. image:: https://imgur.com/9EwyPva.png
+.. image:: img/global.png
 
 and Git aliases:
 
-.. image:: https://imgur.com/KHfVGeC.png
+.. image:: img/git.png
 
 Requirements
 ------------
@@ -69,12 +69,11 @@ Zgen_
 
 oh-my-zsh_
 
-Copy this repository to ``$ZSH/custom/plugins``, where ``$ZSH`` is the
-root directory of oh-my-zsh:
-
+Copy this repository to ``$ZSH_CUSTOM/custom/plugins``, where ``$ZSH_CUSTOM``
+is the directory with custom plugins of oh-my-zsh `(read more) <https://github.com/robbyrussell/oh-my-zsh/wiki/Customization/>`_:
 ::
 
-    git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH/custom/plugins/you-should-use
+    git clone https://github.com/MichaelAquilina/zsh-you-should-use.git $ZSH_CUSTOM/plugins/you-should-use
 
 
 Then add this line to your ``.zshrc``
@@ -126,12 +125,12 @@ following to your ``~/.zshrc``:
 
 ::
 
-    export YSU_MESSAGE_FORMAT="\e[31mHey! I found this %alias_type for %command: %alias\e[0m"
+    export YSU_MESSAGE_FORMAT="$(tput setaf 1)Hey! I found this %alias_type for %command: %alias$(tput sgr0)"
 
-``\e[31m`` is the escape code in terminals to use red foreground text. ``\e[0m`` sets
+``$(tput setaf 1)`` generates the escape code terminals use for red foreground text. ``$(tput sgr0)`` sets
 the text back to a normal color.
 
-You can read more about how you can use terminal escape codes here:
+You can read more about how you can use tput and terminal escape codes here:
 http://wiki.bash-hackers.org/scripting/terminalcodes
 
 Hardcore Mode
