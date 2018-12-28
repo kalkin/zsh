@@ -8,6 +8,7 @@ zmodload zsh/zutil 2>/dev/null
 
 emulate -LR zsh
 setopt extendedglob typesetsilent warncreateglobal
+autoload colors; colors
 
 typeset -g FAST_WORK_DIR
 : ${FAST_WORK_DIR:=$FAST_BASE_DIR}
@@ -65,7 +66,8 @@ local MATCH; integer MBEGIN MEND
 }
 
 [[ -n "$OPT_SHOW" ]] && {
-    ( source "$FAST_WORK_DIR"/current_theme.zsh 2>/dev/null && print "Current theme: $FAST_THEME_NAME" || print "No theme is set"; )
+    print -r -- "Currently active theme: ${fg_bold[yellow]}$FAST_THEME_NAME$reset_color"
+    ( source "$FAST_WORK_DIR"/current_theme.zsh 2>/dev/null && print "Main theme (loaded at startup of a session): ${fg_bold[yellow]}$FAST_THEME_NAME$reset_color" || print "No main theme is set"; )
     return 0
 }
 
@@ -167,6 +169,7 @@ map=(
     here-string-text            "- subtle-bg"
     here-string-var             "- back-or-dollar-double-quoted-argument"
     secondary                   "-"
+    recursive-base              "- default"
     case-input                  "- variable"
     case-parentheses            "- reserved-word"
     case-condition              "- correct-subtle"
@@ -199,7 +202,7 @@ order=(
     case-input case-parentheses case-condition correct-subtle incorrect-subtle subtle-bg
     path-to-dir paired-bracket bracket-level-1 bracket-level-2 bracket-level-3
     global-alias subcommand single-sq-bracket double-sq-bracket double-paren
-    optarg-string optarg-number
+    optarg-string optarg-number recursive-base
 )
 
 [[ -n "$OPT_VERBOSE" ]] && print "Number of styles available for customization: ${#order}"
