@@ -9,6 +9,8 @@ autoload -Uz zmv
 
 [ -f /etc/locale.conf ] && source /etc/locale.conf
 
+fpath=( @BKG_INSTALL_DIR@/site-functions/ "${fpath[@]}" )
+
 for f in @BKG_INSTALL_DIR@/site-contrib/*; do
     source $f
 done
