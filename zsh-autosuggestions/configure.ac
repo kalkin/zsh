@@ -1,4 +1,4 @@
-AC_INIT(zsh-autosuggestions, 0.4.3)
+AC_INIT(zsh-autosuggestions, 0.5.0)
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_MACRO_DIR([m4])
 BKG_ENABLE_XDG
