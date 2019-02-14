@@ -80,5 +80,6 @@ compctl -g '*.(jpg|JPG|jpeg|JPEG|gif|GIF|png|PNG|bmp)' + -g '*(-/)' eog feh gimp
 compctl -g "*.html *.htm" + -g "*(-/) .*(-/)" + -H 0 '' w3m lynx links links2 elinks firefox dillo
 compctl -g "*.scala" + -g "*(-/) .*(-/)" + -H 0 '' scalac
 compctl -g "*.rar *.tar *.bz2 *.gz *.ace *.tgz *.deb *.izs *.tar *.tbz2 *.zip *.Z *.shar" + -g "*(-/) .*(-/)" + -H 0 '' spex
+complete -cf sudo
 
 # vim set tw=120
