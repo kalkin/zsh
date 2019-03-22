@@ -1,6 +1,6 @@
 [fast-syntax-higlighting]
 	upstream = https://github.com/zdharma/fast-syntax-highlighting
-	follow = @{tags}
+	follow = HEAD
 
 [you-should-use]
 	upstream = https://github.com/MichaelAquilina/zsh-you-should-use
