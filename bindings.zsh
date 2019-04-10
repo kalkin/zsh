@@ -95,6 +95,7 @@ bindkey "^X" zaw
 bindkey $key[F12] zaw-process
 bindkey "^ " zaw-dirs
 bindkey "^r" zaw-history
+bindkey "^b" zaw-git-recent-branches
 bindkey "^o"  zaw-command-output
 bindkey "^P" zaw-applications
 
