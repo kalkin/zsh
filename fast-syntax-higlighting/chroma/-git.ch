@@ -52,7 +52,7 @@ fsh__git__chroma__def=(
                         <<>> REMOTE_GR_1_arg // REF_#_arg" # when --multiple is passed, then
                                         # there is no refspec argument, only remotes-ids
                                         # follow unlimited # of them, hence the # in the
-                                        # REF_#_arg
+                                        # REMOTE_GR_#_arg
 
     # Special options (^ - has directives - an :del-directive)
     "FETCH_ALL_0_opt^" "
@@ -443,7 +443,124 @@ fsh__git__chroma__def=(
     ## }}}
 
     ##
-    #3 All remaining subcommands
+    ## LOG
+    ##
+
+    subcmd:log "LOG_0_opt // LOG_1_arg // FILE_#_arg // NO_MATCH_#_opt"
+
+    LOG_0_opt "
+                (--decorate=|--decorate-refs=|--decorate-refs-exclude=|-L|-n|--max-count=|
+                 --skip=|--since=|--after=|--until=|--before=|--author=|--committer=|
+                 --grep-reflog=|--grep=|--min-parents=|--max-parents=|--branches=|--tags=|
+                 --remotes=|--glob=|--exclude=|--no-walk=|--pretty=|--format=|--encoding=|
+                 --expand-tabs=|--notes=|--show-notes=|--date=|--show-linear-break=|-U|
+                 --unified=|--anchored=|--diff-algorithm=|--stat=|--dirstat=|--submodule=|
+                 --color=|--color-moved=|--color-moved-ws=|--word-diff=|--word-diff-regex=|
+                 --color-words=|--ws-error-highlight=|--abbrev=|-B|--break-rewrites=|-M|
+                 --find-renames=|-C|--find-copies=|-l|--diff-filter=|-S|-G|--find-object=|
+                 --relative=|-O|--relative=|--inter-hunk-context=|--ignore-submodules=|
+                 --src-prefix=|--dst-prefix=|--line-prefix=)
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-action
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-ARG-action
+
+             || (--follow|--decorate|--no-decorate|--source|--use-mailmap|--full-diff|
+                 --log-size|--all-match|--invert-grep|-i|--regexp-ignore-case|--basic-regexp|
+                 -E|--extended-regexp|-F|--fixed-strings|-P|--perl-regexp|--remove-empty|
+                 --merges|--no-merges|--no-min-parents|--no-max-parents|--first-parent|
+                 --not|--all|--branches|--tags|--remotes|--reflog|--single-worktree|
+                 --ignore-missing|--bisect|--stdin|--cherry-mark|--cherry-pick|--left-only|
+                 --right-only|--cherry|-g|--walk-reflogs|--merge|--boundary|--simplify-by-decoration|
+                 --full-history|--dense|--sparse|--simplify-merges|--ancestry-path|--date-order|
+                 --author-date-order|--topo-order|--reverse|--no-walk|--do-walk|--pretty|
+                 --abbrev-commit|--no-abbrev-commit|--oneline|--expand-tabs|--no-expand-tabs|
+                 --notes|--no-notes|--show-notes|--no-standard-notes|--show-signature|
+                 --relative-date|--parents|--children|--left-right|--graph|--show-linear-break|
+                 -c|--cc|-m|-r|-t|-p|-u|--patch|-s|--no-patch|--raw|--patch-with-raw|
+                 --indent-heuristic|--no-indent-heuristic|--minimal|--patience|--histogram|
+                 --stat|--compact-summary|--numstat|--shortstat|--dirstat|--summary|
+                 --patch-with-stat|-z|--name-only|--name-status|--submodule|--color|--no-color|
+                 --color-moved|--word-diff|--color-words|--no-renames|--check|--full-index|
+                 --binary|--abbrev|--break-rewrites|--find-renames|
+                 --find-copies|--find-copies-harder|-D|--irreversible-delete|
+                 --pickaxe-all|--pickaxe-regex|-R|--relative|-a|--text|--ignore-cr-at-eol|
+                 --ignore-space-at-eol|-b|--ignore-space-change|-w|--ignore-all-space|
+                 --ignore-blank-lines|-W|--function-context|--ext-diff|--no-ext-diff|
+                 --textconv|--no-textconv|--ignore-submodules|--no-prefix|
+                 --ita-invisible-in-index)
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-action"
+
+    LOG_1_arg "NO-OP // ::chroma/-git-verify-rev-range-or-file"
+
+    ##
+    ## TAG
+    ##
+
+    subcmd:tag "TAG_D_0_opt^ // TAG_L_0_opt^ // TAG_V_0_opt^ // TAG_0_opt //
+                TAG_NEW_1_arg // COMMIT_2_arg // NO_MATCH_#_arg // NO_MATCH_#_opt"
+
+    TAG_0_opt "
+                (-u|--local-user=|--cleanup=)
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-action
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-ARG-action
+             || -m
+                            <<>> NO-OP // ::chroma/-git-commit-msg-opt-action
+                            <<>> NO-OP // ::chroma/-git-commit-msg-opt-ARG-action
+             || (-F|--file)
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-action
+                            <<>> NO-OP // ::chroma/-git-verify-file
+             || (-a|--annotate|-s|--sign|-f|-e|--edit)
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-action"
+
+    TAG_NEW_1_arg "NO-OP // ::chroma/-git-verify-correct-branch-name"
+
+    TAG_1_arg "NO-OP // ::chroma/-git-verify-tag-name"
+
+    "TAG_D_0_opt^" "
+                (-d)
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-action
+             || -d:add
+                            <<>> TAG_#_arg
+             || -d:del
+                            <<>> TAG_0_opt // TAG_NEW_1_arg // COMMIT_2_arg //
+                            NO_MATCH_#_arg"
+
+    "TAG_#_arg" "NO-OP // ::chroma/-git-verify-tag-name"
+
+    "TAG_L_0_opt^" "
+                (-l)
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-action
+             || -l:add
+                            <<>> TAG_L_0_opt // TAG_PAT_#_arg
+             || -l:del
+                            <<>> TAG_0_opt // TAG_NEW_1_arg // COMMIT_2_arg
+                            NO_MATCH_#_arg"
+
+    "TAG_L_0_opt" "
+                (-n|--contains|--no-contains|--points-at|--column=|--sort=|--format=|
+                 --color=)
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-action
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-ARG-action
+             || (--column|--no-column|--create-reflog|--merged|--no-merged|--color|-i)
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-action"
+
+    "TAG_PAT_#_arg" "NO-OP // ::chroma/main-chroma-std-verify-pattern"
+
+    "TAG_V_0_opt^" "
+                (-v)
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-action
+             || -v:add
+                            <<>> TAG_V_0_opt // TAG_#_arg
+             || -v:del
+                            <<>> TAG_0_opt // TAG_NEW_1_arg // COMMIT_2_arg
+                            NO_MATCH_#_arg"
+
+    "TAG_V_0_opt" "
+                --format=
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-action
+                            <<>> NO-OP // ::chroma/main-chroma-std-aopt-ARG-action"
+
+    ##
+    ## All remaining subcommands
     ##
     ## {{{
 
@@ -494,7 +611,7 @@ chroma/-git-get-subcommands() {
     if [[ "${__lines_list[1]}" = See* ]]; then
         # (**)
         # git >= v2.20, the aliases in the `git help -a' command
-        __lines_list=( ${${${${(M)__lines_list[@]:#([[:space:]][[:space:]]#[a-z]*|Command aliases)}##[[:space:]]##}//Command\ aliases/Command_aliases}} )
+        __lines_list=( ${${${${(M)__lines_list[@]:#([[:space:]](#c3,3)[a-zA-Z0-9_]*|Command aliases)}##[[:space:]]##}//(#s)Command\ aliases(#e)/Command_aliases}} )
         __svalue="+${__lines_list[(I)Command_aliases]}"
         __lines_list[1,__svalue-1]=( ${(@)__lines_list[1,__svalue-1]%%[[:space:]]##*} )
     else
@@ -585,9 +702,12 @@ chroma/-git-file-or-ubranch-or-commit-verify() {
 # A generic handler
 chroma/-git-verify-correct-branch-name() {
     local _wrd="$4"
+    chroma/-git-verify-remote "$@" && \
+        { __style=${FAST_THEME_NAME}incorrect-subtle; return 0; }
+
     [[ "$_wrd" != ./* && "$_wrd" != *..* && "$_wrd" != *[~\^\ $'\t']* &&
         "$_wrd" != */ && "$_wrd" != *.lock && "$_wrd" != *\\* ]] && \
-        { return 0; } || \
+        { __style=${FAST_THEME_NAME}correct-subtle; return 0; } || \
         { __style=${FAST_THEME_NAME}incorrect-subtle; return 1; }
 }
 
@@ -611,6 +731,39 @@ chroma/-git-verify-commit-or-file() {
     chroma/-git-verify-file "$@"
 }
 
+# A generic handler that checks if given revision range
+# is correct or if a file of that name exists
+chroma/-git-verify-rev-range-or-file() {
+    local _wrd="$4"
+
+    chroma/-git-verify-commit "$@" && return 0
+
+    if [[ "$_wrd" = *..* ]]; then
+        (( FAST_HIGHLIGHT[chroma-git-reset-etc-saw-file] )) && {
+            chroma/-git-verify-file "$@" && return 0
+            __style=${FAST_THEME_NAME}unknown-token
+            return 1
+        }
+
+        __style=""
+        return 0
+    fi
+
+    chroma/-git-verify-file "$@" && \
+        { FAST_HIGHLIGHT[chroma-git-reset-etc-saw-file]=1; return 0; }
+
+    __style=""
+    return 1
+}
+
+chroma/-git-verify-tag-name() {
+    local _wrd="$4"
+    -fast-run-git-command "git tag" "chroma-git-tags-$PWD" "" $(( 2*60 ))
+    [[ -n ${__lines_list[(r)$_wrd]} ]] && \
+        __style=${FAST_THEME_NAME}correct-subtle || \
+        __style=${FAST_THEME_NAME}incorrect-subtle
+}
+
 # A handler for the commit's -m/--message options.Currently
 # does the same what chroma/main-chroma-std-aopt-action does
 chroma/-git-commit-msg-opt-action() {
@@ -629,6 +782,9 @@ chroma/-git-commit-msg-opt-ARG-action() {
         _wrd="${(Q)${match[2]//\`/x}}"
         # highlight --message=>>something<<
         reply+=("$(( __start+10 )) $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}double-quoted-argument]}")
+    elif [[ "$_wrd" != --message ]]; then
+        # highlight the message's body
+        reply+=("$__start $__end ${FAST_HIGHLIGHT_STYLES[${FAST_THEME_NAME}double-quoted-argument]}")
     fi
 
     if (( ${#_wrd} > 50 )); then
