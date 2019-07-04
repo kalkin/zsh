@@ -1,0 +1,9 @@
+prefix         ?= @prefix@
+exec_prefix    ?= @exec_prefix@
+sugest_dir = $(pkgdatadir)
+src_dir = $(pkgdatadir)/src/
+strageties_dir = $(pkgdatadir)/src/strategies
+sugest__DATA = $(wildcard *.zsh)
+src__DATA = $(wildcard src/*.zsh)
+strageties__DATA = $(wildcard src/strategies/*.zsh)
+dist_doc_DATA = CHANGELOG.md DESCRIPTION INSTALL.md LICENSE README.md URL VERSION

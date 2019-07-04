@@ -1,0 +1,112 @@
+.TH ZSH\-BKG
+.PP
+This is good and sane zsh config.
+.SH Installation
+.PP
+There're multiple ways to install this configuration, but first you have to
+clone this repository:
+.RS
+.IP \(bu 2
+\fB\fCgit clone https://github.com/kalkin/zsh.git .zsh \-\-recursive\fR
+.IP \(bu 2
+\fB\fCln \-s ~/.zsh/zshrc .zshrc\fR
+.RE
+.SS 1. According to XDG Base Specification
+.PP
+This will install all the config files in to \fB\fC$XDG_DATA_HOME/zsh\fR\&. A line
+sourcing the main file will be added to the end of your \fB\fC\&.zshrc\fR
+.RS
+.IP \(bu 2
+\fB\fC\&./configure \-\-enable\-xdg\fR
+.IP \(bu 2
+\fB\fCmake install\fR
+.RE
+.SS 3. Globally for all users
+.PP
+This will install all the config files in to \fB\fC$datarootdir/zsh\fR\&. A line
+sourcing the main file will be added to the end of your \fB\fC\&.zshrc\fR
+.RS
+.IP \(bu 2
+\fB\fCgit clone https://github.com/kalkin/zsh.git zsh\-config\fR
+.IP \(bu 2
+\fB\fCcd zsh\-config\fR
+.IP \(bu 2
+\fB\fC\&./configure \-\-prefix=/usr\fR
+.IP \(bu 2
+\fB\fCmake install\fR
+.IP \(bu 2
+\fB\fCsudo make install\fR
+.RE
+.SH Deinstallation
+.PP
+\fB\fCmake uninstall\fR
+.SH Important manpages
+.TS
+allbox;
+cb cb
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+l l
+.
+Name	Description
+zshroadmap	informal introduction to the zsh manual
+zsh	the Z shell
+zsh\-lovers	tips, tricks and examples (often own package)
+zshbuiltins	zsh built\-in commands
+zshcalsys	zsh calendar system
+zshcompctl	zsh programmable completion
+zshcompsys	zsh completion system
+zshcompwid	zsh completion widgets
+zshcontrib	user contributions to zsh
+zshexpn	zsh expansion and substitution
+zshmisc	everything and then some
+zshmodules	zsh loadable modules
+zshoptions	zsh options
+zshparam	zsh parameters
+zshtcpsys	zsh tcp system
+zshzftpsys	zftp function front\-end
+zshzle	zsh command line editor
+zshall	the Z shell meta\-man page Only for hardliner :)
+.TE
+.SH Zsh start up sequence
+.TS
+allbox;
+cb cb cb cb
+l l l l
+l l l l
+l l l l
+l l l l
+l l l l
+l l l l
+l l l l
+l l l l
+.
+#	File	Comment	Shell Type
+1	\fB\fC/etc/zshenv\fR	\- Always run for every zsh	(login + interactive + other)
+2	\fB\fC~/.zshenv\fR	\- Usually run for every zsh	(login + interactive + other)
+3	\fB\fC/etc/zprofile\fR	\- Run for login shells	(login)
+4	\fB\fC~/.zprofile\fR	\- Run for login shells	(login)
+5	\fB\fC/etc/zshrc\fR	\- Run for interactive shells.	(login + interactive)
+6	\fB\fC~/.zshrc\fR	\- Run for interactive shells.	(login + interactive)
+7	\fB\fC/etc/zlogin\fR	\- Run for login shells	(login)
+8	\fB\fC~/.zlogin\fR	\- Run for login shells	(login)
+.TE
+.SH Thanks
+.PP
+This config started as a fork of Christian \fB\fCstrcat\fR Schneider's zsh config.
+Special thanks to him at this point.

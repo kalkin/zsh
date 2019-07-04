@@ -1,0 +1,16 @@
+#compdef qvm-shutdown
+
+local app_vms
+app_vms=( $(qvm-ls |grep '* |'|cut -d'|' -f 1|tr -d " {}[]<>=") )
+
+local exc
+if (( words[(I)--all] )); then
+    exc="*--exclude=[When --all is used: exclude this VM name (may be repeated)]:QubesVMs:($app_vms)"
+fi
+_arguments -S '(- *)'{-h,--help}'[show help message and exit]'\
+    '(1)--all[Shutdown all running VMs)]'\
+    '--force[Force operation, even if may damage other VMs (eg shutdown of NetVM)]'\
+    '--wait[Wait for the VM(s) to shutdown]'\
+    '(-q --quiet)'{-q,--quiet}'[]'\
+    $exc \
+    "*:QubesVMs:($app_vms)" && return 0

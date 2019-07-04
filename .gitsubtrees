@@ -1,0 +1,16 @@
+[fast-syntax-higlighting]
+	upstream = https://github.com/zdharma/fast-syntax-highlighting
+	follow = HEAD
+
+[you-should-use]
+	upstream = https://github.com/MichaelAquilina/zsh-you-should-use
+	follow = HEAD
+	split = 85f871cc36
+
+[zaw]
+	upstream = https://github.com/zsh-users/zaw
+	follow = HEAD
+
+[zsh-autosuggestions]
+	upstream = https://github.com/zsh-users/zsh-autosuggestions
+	follow = HEAD

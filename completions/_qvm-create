@@ -1,0 +1,21 @@
+#compdef qvm-create
+
+local colors templates
+templates=( $(qvm-ls|grep 'Tpl |'|cut -d'|' -f1|tr -d " =<>[]{}") )
+colors=(red green black yellow orange gray blue purple)
+_arguments -S '(- *)'{-h,--help}'[show help message and exit]'\
+    '(-H --hvm -p --proxy -n --net --hvm-template)'{-p,--proxy}'[Create ProxyVM]'\
+    '(-H --hvm -p --proxy -n --net --hvm-template)'{-H,--hvm}'[Create HVM (standalone unless --template option used)]'\
+    '(-H --hvm -p --proxy -n --net --hvm-template)--hvm-template[Create HVM template]'\
+    '(-H --hvm -p --proxy -n --net --hvm-template)'{-n,--net}'[Create NetVM]'\
+    '(-r --root-copy-from= -R --root-move-from=)'{-R,--root-move-from=}"[Use provided root.img instead of default/empty one (file will be MOVED)]:files:_files -g '*.(#i)img(.)'"\
+    '(-r --root-copy-from= -R --root-move-from=)'{-r,--root-copy-from=}"[Use provided root.img instead of default/empty one (file will be COPIED)]:files:_files -g '*.(#i)img(.)'"\
+    '(-s --standalone)'{-s,--standalone}'[Create standalone VM - independent of template]'\
+    '(-m --mem)'{-m,--mem}'[Initial memory size (in MB)]'\
+    '(-c --vcpus)'{-c,--vcpus}'[VCPUs count]'\
+    '(-i --internal)'{-i,--internal}'[Create VM for internal use only (hidden in qubes-manager, no appmenus)]'\
+    '--force-root[Force to run, even with root privileges]'\
+    '(-q --quiet)'{-q,--quiet}'[]'\
+    '(-l --label=)'{-l,--label=}"[Specify the label color]:Colors:($colors)"\
+    '(-t --template=)'{-t,--template=}"[Specify the TemplateVM to use]:TemplateVMs:($templates)"\
+    '*:vm-name::' && return 0;

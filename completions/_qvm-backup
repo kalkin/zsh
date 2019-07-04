@@ -1,0 +1,15 @@
+#compdef qvm-backup
+local app_vms enc_algo
+app_vms=( $(qvm-ls --raw-list) )
+enc_algo=( $(openssl list-cipher-algorithms|grep -v "=>") )
+hmac_algo=( $(openssl list-message-digest-algorithms|grep -v "=>") )
+_arguments : '(- *)'{-h,--help}'[show help message and exit]'\
+    '--force-root[Force to run, even with root privileges]'\
+    '(-d --dest-vm= 1)'{-d,--dest-vm=}"[AppVM to send backups to (implies -e)]:QubesVM:($app_vms)"\
+    '(-e --encrypt)'{-e,--encrypt}'[Encrypts backup]' '--no-encrypt[Skip encrypt even if sending the backup to VM]'\
+    '(-E --enc-algo=)'{-E,--enc-algo=}"[Specify non-default encryption algorithm]:list-cipher-algorithms:($enc_algo)"\
+    '(-H --hmac-algo=)'{-H,--hmac-algo=}"[Specify non-default hmac algorithm]:list-message-digest-algorithms:($hmac_algo)"\
+    '(-z --compress)'{-z,--compress}"[Compress backup]"\
+    \*{-x,--exclude}"[Exclude the specified VM from backup (may be repeated)]:QubesVM:($app_vms)" && return 0
+
+
