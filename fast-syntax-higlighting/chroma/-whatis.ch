@@ -47,7 +47,7 @@ typeset -gA FAST_WHATIS_CACHE
         local -a start_end
         start_end=( ${(s:/:)${${(M)${${input#type?$'\n'}}#*$'\n'}%$'\n'}} )
         (( start_end[1] >= 0 )) && region_highlight+=("$start_end[1] $start_end[2] $__style")
-        zle .redisplay
+        zle -R
     fi
 
     FAST_HIGHLIGHT[whatis_chroma_callback_was_ran]=1
@@ -78,11 +78,22 @@ elif (( ! FAST_HIGHLIGHT[whatis_chroma_type] )); then
 else
     if [[ -z "${FAST_WHATIS_CACHE[$__wrd]}" ]]; then
         if (( FAST_HIGHLIGHT[whatis_chroma_type] == 2 )); then
-            exec {THEFD}< <( echo "type2"; (( __start=__start_pos-${#PREBUFFER}, __end=__end_pos-${#PREBUFFER} )); echo "$__start/$__end"; whatis "$__wrd"; )
+            exec {THEFD}< <(
+                echo "type2"
+                (( __start=__start_pos-${#PREBUFFER}, __end=__end_pos-${#PREBUFFER} ))
+                echo "$__start/$__end"
+                whatis "$__wrd" 2>/dev/null
+            )
             command true # see above
             zle -F ${${FAST_HIGHLIGHT[whatis_chroma_zle_-F_have_-w_opt]:#0}:+-w} "$THEFD" -fast-whatis-chroma-callback
         else
-            exec {THEFD}< <( echo "type1"; (( __start=__start_pos-${#PREBUFFER}, __end=__end_pos-${#PREBUFFER} )); echo "$__start/$__end"; whatis "$__wrd" > /dev/null; echo "$?"; )
+            exec {THEFD}< <(
+                echo "type1"
+                (( __start=__start_pos-${#PREBUFFER}, __end=__end_pos-${#PREBUFFER} ))
+                echo "$__start/$__end"
+                whatis "$__wrd" > /dev/null 2>&1
+                echo "$?"
+            )
             command true
             zle -F ${${FAST_HIGHLIGHT[whatis_chroma_zle_-F_have_-w_opt]:#0}:+-w} "$THEFD" -fast-whatis-chroma-callback
         fi
