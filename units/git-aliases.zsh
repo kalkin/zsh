@@ -7,7 +7,7 @@ alias add="git add -p"
 alias pull="git pull" 
 alias push="git push" 
 alias gd="git diff" 
-alias stash="git stash"
+alias stash="git stash push"
 alias pop="git stash pop"
 alias drop="git stash drop"
 
