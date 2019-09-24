@@ -21,3 +21,7 @@ for d in /usr/share/zsh/*; do
         fi
     fi
 done
+
+(( ${+XDG_DATA_HOME} ))   || export XDG_DATA_HOME=$HOME/.local/share
+(( ${+XDG_CONFIG_HOME} )) || export XDG_CONFIG_HOME=$HOME/.config
+(( ${+XDG_CACHE_HOME} ))  || export XDG_CACHE_HOME=$HOME/.cache
