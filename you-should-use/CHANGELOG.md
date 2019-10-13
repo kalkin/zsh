@@ -1,6 +1,14 @@
 Changelog for zsh-you-should-use
 ================================
 
+1.5.1
+-----
+* Temporary revert of 1.5.0 which causes a major bug in alias detection (see #84)
+
+1.5.0
+-----
+* Suggest better available aliases if a user uses another alias (issue #79)
+
 1.4.0
 -----
 * Aliases reminders are no longer shown if running commands with sudo
