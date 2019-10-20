@@ -132,3 +132,39 @@
     assert $output contains 'Found existing alias for "echo"'
     assert $state equals 0
 }
+
+@test 'dont display recommendations for an alias if it is used' {
+    alias hu='hg update'
+    run _check_aliases 'hu' 'hg update'
+
+    assert "$output" is_empty
+    assert $state equals 0
+}
+
+@test 'dont display recommendations for an alias if it is used - 2' {
+    alias eh='echo hello'
+    run _check_aliases 'eh world' 'echo hello world'
+
+    assert "$output" is_empty
+    assert $state equals 0
+}
+
+@test 'dont display recommendations for an alias if it is used - 4' {
+    alias ..='cd ..'
+    alias cd..='cd ..'
+
+    run _check_aliases '..' 'cd ..'
+
+    assert "$output" is_empty
+    assert $state equals 0
+}
+
+@test 'dont display recommendations for an alias if it is used - 3' {
+    alias ls='ls --color=auto'
+    alias ll='ls -lh --group-directories-first'
+
+    run _check_aliases 'll' 'ls --color=auto -lh --group-directories-first'
+
+    assert "$output" is_empty
+    assert $state equals 0
+}
