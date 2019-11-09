@@ -86,6 +86,9 @@ autoload -Uz bracketed-paste-magic
 zle -N bracketed-paste bracketed-paste-magic
 
 autoload -Uz run-help
+autoload run-help-sudo
+autoload run-help-git
+autoload run-help-ip
 bindkey $key[F1] run-help
 bindkey -M vicmd "K" run-help
 
