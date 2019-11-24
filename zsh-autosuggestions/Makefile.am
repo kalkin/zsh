@@ -8,3 +8,5 @@ src__DATA = $(wildcard src/*.zsh)
 strageties__DATA = $(wildcard src/strategies/*.zsh)
 dist_doc_DATA = CHANGELOG.md DESCRIPTION INSTALL.md LICENSE README.md URL VERSION
 EXTRA_DIST = $(sugest__DATA) $(src__DATA) $(strageties__DATA)
+
+@BKG_DEPLOY_GENTOO@
