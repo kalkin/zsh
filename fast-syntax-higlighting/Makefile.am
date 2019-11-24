@@ -7,9 +7,9 @@ dist_doc_DATA = CHROMA_GUIDE.adoc README.md CHANGELOG.md DONATIONS.md LICENSE \
 				THEME_GUIDE.md
 
 install-data-hook:
-	cp -- $(wildcard -fast-*) $(fast_dir)
-	mkdir -p $(chroma_dir)
-	cp -- $(wildcard :chroma/*.ch) $(chroma_dir)
+	cp -- $(wildcard $(builddir)/-fast-*) $(DESTDIR)$(fast_dir)
+	mkdir -p $(DESTDIR)$(chroma_dir)
+	cp -- $(wildcard $(builddir)/:chroma/*.ch) $(DESTDIR)$(chroma_dir)
 
 
 uninstall-hook:
