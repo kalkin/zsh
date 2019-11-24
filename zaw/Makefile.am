@@ -5,3 +5,4 @@ zaw__DATA = $(wildcard *.zsh)
 functions__DATA = $(wildcard functions/*)
 sources__DATA = $(wildcard sources/*)
 dist_doc_DATA = LICENSE README.rst
+EXTRA_DIST = functions sources
