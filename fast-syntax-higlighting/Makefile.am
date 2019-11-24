@@ -1,11 +1,12 @@
 fast_dir = $(pkgdatadir)
 chroma_dir = $(pkgdatadir)/:chroma
 themes_dir = $(pkgdatadir)/themes
-fast__DATA = $(wildcard fast-*)
+fast__DATA = fast-highlight fast-read-ini-file fast-string-highlight \
+			 fast-syntax-highlighting.plugin.zsh fast-theme
 themes__DATA = $(wildcard themes/*.ini) 
 dist_doc_DATA = CHROMA_GUIDE.adoc README.md CHANGELOG.md DONATIONS.md LICENSE \
 				THEME_GUIDE.md
-EXTRA_DIST = themes
+EXTRA_DIST = $(fast__DATA) themes
 
 install-data-hook:
 	cp -- $(wildcard $(builddir)/-fast-*) $(DESTDIR)$(fast_dir)
