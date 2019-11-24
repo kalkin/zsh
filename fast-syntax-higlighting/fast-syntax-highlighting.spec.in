@@ -1,0 +1,91 @@
+# @configure_input@
+Name:           @BKG_PACKAGE_NAME@
+Version:        @BKG_PACKAGE_VERSION@
+Release:        1%{?dist}
+Summary:        @BKG_PACKAGE_SUMMARY@
+License:        BSD
+
+Requires:       zsh
+
+%description
+Syntax highlighting for ZSH.
+
+%global debug_package %{nil}
+%define _builddir %(pwd)
+%define _sourcedir %(pwd)
+
+%prep
+%autosetup -T -D -n .
+
+%build
+%configure
+%make_build
+
+%check
+%{_rpmconfigdir}/check-rpaths
+
+%install
+%make_install
+
+%files
+%{_docdir}/@BKG_PACKAGE_NAME@/CHANGELOG.md
+%{_docdir}/@BKG_PACKAGE_NAME@/CHROMA_GUIDE.adoc
+%{_docdir}/@BKG_PACKAGE_NAME@/DONATIONS.md
+%{_docdir}/@BKG_PACKAGE_NAME@/LICENSE
+%{_docdir}/@BKG_PACKAGE_NAME@/README.md
+%{_docdir}/@BKG_PACKAGE_NAME@/THEME_GUIDE.md
+%{_datadir}/@BKG_PACKAGE_NAME@/fast-highlight
+%{_datadir}/@BKG_PACKAGE_NAME@/-fast-make-targets
+%{_datadir}/@BKG_PACKAGE_NAME@/fast-read-ini-file
+%{_datadir}/@BKG_PACKAGE_NAME@/-fast-run-command
+%{_datadir}/@BKG_PACKAGE_NAME@/-fast-run-git-command
+%{_datadir}/@BKG_PACKAGE_NAME@/fast-string-highlight
+%{_datadir}/@BKG_PACKAGE_NAME@/fast-syntax-highlighting.plugin.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/fast-syntax-highlighting.spec
+%{_datadir}/@BKG_PACKAGE_NAME@/fast-syntax-highlighting.spec.in
+%{_datadir}/@BKG_PACKAGE_NAME@/fast-theme
+%{_datadir}/@BKG_PACKAGE_NAME@/-fast-zts-read-all
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-alias.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-autoload.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-autorandr.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-awk.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-docker.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-example.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-fast-theme.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-fpath_peq.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-git.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-grep.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-hub.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-ionice.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-lab.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-make.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-nice.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-nmcli.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-node.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-ogit.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-perl.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-precommand.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-printf.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-ruby.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-scp.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-sh.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-source.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-ssh.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-subcommand.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-subversion.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-vim.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-whatis.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-which.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-zplugin.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/:chroma/main-chroma.ch
+%{_datadir}/@BKG_PACKAGE_NAME@/themes/clean.ini
+%{_datadir}/@BKG_PACKAGE_NAME@/themes/default.ini
+%{_datadir}/@BKG_PACKAGE_NAME@/themes/forest.ini
+%{_datadir}/@BKG_PACKAGE_NAME@/themes/free.ini
+%{_datadir}/@BKG_PACKAGE_NAME@/themes/q-jmnemonic.ini
+%{_datadir}/@BKG_PACKAGE_NAME@/themes/safari.ini
+%{_datadir}/@BKG_PACKAGE_NAME@/themes/spa.ini
+%{_datadir}/@BKG_PACKAGE_NAME@/themes/sv-orple.ini
+%{_datadir}/@BKG_PACKAGE_NAME@/themes/sv-plant.ini
+%{_datadir}/@BKG_PACKAGE_NAME@/themes/zdharma.ini
+

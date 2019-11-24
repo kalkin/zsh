@@ -14,3 +14,5 @@ install-data-hook:
 
 uninstall-hook:
 	rm -rf $(fast_dir)
+
+@BKG_RPM_TEMPLATE@
