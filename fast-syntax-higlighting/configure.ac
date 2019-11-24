@@ -5,6 +5,7 @@ AC_CONFIG_MACRO_DIR([m4])
 BKG_ENABLE_XDG
 BKG_PACKAGE_INFO(["Feature rich syntax highlighting for Zsh"])
 BKG_RPM
+BKG_PACKAGE_GENTOO(["app-shells"])
 
 AC_CONFIG_FILES([Makefile fast-syntax-highlighting.spec])
 AC_OUTPUT

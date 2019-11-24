@@ -21,3 +21,5 @@ uninstall-hook:
 	rm -rf $(fast_dir)
 
 @BKG_RPM_TEMPLATE@
+
+@BKG_DEPLOY_GENTOO@
