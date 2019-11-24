@@ -14,4 +14,6 @@ sources__DATA = sources/aliases.zsh sources/applications.zsh \
 				sources/screens.zsh sources/searcher.zsh sources/ssh-hosts.zsh \
 				sources/tmux.zsh sources/widgets.zsh
 dist_doc_DATA = LICENSE README.rst
-EXTRA_DIST = functions sources
+EXTRA_DIST = $(zaw__DATA) functions sources
+
+@BKG_DEPLOY_GENTOO@
