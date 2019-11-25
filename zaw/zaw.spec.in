@@ -1,0 +1,65 @@
+# @configure_input@
+Name:           @BKG_PACKAGE_NAME@
+Version:        @BKG_PACKAGE_VERSION@
+Release:        1%{?dist}
+Summary:        @BKG_PACKAGE_SUMMARY@
+License:        GPLv3
+
+Requires:       zsh
+
+%description
+@BKG_PACKAGE_SUMMARY@
+
+%global debug_package %{nil}
+%define _builddir %(pwd)
+%define _sourcedir %(pwd)
+
+%prep
+%autosetup -T -D -n .
+
+%build
+%configure
+%make_build
+
+%check
+%{_rpmconfigdir}/check-rpaths
+
+%install
+%make_install
+
+%files
+%{_docdir}/@BKG_PACKAGE_NAME@/LICENSE
+%{_docdir}/@BKG_PACKAGE_NAME@/README.rst
+
+%{_datadir}/@BKG_PACKAGE_NAME@/zaw-launcher.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/zaw.plugin.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/zaw.zsh
+
+%{_datadir}/@BKG_PACKAGE_NAME@/functions/fill-vars-or-accept
+%{_datadir}/@BKG_PACKAGE_NAME@/functions/filter-select
+
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/aliases.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/applications.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/bookmark.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/cdr.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/command-output.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/commands.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/fasd.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/functions.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/git-branches.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/git-files.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/git-log.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/git-recent-branches.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/git-reflog.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/git-status.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/history.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/locate.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/open-file.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/perldoc.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/process.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/programs.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/screens.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/searcher.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/ssh-hosts.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/tmux.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/sources/widgets.zsh

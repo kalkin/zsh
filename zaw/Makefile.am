@@ -16,4 +16,6 @@ sources__DATA = sources/aliases.zsh sources/applications.zsh \
 dist_doc_DATA = LICENSE README.rst
 EXTRA_DIST = $(zaw__DATA) functions sources
 
+@BKG_RPM_TEMPLATE@
+
 @BKG_DEPLOY_GENTOO@
