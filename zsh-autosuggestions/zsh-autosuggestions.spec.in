@@ -1,0 +1,54 @@
+# @configure_input@
+Name:           @BKG_PACKAGE_NAME@
+Version:        @BKG_PACKAGE_VERSION@
+Release:        1%{?dist}
+Summary:        @BKG_PACKAGE_SUMMARY@
+License:        MIT
+
+Requires:       zsh
+
+%description
+As you type commands, you will see a completion offered after the cursor in a
+muted gray color.
+
+%global debug_package %{nil}
+%define _builddir %(pwd)
+%define _sourcedir %(pwd)
+
+%prep
+%autosetup -T -D -n .
+
+%build
+%configure
+%make_build
+
+%check
+%{_rpmconfigdir}/check-rpaths
+
+%install
+%make_install
+
+%files
+%{_docdir}/@BKG_PACKAGE_NAME@/CHANGELOG.md
+%{_docdir}/@BKG_PACKAGE_NAME@/DESCRIPTION
+%{_docdir}/@BKG_PACKAGE_NAME@/INSTALL.md
+%{_docdir}/@BKG_PACKAGE_NAME@/LICENSE
+%{_docdir}/@BKG_PACKAGE_NAME@/README.md
+%{_docdir}/@BKG_PACKAGE_NAME@/URL
+%{_docdir}/@BKG_PACKAGE_NAME@/VERSION
+
+%{_datadir}/@BKG_PACKAGE_NAME@/zsh-autosuggestions.plugin.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/zsh-autosuggestions.zsh
+
+%{_datadir}/@BKG_PACKAGE_NAME@/src/async.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/src/bind.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/src/config.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/src/fetch.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/src/highlight.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/src/start.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/src/util.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/src/widgets.zsh
+
+%{_datadir}/@BKG_PACKAGE_NAME@/src/strategies/completion.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/src/strategies/history.zsh
+%{_datadir}/@BKG_PACKAGE_NAME@/src/strategies/match_prev_cmd.zsh
