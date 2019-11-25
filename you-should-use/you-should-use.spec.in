@@ -1,0 +1,36 @@
+# @configure_input@
+Name:           @BKG_PACKAGE_NAME@
+Version:        @BKG_PACKAGE_VERSION@
+Release:        1%{?dist}
+Summary:        @BKG_PACKAGE_SUMMARY@
+License:        GPLv3
+
+Requires:       zsh
+
+%description
+Simple zsh plugin that reminds you that you should use one of your
+existing aliases for a command you just typed.
+
+%global debug_package %{nil}
+%define _builddir %(pwd)
+%define _sourcedir %(pwd)
+
+%prep
+%autosetup -T -D -n .
+
+%build
+%configure
+%make_build
+
+%check
+%{_rpmconfigdir}/check-rpaths
+
+%install
+%make_install
+
+%files
+%{_docdir}/@BKG_PACKAGE_NAME@/CHANGELOG.md
+%{_docdir}/@BKG_PACKAGE_NAME@/LICENSE
+%{_docdir}/@BKG_PACKAGE_NAME@/README.rst
+%{_datadir}/@BKG_PACKAGE_NAME@/you-should-use.plugin.zsh
+
