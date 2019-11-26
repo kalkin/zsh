@@ -19,7 +19,7 @@ sourcing the main file will be added to the end of your `.zshrc`
 - `./configure --enable-xdg --with-plugins`
 - `make install`
 
-### 3. Globally for all users
+### 2. Globally for all users
 
 This will install all the config files in to `$datarootdir/zsh`. A line
 sourcing the main file will be added to the end of your `.zshrc`
