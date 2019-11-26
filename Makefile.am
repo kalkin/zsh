@@ -33,10 +33,7 @@ dist_pkgdata_DATA += zshrc
 
 zshrc: zshenv
 	cat @srcdir@/zshenv > @srcdir@/zshrc
-install-data-hook:
-	grep -q "source $(pkgdatadir)/zshrc" @sysconfdir@/zshrc || echo "source $(pkgdatadir)/zshrc" >> @sysconfdir@/zshrc
-
-uninstall-hook:
-	sed -e "s#source $(pkgdatadir)/zshrc##" @sysconfdir@/zshrc -i
 
 endif
+
+@BKG_DEPLOY_GENTOO@
