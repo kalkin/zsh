@@ -9,6 +9,19 @@ AM_CONDITIONAL([ENABLE_XDG], [test x"$enable_xdg" = x"yes"])
 AC_CHECK_PROG([MAN2ROFF], [md2man-roff], [md2man-roff], [''])
 AM_CONDITIONAL([MANGENERATOR], [test "$MAN2ROFF" = "md2man-roff"])
 
+AC_ARG_WITH([plugins], AC_HELP_STRING([--with-plugins],
+    [Build and install fast-syntax-higlighting, you-should-use, zaw & zsh-autosuggestions plugins]))
+
+if test "x$with_plugins" == xyes; then
+    AC_MSG_NOTICE("Building plugins")
+    PLUGINS="zaw you-should-use fast-syntax-higlighting zsh-autosuggestions"
+    AC_CONFIG_SUBDIRS([fast-syntax-higlighting you-should-use zaw
+                   zsh-autosuggestions/])
+else
+    PLUGINS=
+fi
+
+AC_SUBST(PLUGINS)
 test "$prefix" = 'NONE' && prefix=/usr/local
 
 AC_SUBST(BKG_INSTALL_DIR, "$prefix/share/$PACKAGE_NAME")
@@ -16,6 +29,4 @@ AC_SUBST(BKG_DATAROOT_DIR, "$prefix/share/")
 AC_CONFIG_FILES([Makefile zshenv units/fast-syntax-highlighting.plugin.zsh
                  units/you-should-use.plugin.zsh units/zaw.plugins.zsh
                  units/zsh-autosuggestions.plugin.zsh units/ls-setup.zsh])
-AC_CONFIG_SUBDIRS([fast-syntax-higlighting you-should-use zaw
-                   zsh-autosuggestions/])
 AC_OUTPUT
