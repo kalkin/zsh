@@ -16,7 +16,7 @@ clone this repository:
 This will install all the config files in to `$XDG_DATA_HOME/zsh`. A line
 sourcing the main file will be added to the end of your `.zshrc`
 
-- `./configure --enable-xdg`
+- `./configure --enable-xdg --with-plugins`
 - `make install`
 
 ### 3. Globally for all users
@@ -26,9 +26,15 @@ sourcing the main file will be added to the end of your `.zshrc`
 
 - `git clone https://github.com/kalkin/zsh.git zsh-config`
 - `cd zsh-config`
-- `./configure --prefix=/usr`
+- `./configure --prefix=/usr --with-plugins`
 - `make install`
 - `sudo make install`
+
+### Plugins
+
+This config uses on `fast-syntax-higlighting`, `you-should-use`, `zaw` &
+`zsh-autosuggestions`. If you have not installed this packages from your package
+manager (you probably have not), add `--with-plugins` switch to `./configure`.
 
 ## Deinstallation
 
