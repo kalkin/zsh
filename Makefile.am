@@ -11,7 +11,8 @@ EXTRA_DIST = units functions
 
 if MAN2ROFF
 man/zsh-bkg.1: README.md
-	$(MAN2ROFF) @srcdir@/README.md > @srcdir@/man/zsh-bkg.1
+	mkdir -p man
+	$(MAN2ROFF) README.md > man/zsh-bkg.1
 else
 man/zsh-bkg.1: README.md
 	$(error Please install md2man via 'gem install md2man' for generating manpages)
