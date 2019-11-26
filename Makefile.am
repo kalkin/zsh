@@ -7,9 +7,9 @@ zsh_functions__DATA = $(wildcard functions/*)
 dist_pkgdata_DATA = $(wildcard *.zsh) LS_COLORS
 man1_MANS = man/zsh-bkg.1
 
-if MANGENERATOR
+if MAN2ROFF
 man/zsh-bkg.1: README.md
-	md2man-roff @srcdir@/README.md > @srcdir@/man/zsh-bkg.1
+	$(MAN2ROFF) @srcdir@/README.md > @srcdir@/man/zsh-bkg.1
 else
 man/zsh-bkg.1: README.md
 	$(error Please install md2man via 'gem install md2man' for generating manpages)

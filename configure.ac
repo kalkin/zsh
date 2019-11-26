@@ -6,8 +6,8 @@ AC_CONFIG_MACRO_DIR([m4])
 BKG_ENABLE_XDG
 AM_CONDITIONAL([ENABLE_XDG], [test x"$enable_xdg" = x"yes"])
 
-AC_CHECK_PROG([MAN2ROFF], [md2man-roff], [md2man-roff], [''])
-AM_CONDITIONAL([MANGENERATOR], [test "$MAN2ROFF" = "md2man-roff"])
+AC_CHECK_PROGS([MAN2ROFF], [md2man-roff go-md2man])
+AM_CONDITIONAL([MAN2ROFF], [test -n "$MAN2ROFF"])
 
 AC_ARG_WITH([plugins], AC_HELP_STRING([--with-plugins],
     [Build and install fast-syntax-higlighting, you-should-use, zaw & zsh-autosuggestions plugins]))
