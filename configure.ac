@@ -7,6 +7,7 @@ BKG_ENABLE_XDG
 AM_CONDITIONAL([ENABLE_XDG], [test x"$enable_xdg" = x"yes"])
 
 BKG_PACKAGE_INFO([Good and sane zsh config])
+BKG_PACKAGE_GENTOO(["app-shells"])
 
 AC_CHECK_PROGS([MAN2ROFF], [md2man-roff go-md2man])
 AM_CONDITIONAL([MAN2ROFF], [test -n "$MAN2ROFF"])
