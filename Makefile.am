@@ -7,6 +7,7 @@ zsh_functions__DATA = $(wildcard functions/*)
 dist_pkgdata_DATA = $(wildcard *.zsh) LS_COLORS
 dist_doc_DATA = README.md
 man1_MANS = man/zsh-bkg.1
+EXTRA_DIST = units functions
 
 if MAN2ROFF
 man/zsh-bkg.1: README.md
