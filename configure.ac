@@ -6,6 +6,8 @@ AC_CONFIG_MACRO_DIR([m4])
 BKG_ENABLE_XDG
 AM_CONDITIONAL([ENABLE_XDG], [test x"$enable_xdg" = x"yes"])
 
+BKG_PACKAGE_INFO([Good and sane zsh config])
+
 AC_CHECK_PROGS([MAN2ROFF], [md2man-roff go-md2man])
 AM_CONDITIONAL([MAN2ROFF], [test -n "$MAN2ROFF"])
 
