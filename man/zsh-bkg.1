@@ -17,11 +17,11 @@ This will install all the config files in to \fB\fC$XDG_DATA_HOME/zsh\fR\&. A li
 sourcing the main file will be added to the end of your \fB\fC\&.zshrc\fR
 .RS
 .IP \(bu 2
-\fB\fC\&./configure \-\-enable\-xdg\fR
+\fB\fC\&./configure \-\-enable\-xdg \-\-with\-plugins\fR
 .IP \(bu 2
 \fB\fCmake install\fR
 .RE
-.SS 3. Globally for all users
+.SS 2. Globally for all users
 .PP
 This will install all the config files in to \fB\fC$datarootdir/zsh\fR\&. A line
 sourcing the main file will be added to the end of your \fB\fC\&.zshrc\fR
@@ -31,12 +31,17 @@ sourcing the main file will be added to the end of your \fB\fC\&.zshrc\fR
 .IP \(bu 2
 \fB\fCcd zsh\-config\fR
 .IP \(bu 2
-\fB\fC\&./configure \-\-prefix=/usr\fR
+\fB\fC\&./configure \-\-prefix=/usr \-\-with\-plugins\fR
 .IP \(bu 2
 \fB\fCmake install\fR
 .IP \(bu 2
 \fB\fCsudo make install\fR
 .RE
+.SS Plugins
+.PP
+This config uses on \fB\fCfast\-syntax\-higlighting\fR, \fB\fCyou\-should\-use\fR, \fB\fCzaw\fR &
+\fB\fCzsh\-autosuggestions\fR\&. If you have not installed this packages from your package
+manager (you probably have not), add \fB\fC\-\-with\-plugins\fR switch to \fB\fC\&./configure\fR\&.
 .SH Deinstallation
 .PP
 \fB\fCmake uninstall\fR
