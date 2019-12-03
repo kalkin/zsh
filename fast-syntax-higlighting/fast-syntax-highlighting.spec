@@ -89,3 +89,6 @@ Syntax highlighting for ZSH.
 %{_datadir}/fast-syntax-highlighting/themes/sv-plant.ini
 %{_datadir}/fast-syntax-highlighting/themes/zdharma.ini
 
+%changelog
+*  Mon Dec 2 2019 Sebastian Gniazdowski <sgniazdowski@gmail.com>
+   Add highlighting of the `add' git subcommand.

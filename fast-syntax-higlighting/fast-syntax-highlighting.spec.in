@@ -89,3 +89,6 @@ Syntax highlighting for ZSH.
 %{_datadir}/@BKG_PACKAGE_NAME@/themes/sv-plant.ini
 %{_datadir}/@BKG_PACKAGE_NAME@/themes/zdharma.ini
 
+%changelog
+*  Mon Dec 2 2019 Sebastian Gniazdowski <sgniazdowski@gmail.com>
+   Add highlighting of the `add' git subcommand.
