@@ -41,8 +41,6 @@ Syntax highlighting for ZSH.
 %{_datadir}/fast-syntax-highlighting/-fast-run-git-command
 %{_datadir}/fast-syntax-highlighting/fast-string-highlight
 %{_datadir}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-%{_datadir}/fast-syntax-highlighting/fast-syntax-highlighting.spec
-%{_datadir}/fast-syntax-highlighting/fast-syntax-highlighting.spec.in
 %{_datadir}/fast-syntax-highlighting/fast-theme
 %{_datadir}/fast-syntax-highlighting/-fast-zts-read-all
 %{_datadir}/fast-syntax-highlighting/:chroma/-alias.ch

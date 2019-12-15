@@ -41,8 +41,6 @@ Syntax highlighting for ZSH.
 %{_datadir}/@BKG_PACKAGE_NAME@/-fast-run-git-command
 %{_datadir}/@BKG_PACKAGE_NAME@/fast-string-highlight
 %{_datadir}/@BKG_PACKAGE_NAME@/fast-syntax-highlighting.plugin.zsh
-%{_datadir}/@BKG_PACKAGE_NAME@/fast-syntax-highlighting.spec
-%{_datadir}/@BKG_PACKAGE_NAME@/fast-syntax-highlighting.spec.in
 %{_datadir}/@BKG_PACKAGE_NAME@/fast-theme
 %{_datadir}/@BKG_PACKAGE_NAME@/-fast-zts-read-all
 %{_datadir}/@BKG_PACKAGE_NAME@/:chroma/-alias.ch
