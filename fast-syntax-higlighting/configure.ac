@@ -1,4 +1,4 @@
-AC_INIT(fast-syntax-highlighting, 1.54.1)
+AC_INIT(fast-syntax-highlighting, 1.54.2)
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_MACRO_DIR([m4])
 
