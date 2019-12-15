@@ -6,7 +6,9 @@ fast__DATA = fast-highlight fast-read-ini-file fast-string-highlight \
 themes__DATA = $(wildcard themes/*.ini) 
 dist_doc_DATA = CHROMA_GUIDE.adoc README.md CHANGELOG.md DONATIONS.md LICENSE \
 				THEME_GUIDE.md
-EXTRA_DIST = $(fast__DATA) themes
+EXTRA_DIST = $(fast__DATA) themes \
+			 fast-syntax-highlighting.spec.in fast-syntax-highlighting.spec \
+			 fast-syntax-highlighting.ebuild.in fast-syntax-highlighting.ebuild
 
 install-data-hook:
 	cp -- $(wildcard $(builddir)/-fast-*) $(DESTDIR)$(fast_dir)
