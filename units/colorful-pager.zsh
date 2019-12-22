@@ -15,7 +15,7 @@ if (( $+commands[less] )) ; then
     export GROFF_NO_SGR=1         # For Konsole and Gnome-terminal
 
     export PAGER='less';
-    export LESS='-R -F'
+    export LESS='-R -F -S'
 else
     echo "No less(1) installed"
 fi
