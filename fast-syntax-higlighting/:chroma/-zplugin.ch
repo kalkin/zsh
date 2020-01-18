@@ -59,7 +59,7 @@ fsh__zplugin__chroma__def=(
     ##
     ## {{{
 
-    "subcmd:(load|light|compile|stress|edit|glance|recall|status|cd|changes)"
+    "subcmd:load"
         "LOAD_1_arg // LOAD_2_arg // NO_MATCH_#_opt // NO_MATCH_#_arg"
 
     LOAD_1_arg "NO-OP // :::chroma/-zplugin-verify-plugin"
@@ -69,20 +69,30 @@ fsh__zplugin__chroma__def=(
     ## }}}
 
     ##
+    ## `compile|uncompile|stress|edit|glance|recall|status|cd|changes`
+    ##
+    ## {{{
+    
+    "subcmd:(compile|uncompile|stress|edit|glance|recall|status|cd|changes)"
+        "PLGSNP_1_arg // PLGSNP_2_arg // NO_MATCH_#_opt // NO_MATCH_#_arg"
+
+    PLGSNP_1_arg "NO-OP // :::chroma/-zplugin-verify-plugin-or-snippet"
+
+    PLGSNP_2_arg "NO-OP // :::chroma/-zplugin-verify-plugin-or-snippet"
+
+    ## }}}
+
+    ##
     ## `update'
     ##
     ## {{{
 
-    subcmd:update "UPDATE_0_opt // LOAD_1_arg // LOAD_2_arg //
+    subcmd:update "UPDATE_0_opt // PLGSNP_1_arg // PLGSNP_2_arg //
                    NO_MATCH_#_opt // NO_MATCH_#_arg"
 
     UPDATE_0_opt "
-            (--all|-r|--reset)
+            (--all|-r|--reset|-q|--quiet)
                     <<>> NO-OP // :::chroma/main-chroma-std-aopt-action"
-
-    LOAD_1_arg "NO-OP // :::chroma/-zplugin-verify-plugin"
-
-    LOAD_2_arg "NO-OP // :::chroma/-zplugin-verify-plugin"
 
     ## }}}
 
@@ -100,16 +110,32 @@ fsh__zplugin__chroma__def=(
     ## }}}
 
     ##
-    ## `unload|report'
+    ## `unload'
     ##
     ## {{{
 
-    subcmd:"(unload|report)" "UNLOAD_1_arg // UNLOAD_2_arg // NO_MATCH_#_opt //
+    subcmd:unload "UNLOAD_0_opt // UNLOAD_1_arg // UNLOAD_2_arg // NO_MATCH_#_opt //
                   NO_MATCH_#_arg"
+
+    UNLOAD_0_opt "-q
+                    <<>> NO-OP // :::chroma/main-chroma-std-aopt-action"
 
     UNLOAD_1_arg "NO-OP // :::chroma/-zplugin-verify-loaded-plugin"
 
     UNLOAD_2_arg "NO-OP // :::chroma/-zplugin-verify-loaded-plugin"
+
+    ## }}}
+
+    ##
+    ## `report'
+    ##
+    ## {{{
+
+    subcmd:report "REPORT_0_opt // UNLOAD_1_arg // UNLOAD_2_arg // NO_MATCH_#_opt //
+                  NO_MATCH_#_arg"
+
+    REPORT_0_opt "--all
+                    <<>> NO-OP // :::chroma/main-chroma-std-aopt-action"
 
     ## }}}
 
@@ -119,15 +145,11 @@ fsh__zplugin__chroma__def=(
     ## {{{
 
     "subcmd:delete"
-        "DELETE_0_opt // LOAD_1_arg // LOAD_2_arg // NO_MATCH_#_opt // NO_MATCH_#_arg"
+        "DELETE_0_opt // PLGSNP_1_arg // PLGSNP_2_arg // NO_MATCH_#_opt // NO_MATCH_#_arg"
 
     DELETE_0_opt "
-            (--all|--clean)
+            (--all|--clean|-y|--yes|-q|--quiet)
                     <<>> NO-OP // :::chroma/main-chroma-std-aopt-action"
-
-    LOAD_1_arg "NO-OP // :::chroma/-zplugin-verify-plugin"
-
-    LOAD_2_arg "NO-OP // :::chroma/-zplugin-verify-plugin"
 
     ## }}}
 
@@ -198,6 +220,12 @@ fsh__zplugin__chroma__def=(
         return 1
         #__style=${FAST_THEME_NAME}incorrect-subtle
     return 0
+}
+
+:chroma/-zplugin-verify-plugin-or-snippet() {
+    :chroma/-zplugin-verify-plugin "$1" "" "" "$4" || \
+        :chroma/-zplugin-verify-snippet "$1" "" "" "$4"
+    return $?
 }
 
 :chroma/-zplugin-verify-loaded-plugin() {
@@ -310,7 +338,9 @@ fsh__zplugin__chroma__def=(
         atinit atclone atload atpull nocd run-atpull has cloneonly make
         service trackbinds multisrc compile nocompile nocompletions
         reset-prompt wrap-track reset sh \!sh bash \!bash ksh \!ksh csh
-        \!csh aliases countdown
+        \!csh aliases countdown ps-on-unload ps-on-update trigger-load
+        light-mode is-snippet atdelete pack git verbose on-update-of
+        subscribe param
         # Include all additional ices – after
         # stripping them from the possible: ''
         ${(@s.|.)${ZPLG_EXTS[ice-mods]//\'\'/}}
@@ -318,7 +348,7 @@ fsh__zplugin__chroma__def=(
     nval_ices=(
             blockf silent lucid trackbinds cloneonly nocd run-atpull
             nocompletions sh \!sh bash \!bash ksh \!ksh csh \!csh
-            aliases countdown
+            aliases countdown light-mode is-snippet git verbose
 
             # Include only those additional ices,
             # don't have the '' in their name, i.e.
