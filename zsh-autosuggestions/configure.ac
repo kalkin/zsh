@@ -1,4 +1,4 @@
-AC_INIT(zsh-autosuggestions, 0.6.3)
+AC_INIT(zsh-autosuggestions, 0.6.4)
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_MACRO_DIR([m4])
 
