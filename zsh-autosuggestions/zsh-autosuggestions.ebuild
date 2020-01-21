@@ -3,7 +3,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION='Fish-like autosuggestions for zsh'
-SRC_URI='zsh-autosuggestions-0.6.3.tar.gz'
+SRC_URI='zsh-autosuggestions-0.6.4.tar.gz'
 SLOT='0'
 KEYWORDS='amd64 ~x86'
 IUSE=''
