@@ -1,4 +1,4 @@
-AC_INIT(you-should-use, 1.6.1)
+AC_INIT(you-should-use, 1.7.0)
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_MACRO_DIR([m4])
 
