@@ -70,3 +70,6 @@ m4/lt~obsolete.m4
 
 # qubes-builder
 pkgs
+
+fast-syntax-highlighting-*/
+fast-syntax-highlighting-*.tar.gz
