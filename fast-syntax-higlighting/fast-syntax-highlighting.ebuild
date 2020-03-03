@@ -3,7 +3,7 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION='Feature rich syntax highlighting for Zsh'
-SRC_URI='fast-syntax-highlighting-1.54.4.tar.gz'
+SRC_URI='fast-syntax-highlighting-1.54.6.tar.gz'
 SLOT='0'
 KEYWORDS='amd64 ~x86'
 IUSE=''
