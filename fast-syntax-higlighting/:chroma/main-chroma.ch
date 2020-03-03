@@ -406,7 +406,7 @@ else
         # If at e.g. '>' or destination/source spec (of the redirection)
         if (( in_redirection > 0 || this_word & 128 )) || [[ $__wrd == "<<<" ]]; then
             return 1
-        elif (( FAST_HIGHLIGHT[chroma-${FAST_HIGHLIGHT[chroma-current]}-got-subcommand] == 0 )); then
+        elif (( FAST_HIGHLIGHT[chroma-${FAST_HIGHLIGHT[chroma-current]}-got-subcommand] == 0 )) {
             __the_hash_name="fsh__chroma__main__${${FAST_HIGHLIGHT[chroma-current]//[^a-zA-Z0-9_]/_}//(#b)([\#\^])/${map[${match[1]}]}}"
             __var_name="${__the_hash_name}[subcommands]"
             if [[ "$__wrd" = ${(P)~__var_name} ]]; then
@@ -422,10 +422,17 @@ else
                 :chroma/main-chroma-print "UNRECOGNIZED ARGUMENT ${FAST_HIGHLIGHT[chroma-${FAST_HIGHLIGHT[chroma-current]}-counter-arg]}"
                 :chroma/main-process-token.ch "${${FAST_HIGHLIGHT[chroma-${FAST_HIGHLIGHT[chroma-current]}-subcommand]}:-NULL}" "$__wrd"
             fi
-        else
+        } else {
             __wrd="${__wrd//\`/x}"
             __arg="${__arg//\`/x}"
             __wrd="${(Q)__wrd}"
+
+            local __tmp_def_name="fsh__${__chroma_name}__chroma__def[subcommands-blacklist]"
+            if [[ ${FAST_HIGHLIGHT[chroma-${FAST_HIGHLIGHT[chroma-current]}-subcommand]} = \
+                (${(~j:|:)${(@s:,:)${(PA)__tmp_def_name}}})
+            ]] {
+                return 1
+            }
 
             :chroma/main-chroma-print "Incrementing the COUNTER-ARG ${FAST_HIGHLIGHT[chroma-${FAST_HIGHLIGHT[chroma-current]}-counter-arg]} -> $(( FAST_HIGHLIGHT[chroma-${FAST_HIGHLIGHT[chroma-current]}-counter-arg] + 1 ))"
             (( FAST_HIGHLIGHT[chroma-${FAST_HIGHLIGHT[chroma-current]}-counter-arg] += 1 ))
@@ -433,7 +440,7 @@ else
 
             :chroma/main-chroma-print "ELSE *-got-subcommand == 1 is TRUE"
             :chroma/main-process-token.ch "${FAST_HIGHLIGHT[chroma-${FAST_HIGHLIGHT[chroma-current]}-subcommand]}" "$__wrd"
-        fi
+        }
     fi
 fi
 

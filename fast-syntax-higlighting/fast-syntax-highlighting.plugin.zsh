@@ -72,7 +72,9 @@ _zsh_highlight()
     return $ret
   fi
 
-  setopt localoptions warncreateglobal noksharrays noshwordsplit extendedglob typesetsilent nokshglob
+  emulate -LR zsh
+  setopt extendedglob warncreateglobal typesetsilent noshortloops
+
   local REPLY # don't leak $REPLY into global scope
   local -a reply
 
@@ -234,7 +236,7 @@ _zsh_highlight_bind_widgets()
 
   # Override ZLE widgets to make them invoke _zsh_highlight.
   local -U widgets_to_bind
-  widgets_to_bind=(${${(k)widgets}:#(.*|run-help|which-command|beep|set-local-history|yank)})
+  widgets_to_bind=(${${(k)widgets}:#(.*|run-help|which-command|beep|set-local-history|yank|zle-line-pre-redraw)})
 
   # Always wrap special zle-line-finish widget. This is needed to decide if the
   # current line ends and special highlighting logic needs to be applied.
@@ -329,7 +331,7 @@ autoload -Uz -- :chroma/-git.ch :chroma/-hub.ch :chroma/-lab.ch :chroma/-example
                 :chroma/-subcommand.ch :chroma/-autorandr.ch :chroma/-nmcli.ch \
                 :chroma/-fast-theme.ch :chroma/-node.ch :chroma/-fpath_peq.ch \
                 :chroma/-precommand.ch :chroma/-subversion.ch :chroma/-ionice.ch \
-                :chroma/-nice.ch :chroma/main-chroma.ch :chroma/-ogit.ch :chroma/-zplugin.ch
+                :chroma/-nice.ch :chroma/main-chroma.ch :chroma/-ogit.ch :chroma/-zinit.ch
 
 source "${0:h}/fast-highlight"
 source "${0:h}/fast-string-highlight"
