@@ -45,3 +45,5 @@ m4/lt~obsolete.m4
 
 # qubes-builder
 pkgs
+zaw-*.tar.gz
+zaw-*/
