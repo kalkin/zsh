@@ -1,6 +1,6 @@
 # fast-syntax-highlighting.spec.  Generated from fast-syntax-highlighting.spec.in by configure.
 Name:           fast-syntax-highlighting
-Version:        1.54.6
+Version:        1.54.7
 Release:        1%{?dist}
 Summary:        Feature rich syntax highlighting for Zsh
 License:        BSD
@@ -35,14 +35,14 @@ Syntax highlighting for ZSH.
 %{_docdir}/fast-syntax-highlighting/README.md
 %{_docdir}/fast-syntax-highlighting/THEME_GUIDE.md
 %{_datadir}/fast-syntax-highlighting/fast-highlight
-%{_datadir}/fast-syntax-highlighting/-fast-make-targets
+%{_datadir}/fast-syntax-highlighting/.fast-make-targets
 %{_datadir}/fast-syntax-highlighting/fast-read-ini-file
-%{_datadir}/fast-syntax-highlighting/-fast-run-command
-%{_datadir}/fast-syntax-highlighting/-fast-run-git-command
+%{_datadir}/fast-syntax-highlighting/.fast-run-command
+%{_datadir}/fast-syntax-highlighting/.fast-run-git-command
 %{_datadir}/fast-syntax-highlighting/fast-string-highlight
 %{_datadir}/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 %{_datadir}/fast-syntax-highlighting/fast-theme
-%{_datadir}/fast-syntax-highlighting/-fast-zts-read-all
+%{_datadir}/fast-syntax-highlighting/.fast-zts-read-all
 %{_datadir}/fast-syntax-highlighting/:chroma/-alias.ch
 %{_datadir}/fast-syntax-highlighting/:chroma/-autoload.ch
 %{_datadir}/fast-syntax-highlighting/:chroma/-autorandr.ch
