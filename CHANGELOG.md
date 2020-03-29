@@ -5,27 +5,47 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-### Unreleased - 2018-09-15
+## [2.3.0] - 2020-03-29
 
 ### Added
 
-- Bindings add support for st terminal
+- alias for `cal(1)` to always start on Monday
+- `BKG_PACKAGE_INFO` macro
+- <C-b> zaw-git-recent-branches binding
+- pop alias for git stash pop --index
+- support for building RPM packages
+- support for building with qubes-builder
+- support for Gentoo Portage
+- support for qubes-builder
+- make dist target add missing `fast-*` files
+- make dist target add missing units & functions dirs
+- make dist target add you-should-use.plugin.zsh
 
 ### Changed
 
-- gitignore(5) files to contain all automake(1) related files
-- LS_COLORS to be compatible with solarized st(1)
-- PAGER search color is usable with my st(1) colorscheme
+- stash alias → ”git stash push”
+
+### Fixed
+
+- include site-functions directory in zshenv/-rc
+- install-data-hook use `$(DESTDIR)`
+- `LS_COLORS` for archives
+- `LS_COLORS` for binary files like PDF, djvu…
+- `LS_COLORS` for JavaScript files
+- make dist target
+- make man/zsh-bkg.1 target
+- site-contrib/monorepo skip non directories
+- st(1) keybdings
+- typo in README.md
 
 ### Removed
 
-- committed autotools files
-- Makefile from autotools enabled projects
+- un-/install hooks
 
 ## [2.0.0] - 2018-07-17
 
 ### Added
-- Mapage zsh-bkg(1)
+- Manpage zsh-bkg(1)
 - CHANGELOG.md — this file
 
 ### Changed
