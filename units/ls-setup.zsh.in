@@ -1,6 +1,11 @@
 eval $(dircolors -b @BKG_INSTALL_DIR@/LS_COLORS)
 
-alias ls='ls --color=auto' # Linux specific aliases
+if [ "$(uname 2> /dev/null)" != "Linux" ]; then
+	alias ls='ls -G'
+else
+	alias ls='ls --color=auto'
+fi
+
 alias ll='ls -lh'
 alias la='ls -Alh'
 alias lad='ls -d -- .*(/)'  # only show dot-direcotories
