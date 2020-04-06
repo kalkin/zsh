@@ -2,7 +2,7 @@ EAPI=6
 
 inherit autotools
 
-DESCRIPTION=''
+DESCRIPTION='Good and sane zsh config'
 SRC_URI='bkg-zsh-config-2.3.0.tar.gz'
 SLOT='0'
 KEYWORDS='amd64 ~x86'
