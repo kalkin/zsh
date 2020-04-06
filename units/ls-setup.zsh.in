@@ -1,10 +1,23 @@
 eval $(dircolors -b @BKG_INSTALL_DIR@/LS_COLORS)
 
-if [ "$(uname 2> /dev/null)" != "Linux" ]; then
-	alias ls='ls -G'
-else
-	alias ls='ls --color=auto'
-fi
+case $OSTYPE in
+    linux*)
+        alias ls='ls --color=auto'
+        break
+        ;;
+    openbsd*)
+        (( $+commands[colorls] )) && alias ls='colorls -G'
+        break
+        ;;
+    darwin*)
+        export CLICOLOR=1
+        break
+        ;;
+    *bsd*)
+        alias ls='ls -G'
+        break
+        ;;
+esac
 
 alias ll='ls -lh'
 alias la='ls -Alh'
