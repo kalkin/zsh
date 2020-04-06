@@ -1,4 +1,4 @@
-eval $(dircolors -b @BKG_INSTALL_DIR@/LS_COLORS)
+(( $+commands[dircolors] )) && eval $(dircolors -b @BKG_INSTALL_DIR@/LS_COLORS)
 
 case $OSTYPE in
     linux*)
