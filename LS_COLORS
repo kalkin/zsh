@@ -225,6 +225,7 @@ EXEC 01;31  # Unix
 .el 32
 .vim 32
 .java 32
+.m4 32
 .pl 32
 .pm 32
 .py 32
@@ -426,7 +427,7 @@ EXEC 01;31  # Unix
 # Unimportant text files
 # For universal scheme, use brightgreen 01;32
 # For optimal on light bg (but too prominent on dark bg), use white 01;34
-.log 01;32
+.log 00;33
 *~ 01;32
 *# 01;32
 #.log 01;34
@@ -464,6 +465,11 @@ EXEC 01;31  # Unix
 #.swp 01;33
 #.swo 01;33
 #*,v 01;33
+.ac 00;33
+.am 00;33
+.in 00;33
+.spec  0;35
+.ebuild  0;35
 
 # The brightmagenta (Solarized: purple) color is free for you to use for your
 # custom file type
