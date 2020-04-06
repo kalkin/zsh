@@ -12,6 +12,9 @@ BKG_PACKAGE_GENTOO(["app-shells"])
 AC_CHECK_PROGS([MAN2ROFF], [md2man-roff go-md2man])
 AM_CONDITIONAL([MAN2ROFF], [test -n "$MAN2ROFF"])
 
+AC_CHECK_PROG([DIRCOLORS], dircolors, yes)
+AM_CONDITIONAL([DIRCOLORS], [test x"$DIRCOLORS" = xyes])
+
 AC_ARG_WITH([plugins], AC_HELP_STRING([--with-plugins],
     [Build and install fast-syntax-higlighting, you-should-use, zaw & zsh-autosuggestions plugins]))
 
