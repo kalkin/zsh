@@ -7,9 +7,8 @@ This is good and sane zsh config.
 There're multiple ways to install this configuration, but first you have to
 clone this repository:
 
-- `git clone https://github.com/kalkin/zsh.git .zsh --recursive`
-- `ln -s ~/.zsh/zshrc .zshrc`
-
+- `git clone https://github.com/kalkin/zsh.git bkg-zsh
+- `cd bkg-zsh`
 
 ### 1. According to XDG Base Specification
 
