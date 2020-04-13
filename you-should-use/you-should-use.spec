@@ -2,7 +2,7 @@
 Name:           you-should-use
 Version:        1.7.0
 Release:        1%{?dist}
-Summary:        ZSH plugin that reminds you to use existing aliases for commands you just typed 
+Summary:        ZSH plugin that reminds you to use existing aliases for commands you just typed
 License:        GPLv3
 
 Requires:       zsh
