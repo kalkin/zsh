@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] - 2020-04-14
+
+### Added
+
+- Add alias ’absorb’ for git-absorb(1)
+- aliases for git-issue(1)
+- pregenerate LS_COLORS value
+
+### Fixed
+
+- colorized ls output depending on $OSTYPE
+- escape argument passed to BKG_PACKAGE_INFO
+- Installation guid in the README.md
+- ls color support on BSD
+- only use dircolors if available
+
+### Removed
+
+- be aliases because :be was archived
+
 ## [2.3.0] - 2020-03-29
 
 ### Added
