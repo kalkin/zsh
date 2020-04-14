@@ -4,7 +4,7 @@ themes_dir = $(pkgdatadir)/themes
 fast__DATA = fast-highlight fast-string-highlight \
 			 fast-syntax-highlighting.plugin.zsh fast-theme \
 			 .fast-make-targets .fast-read-ini-file .fast-run-command \
-			 .fast-run-git-command .fast-run-git-command .fast-zts-read-all
+			 .fast-run-git-command .fast-zts-read-all
 themes__DATA = $(wildcard themes/*.ini) 
 dist_doc_DATA = CHROMA_GUIDE.adoc README.md CHANGELOG.md DONATIONS.md LICENSE \
 				THEME_GUIDE.md
