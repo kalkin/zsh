@@ -1,7 +1,7 @@
 SUBDIRS = $(PLUGINS)
 DIST_SUBDIRS = fast-syntax-higlighting you-should-use zaw zsh-autosuggestions
 zsh_contrib_dir = $(pkgdatadir)/site-contrib
-zsh_contrib__DATA = $(wildcard units/*.zsh) units/ls-colors.zsh
+zsh_contrib__DATA = $(wildcard units/*.zsh)
 zsh_functions_dir = $(pkgdatadir)/site-functions
 zsh_functions__DATA = $(wildcard functions/*)
 dist_pkgdata_DATA = $(wildcard *.zsh)
