@@ -1,19 +1,15 @@
 case $OSTYPE in
     linux*)
         alias ls='ls --color=auto'
-        break
         ;;
     openbsd*)
         (( $+commands[colorls] )) && alias ls='colorls -G'
-        break
         ;;
     darwin*)
         export CLICOLOR=1
-        break
         ;;
     *bsd*)
         alias ls='ls -G'
-        break
         ;;
 esac
 

@@ -34,5 +34,5 @@ AC_SUBST(BKG_INSTALL_DIR, "$prefix/share/$PACKAGE_NAME")
 AC_SUBST(BKG_DATAROOT_DIR, "$prefix/share/")
 AC_CONFIG_FILES([Makefile zshenv units/fast-syntax-highlighting.plugin.zsh
                  units/you-should-use.plugin.zsh units/zaw.plugins.zsh
-                 units/zsh-autosuggestions.plugin.zsh units/ls-setup.zsh])
+                 units/zsh-autosuggestions.plugin.zsh])
 AC_OUTPUT
