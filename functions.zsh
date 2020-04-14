@@ -241,10 +241,3 @@ function color-tbl() {
     done
    echo "$header\n$RESULT$header"
 }
-
-if (( $+commands['git-issue'] )); then
-    # VCS: git issue list short cut
-    function gil() {
-        git issue list -l '%i'$'\t''%T'$'\t''%D' -o '%c'|column -t -s$'\t'
-    }
-fi
