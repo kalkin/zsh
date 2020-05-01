@@ -1,4 +1,4 @@
-AC_INIT(bkg-zsh-config, 2.4.0)
+AC_INIT(bkg-zsh-config, 2.4.2)
 AM_INIT_AUTOMAKE([foreign])
 
 AC_CONFIG_MACRO_DIR([m4])

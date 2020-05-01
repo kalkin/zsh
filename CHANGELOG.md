@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.4.2] - 2020-05-01
+
+### Fixed
+
+- build: fix by removing duplicate fast__DATA file
+- build: fix deploying units/ls-setup.zsh
+- gil shortcut
+- git-issue aliases & functions
+- ls aliases
+
 ## [2.4.0] - 2020-04-14
 
 ### Added
@@ -31,7 +41,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - alias for `cal(1)` to always start on Monday
 - `BKG_PACKAGE_INFO` macro
-- <C-b> zaw-git-recent-branches binding
+- `<C-b>` zaw-git-recent-branches binding
 - pop alias for git stash pop --index
 - support for building RPM packages
 - support for building with qubes-builder
@@ -65,6 +75,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [2.0.0] - 2018-07-17
 
 ### Added
+
 - Manpage zsh-bkg(1)
 - CHANGELOG.md — this file
 
