@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-export YSU_VERSION='1.7.1'
+export YSU_VERSION='1.7.2'
 
 if ! type "tput" > /dev/null; then
     printf "WARNING: tput command not found on your PATH.\n"
@@ -18,6 +18,7 @@ function check_alias_usage() {
     # I've chosen a large default value instead of bypassing tail because it's simpler
     # TODO: this should probably be cleaned up
     local limit="${1:-9000000000000000}"
+    local key
 
     declare -A usage
     for key in "${(@k)aliases}"; do
@@ -35,6 +36,7 @@ function check_alias_usage() {
     fi
 
     <"$HISTFILE" | tail "-$limit" | cut -d";" -f2 | while read line; do
+        local entry
         for entry in ${(@s/|/)line}; do
             # Remove leading whitespace
             # TODO: This is extremely slow
