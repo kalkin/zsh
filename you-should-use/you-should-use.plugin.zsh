@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-export YSU_VERSION='1.7.2'
+export YSU_VERSION='1.7.3'
 
 if ! type "tput" > /dev/null; then
     printf "WARNING: tput command not found on your PATH.\n"
@@ -156,6 +156,7 @@ function _check_global_aliases() {
     local tokens
     local key
     local value
+    local entry
 
     # sudo will use another user's profile and so aliases would not apply
     if [[ "$typed" = "sudo "* ]]; then
