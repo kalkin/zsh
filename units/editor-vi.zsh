@@ -19,3 +19,5 @@ if (( $+aliases[vim] )) ; then
 else
     alias view="vim -R"
 fi
+
+export SUDO_EDITOR=$EDITOR
