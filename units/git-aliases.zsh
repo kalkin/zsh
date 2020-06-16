@@ -10,6 +10,7 @@ alias gd="git diff"
 alias gdw="git diff --ignore-space-at-eol --ignore-blank-lines -W"
 alias stash="git stash push"
 alias drop="git stash drop"
+alias gs='git switch'
 
 git config --get-regexp 'alias.*'|cut -d'.' -f2-|grep -v "alias"|while read line;
 do
