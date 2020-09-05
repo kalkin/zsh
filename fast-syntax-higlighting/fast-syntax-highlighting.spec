@@ -36,7 +36,7 @@ Syntax highlighting for ZSH.
 %{_docdir}/fast-syntax-highlighting/THEME_GUIDE.md
 %{_datadir}/fast-syntax-highlighting/fast-highlight
 %{_datadir}/fast-syntax-highlighting/.fast-make-targets
-%{_datadir}/fast-syntax-highlighting/fast-read-ini-file
+%{_datadir}/fast-syntax-highlighting/.fast-read-ini-file
 %{_datadir}/fast-syntax-highlighting/.fast-run-command
 %{_datadir}/fast-syntax-highlighting/.fast-run-git-command
 %{_datadir}/fast-syntax-highlighting/fast-string-highlight
@@ -74,7 +74,7 @@ Syntax highlighting for ZSH.
 %{_datadir}/fast-syntax-highlighting/:chroma/-vim.ch
 %{_datadir}/fast-syntax-highlighting/:chroma/-whatis.ch
 %{_datadir}/fast-syntax-highlighting/:chroma/-which.ch
-%{_datadir}/fast-syntax-highlighting/:chroma/-zplugin.ch
+%{_datadir}/fast-syntax-highlighting/:chroma/-zinit.ch
 %{_datadir}/fast-syntax-highlighting/:chroma/main-chroma.ch
 %{_datadir}/fast-syntax-highlighting/themes/clean.ini
 %{_datadir}/fast-syntax-highlighting/themes/default.ini
