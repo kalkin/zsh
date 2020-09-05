@@ -11,4 +11,6 @@ strageties__DATA = src/strategies/completion.zsh src/strategies/history.zsh \
 dist_doc_DATA = CHANGELOG.md DESCRIPTION INSTALL.md LICENSE README.md URL VERSION
 EXTRA_DIST = $(sugest__DATA) $(src__DATA) $(strageties__DATA)
 
+@BKG_RPM_TEMPLATE@
+
 @BKG_DEPLOY_GENTOO@
