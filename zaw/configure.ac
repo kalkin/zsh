@@ -7,5 +7,5 @@ BKG_PACKAGE_INFO([zsh anything.el-like widget])
 BKG_RPM
 BKG_PACKAGE_GENTOO(["app-shells"])
 
-AC_CONFIG_FILES([Makefile zaw.spec])
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

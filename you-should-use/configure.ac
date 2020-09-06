@@ -7,6 +7,6 @@ BKG_PACKAGE_INFO([ZSH plugin that reminds you to use existing aliases for comman
 BKG_RPM
 BKG_PACKAGE_GENTOO(["app-shells"])
 
-AC_CONFIG_FILES([Makefile you-should-use.spec])
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
 

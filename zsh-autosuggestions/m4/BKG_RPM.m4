@@ -4,7 +4,6 @@ dnl
 dnl Add rpm specific targets to the Makefile.
 dnl
 AC_DEFUN([BKG_RPM], [
-m4_define([BKG_RPM_SPECFILE], [AC_PACKAGE_NAME.spec])
 _BKG_RPM_OS=$(cat /etc/os-release|grep \^NAME|cut -d'=' -f2|tr -d "\n")
 AC_MSG_CHECKING([RPM Support])
 AM_CONDITIONAL([BKG_RPM_CAP], [test "x$_BKG_RPM_OS" = "xFedora" || test "x$_BKG_RPM_OS" = "xCentos"])dnl
@@ -14,6 +13,8 @@ AC_MSG_RESULT(yes)
 _BKG_RPM_CMD=$([[ "$_BKG_RPM_OS" == "Fedora" ]] && echo dnf || echo yum)
 m4_define([BKG_RPM_CMD], [$_BKG_RPM_CMD])
 
+AC_SUBST(BKG_RPM_SPECFILE, AC_PACKAGE_NAME.spec)
+AC_OUTPUT($BKG_RPM_SPECFILE)
 AC_SUBST([BKG_RPM_DISTCLEAN], "distclean-rpm")
 AC_SUBST([BKG_RPM_TEMPLATE], "
 # ┌─────────────────────────────┐
@@ -27,10 +28,10 @@ AC_SUBST([BKG_RPM_TEMPLATE], "
     BUILDDIR    ?= \$(WORKDIR)
     RPMDIR      ?= \$(CURDIR)/rpm
     SOURCEDIR   := \$(CURDIR)
-    RPM_NAMES    = \$(shell rpm --specfile BKG_RPM_SPECFILE \\
+    RPM_NAMES    = \$(shell rpm --specfile $BKG_RPM_SPECFILE \\
                         |grep -v '\-debuginfo\-'|tr \"\n\" ' ')
     RPM_FILES    = \$(shell \\
-        rpm --specfile BKG_RPM_SPECFILE \\
+        rpm --specfile $BKG_RPM_SPECFILE \\
                 --qf \"rpm/%{arch}/%{name}-%{version}-%{r}.%{arch}.rpm\\n\" \\
             |grep -v '\-debuginfo\-'|grep -v '\-debugsource\-'|tr \"\n\" ' ')
 
@@ -54,9 +55,9 @@ install-rpm: \$(RPM_FILES)
 uninstall-rpm:
 	sudo BKG_RPM_CMD remove -y \$(RPM_NAMES) || true
 
-\$(RPM_FILES): BKG_RPM_SPECFILE
-	sudo dnf builddep -y BKG_RPM_SPECFILE
-	rpmbuild \$(RPM_DEFINES) -bb BKG_RPM_SPECFILE
+\$(RPM_FILES): $BKG_RPM_SPECFILE
+	sudo dnf builddep -y $BKG_RPM_SPECFILE
+	rpmbuild \$(RPM_DEFINES) -bb $BKG_RPM_SPECFILE
 
 # └────────────────────────────────────────────────────────────────────────────┘"
 )

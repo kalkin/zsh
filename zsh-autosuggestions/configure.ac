@@ -7,6 +7,6 @@ BKG_PACKAGE_INFO([Fish-like autosuggestions for zsh])
 BKG_RPM
 BKG_PACKAGE_GENTOO(["app-shells"])
 
-AC_CONFIG_FILES([Makefile zsh-autosuggestions.spec])
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
 
