@@ -3,8 +3,14 @@ dnl -------
 dnl
 dnl Add rpm specific targets to the Makefile.
 dnl
+dnl Substitutes BKG_RPM_PKG_CONFIG_DEPS when macro BKG_SHARED_LIB_PKGCONFIG_DEPS
+dnl is defined
+dnl
 AC_DEFUN([BKG_RPM], [
 _BKG_RPM_OS=$(cat /etc/os-release|grep \^NAME|cut -d'=' -f2|tr -d "\n")
+
+ifdef([BKG_SHARED_LIB_PKGCONFIG_DEPS], dnl
+AC_SUBST([BKG_RPM_PKG_CONFIG_DEPS], m4_strip(m4_foreach([tmp], [BKG_SHARED_LIB_PKGCONFIG_DEPS], ["pkgconfig(tmp) "]))))
 AC_MSG_CHECKING([RPM Support])
 AM_CONDITIONAL([BKG_RPM_CAP], [test "x$_BKG_RPM_OS" = "xFedora" || test "x$_BKG_RPM_OS" = "xCentos"])dnl
 AM_COND_IF([BKG_RPM_CAP],
