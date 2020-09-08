@@ -1,7 +1,7 @@
 # fast-syntax-highlighting.spec.  Generated from fast-syntax-highlighting.spec.in by configure.
 Name:           fast-syntax-highlighting
 Version:        1.54.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Feature rich syntax highlighting for Zsh
 License:        BSD
 

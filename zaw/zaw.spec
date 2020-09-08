@@ -1,7 +1,7 @@
 # zaw.spec.  Generated from zaw.spec.in by configure.
 Name:           zaw
 Version:        1.1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        zsh anything.el-like widget
 License:        GPLv3
 

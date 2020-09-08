@@ -1,7 +1,7 @@
 # zsh-autosuggestions.spec.  Generated from zsh-autosuggestions.spec.in by configure.
 Name:           zsh-autosuggestions
 Version:        0.6.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Fish-like autosuggestions for zsh
 License:        MIT
 
