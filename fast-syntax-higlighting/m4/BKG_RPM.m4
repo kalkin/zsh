@@ -30,9 +30,9 @@ AC_SUBST([BKG_RPM_TEMPLATE], "
     WORKDIR     ?= \$(CURDIR)/build
     TOPDIR      ?= \$(WORKDIR)
     SPECDIR     ?= \$(CURDIR)
-    SRCRPMDIR   ?= \$(CURDIR)/srpm
+    SRCRPMDIR   ?= \$(CURDIR)/pkgs/srpm
     BUILDDIR    ?= \$(WORKDIR)
-    RPMDIR      ?= \$(CURDIR)/rpm
+    RPMDIR      ?= \$(CURDIR)/pkgs/rpm
     SOURCEDIR   := \$(CURDIR)
     RPM_NAMES    = \$(shell rpm --specfile $BKG_RPM_SPECFILE \\
                         |grep -v '\-debuginfo\-'|tr \"\n\" ' ')
