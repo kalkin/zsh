@@ -10,7 +10,7 @@ AC_DEFUN([BKG_RPM], [
 _BKG_RPM_OS=$(cat /etc/os-release|grep \^NAME|cut -d'=' -f2|tr -d "\n")
 
 ifdef([BKG_SHARED_LIB_PKGCONFIG_DEPS], dnl
-AC_SUBST([BKG_RPM_PKG_CONFIG_DEPS], m4_strip(m4_foreach([tmp], [BKG_SHARED_LIB_PKGCONFIG_DEPS], ["pkgconfig(tmp) "]))))
+AC_SUBST([BKG_RPM_PKG_CONFIG_DEPS], m4_strip(m4_foreach([tmp], [BKG_SHARED_LIB_PKGCONFIG_DEPS], ["pkgconfig(m4_strip(tmp)) "]))))
 AC_MSG_CHECKING([RPM Support])
 AM_CONDITIONAL([BKG_RPM_CAP], [test "x$_BKG_RPM_OS" = "xFedora" || test "x$_BKG_RPM_OS" = "xCentos"])dnl
 AM_COND_IF([BKG_RPM_CAP],
