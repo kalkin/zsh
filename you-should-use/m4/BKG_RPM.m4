@@ -7,7 +7,7 @@ dnl Substitutes BKG_RPM_PKG_CONFIG_DEPS when macro BKG_SHARED_LIB_PKGCONFIG_DEPS
 dnl is defined
 dnl
 AC_DEFUN([BKG_RPM], [
-_BKG_RPM_OS=$(cat /etc/os-release|grep \^NAME|cut -d'=' -f2|tr -d "\n")
+_BKG_RPM_OS=$(cat /etc/os-release|grep \^NAME|cut -d'=' -f2|xargs)
 
 ifdef([BKG_SHARED_LIB_PKGCONFIG_DEPS], dnl
 AC_SUBST([BKG_RPM_PKG_CONFIG_DEPS], m4_strip(m4_foreach([tmp], [BKG_SHARED_LIB_PKGCONFIG_DEPS], ["pkgconfig(m4_strip(tmp)) "]))))

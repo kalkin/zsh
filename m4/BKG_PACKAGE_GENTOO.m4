@@ -4,7 +4,7 @@ dnl
 dnl Substitutions BKG_GENTOO_DEPLOY makefile target
 dnl
 AC_DEFUN([BKG_PACKAGE_GENTOO], [
-    _BKG_RPM_OS=$(cat /etc/os-release|grep \^NAME|cut -d'=' -f2|tr -d "\n")
+    _BKG_RPM_OS=$(cat /etc/os-release|grep \^NAME|cut -d'=' -f2|xargs)
     AC_MSG_CHECKING([Gentoo Portage support])
     AM_CONDITIONAL([BKG_PORTAGE], [test "x$_BKG_RPM_OS" = "xGentoo"])dnl
     AM_COND_IF([BKG_PORTAGE], [
