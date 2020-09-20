@@ -1,7 +1,7 @@
 # zaw.spec.  Generated from zaw.spec.in by configure.
 Name:           zaw
 Version:        1.1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        zsh anything.el-like widget
 License:        GPLv3
 
@@ -18,6 +18,7 @@ zsh anything.el-like widget
 %autosetup -T -D -n .
 
 %build
+autoreconf -i
 %configure
 %make_build
 

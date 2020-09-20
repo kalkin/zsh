@@ -1,7 +1,7 @@
 # @configure_input@
 Name:           @BKG_PACKAGE_NAME@
 Version:        @BKG_PACKAGE_VERSION@
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        @BKG_PACKAGE_SUMMARY@
 License:        GPLv3
 
@@ -18,6 +18,7 @@ Requires:       zsh
 %autosetup -T -D -n .
 
 %build
+autoreconf -i
 %configure
 %make_build
 
