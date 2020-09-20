@@ -1,7 +1,7 @@
 # @configure_input@
 Name:           @BKG_PACKAGE_NAME@
 Version:        @BKG_PACKAGE_VERSION@
-Release:        3%{?dist}
+Release:        10%{?dist}
 Summary:        @BKG_PACKAGE_SUMMARY@
 License:        BSD
 
