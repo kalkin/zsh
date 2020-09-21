@@ -16,10 +16,18 @@ AM_CONDITIONAL([BKG_RPM_CAP], [test "x$_BKG_RPM_OS" = "xFedora" || test "x$_BKG_
 AM_COND_IF([BKG_RPM_CAP],
 [
 AC_MSG_RESULT(yes)
+
+
+AC_MSG_CHECKING([RPM Package Manager])
 _BKG_RPM_CMD=$([[ "$_BKG_RPM_OS" == "Fedora" ]] && echo dnf || echo yum)
 m4_define([BKG_RPM_CMD], [$_BKG_RPM_CMD])
+AC_MSG_RESULT(BKG_RPM_CMD)
+
+AC_CHECK_PROG([RPMSPEC], [rpmspec], yes)
+AS_IF([test -z "$RPMSPEC"], [AC_MSG_ERROR([Please install rpmspec(1)])])
 
 AC_SUBST(BKG_RPM_SPECFILE, AC_PACKAGE_NAME.spec)
+
 AC_OUTPUT($BKG_RPM_SPECFILE)
 AC_SUBST([BKG_RPM_DISTCLEAN], "distclean-rpm")
 AC_SUBST([CONFIG_STATUS_DEPENDENCIES], [$CONFIG_STATUS_DEPENDENCIES' $(top_srcdir)/AC_PACKAGE_NAME.spec.in'])
@@ -63,7 +71,8 @@ uninstall-rpm:
 	sudo BKG_RPM_CMD remove -y \$(RPM_NAMES) || true
 
 \$(RPM_FILES): $BKG_RPM_SPECFILE
-	sudo dnf builddep -y $BKG_RPM_SPECFILE
+	rpmspec -q $BKG_RPM_SPECFILE --buildrequires|xargs rpm -q --whatprovides --quiet \
+					   || sudo dnf builddep -y $BKG_RPM_SPECFILE
 	rpmbuild \$(RPM_DEFINES) -bb $BKG_RPM_SPECFILE
 
 # └────────────────────────────────────────────────────────────────────────────┘"
