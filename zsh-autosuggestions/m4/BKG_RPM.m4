@@ -41,7 +41,7 @@ AC_SUBST([BKG_RPM_TEMPLATE], "
     SRCRPMDIR   ?= \$(CURDIR)/pkgs/srpm
     BUILDDIR    ?= \$(WORKDIR)
     RPMDIR      ?= \$(CURDIR)/pkgs/rpm
-    SOURCEDIR   := \$(CURDIR)
+    SOURCEDIR   ::= \$(CURDIR)
     RPM_NAMES    = \$(shell rpm --specfile $BKG_RPM_SPECFILE \\
                         |grep -v '\-debuginfo\-'|tr \"\n\" ' ')
     RPM_FILES    = \$(shell \\
@@ -49,7 +49,7 @@ AC_SUBST([BKG_RPM_TEMPLATE], "
                 --qf \"rpm/%{arch}/%{name}-%{version}-%{r}.%{arch}.rpm\\n\" \\
             |grep -v '\-debuginfo\-'|grep -v '\-debugsource\-'|tr \"\n\" ' ')
 
-    RPM_DEFINES := --define \"_sourcedir \$(SOURCEDIR)\" \\
+    RPM_DEFINES ::= --define \"_sourcedir \$(SOURCEDIR)\" \\
                    --define \"_specdir \$(SPECDIR)\"     \\
                    --define \"_builddir \$(BUILDDIR)\"   \\
                    --define \"_srcrpmdir \$(SRCRPMDIR)\" \\
