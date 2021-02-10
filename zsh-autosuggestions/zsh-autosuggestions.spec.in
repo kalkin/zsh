@@ -1,11 +1,12 @@
 # @configure_input@
 Name:           @BKG_PACKAGE_NAME@
 Version:        @BKG_PACKAGE_VERSION@
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        @BKG_PACKAGE_SUMMARY@
 License:        MIT
 
 Requires:       zsh
+BuildArch:      noarch
 
 %description
 As you type commands, you will see a completion offered after the cursor in a
