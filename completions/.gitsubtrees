@@ -1,3 +1,0 @@
-[rust]
-	upstream = https://github.com/rust-lang/zsh-config
-	follow = HEAD
