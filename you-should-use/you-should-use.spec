@@ -1,10 +1,11 @@
 # you-should-use.spec.  Generated from you-should-use.spec.in by configure.
 Name:           you-should-use
-Version:        1.7.0
-Release:        10%{?dist}
+Version:        1.7.3
+Release:        1%{?dist}
 Summary:        ZSH plugin that reminds you to use existing aliases for commands you just typed
 License:        GPLv3
 
+BuildArch:      noarch
 Requires:       zsh
 
 %description
