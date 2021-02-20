@@ -5,7 +5,7 @@ dnl If '--enable-xdg' is set, adjust directory vars according to XDG
 dnl
 
 AC_DEFUN([BKG_ENABLE_XDG], [AC_ARG_ENABLE([xdg],
-    AC_HELP_STRING([--enable-xdg],
+    AS_HELP_STRING([--enable-xdg],
                    [Install according to XDG Base Directory specification]),
     [
      test -z "$XDG_CONFIG_HOME" && XDG_CONFIG_HOME="$HOME/.config"
