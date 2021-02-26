@@ -14,7 +14,8 @@ sources__DATA = sources/aliases.zsh sources/applications.zsh \
 				sources/screens.zsh sources/searcher.zsh sources/ssh-hosts.zsh \
 				sources/tmux.zsh sources/widgets.zsh
 dist_doc_DATA = LICENSE README.rst
-EXTRA_DIST = $(zaw__DATA) functions sources
+EXTRA_DIST = $(zaw__DATA) functions sources @BKG_RPM_SPECFILE@.in
+CLEANFILES = @BKG_RPM_SPECFILE@
 
 @BKG_RPM_TEMPLATE@
 
