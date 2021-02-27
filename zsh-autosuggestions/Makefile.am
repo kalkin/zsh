@@ -9,7 +9,8 @@ src__DATA = src/async.zsh src/bind.zsh src/config.zsh src/fetch.zsh \
 strageties__DATA = src/strategies/completion.zsh src/strategies/history.zsh \
 				   src/strategies/match_prev_cmd.zsh
 dist_doc_DATA = CHANGELOG.md DESCRIPTION INSTALL.md LICENSE README.md URL VERSION
-EXTRA_DIST = $(sugest__DATA) $(src__DATA) $(strageties__DATA)
+EXTRA_DIST = $(sugest__DATA) $(src__DATA) $(strageties__DATA) @BKG_RPM_SPECFILE@.in
+CLEANFILES = @BKG_RPM_SPECFILE@
 
 @BKG_RPM_TEMPLATE@
 
